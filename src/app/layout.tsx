@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import { Instrument_Serif, Manrope } from "next/font/google";
 import "./globals.css";
-import "./sections.css";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
 import { siteConfig } from "@/config/site";
 import { createPageMetadata, getBaseUrl } from "@/lib/seo";
 
@@ -15,6 +12,9 @@ export const metadata: Metadata = {
   metadataBase: getBaseUrl(),
   applicationName: siteConfig.shortName,
   category: "business",
+  authors: [{ name: siteConfig.name }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
   keywords: [
     "HIPMI PT UIN Al Azhaar",
     "HIPMI PT Lubuklinggau",
@@ -31,9 +31,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="id" className={`${display.variable} ${body.variable}`}>
       <body>
         <a href="#main-content" className="skip-link">Lewati ke konten utama</a>
-        <SiteHeader />
         {children}
-        <SiteFooter />
       </body>
     </html>
   );
