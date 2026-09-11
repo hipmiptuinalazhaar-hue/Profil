@@ -5,6 +5,10 @@
 /.next/
 /out/
 
+# vinext / vite
+/.vinext/
+/dist/
+
 # production
 /build
 
@@ -17,10 +21,13 @@
 *.pem
 *.log
 
-# vercel/cloudflare local state
+# platform local state
 .vercel
 .wrangler
 .open-next
+
+# cloudflare generated types
+worker-configuration.d.ts
 
 # typescript
 *.tsbuildinfo
