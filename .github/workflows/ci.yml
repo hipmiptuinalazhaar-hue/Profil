@@ -12,7 +12,9 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
+    env:
+      NEXT_PUBLIC_SITE_URL: https://profil.hipmiptuinalazhaar.workers.dev
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,7 +34,8 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Build
-        env:
-          NEXT_PUBLIC_SITE_URL: https://profil.hipmiptuinalazhaar.workers.dev
+      - name: Next.js build
         run: npm run build
+
+      - name: Cloudflare Workers build
+        run: npm run build:cloudflare
