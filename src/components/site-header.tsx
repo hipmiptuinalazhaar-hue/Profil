@@ -32,7 +32,7 @@ export function SiteHeader({ lang }: Props) {
       <div className="mx-auto flex h-20 w-full max-w-[88rem] items-center justify-between px-5 sm:px-8 lg:px-12">
         <a href="#top" className="flex items-center gap-3" aria-label={isId ? "HIPMI PT UIN Al Azhaar - kembali ke atas" : "HIPMI PT UIN Al Azhaar - back to top"}>
           <span className="relative size-11 overflow-hidden rounded-full border border-white/15 bg-black/70">
-            <Image src="/media/brand-logo.webp" alt="Logo HIPMI PT UIN Al Azhaar Lubuklinggau" fill sizes="44px" className="object-cover" priority />
+            <Image src="/assets/phase-1/logo-hipmi-pt.webp" alt="Logo HIPMI PT UIN Al Azhaar Lubuklinggau" fill sizes="44px" className="object-cover" priority />
           </span>
           <span className="hidden text-[0.72rem] font-semibold uppercase leading-4 tracking-[0.16em] text-white/88 sm:block">HIPMI PT<br />UIN Al Azhaar</span>
         </a>
