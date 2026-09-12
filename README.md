@@ -2,15 +2,19 @@
 
 Official digital headquarters and entrepreneur ecosystem for **HIPMI PT UIN Al Azhaar Lubuklinggau**.
 
+**Live:** https://profil.hipmiptuinalazhaar.workers.dev
+
 ## Product direction
 
 This is not a static student-organization profile. It is being designed as institutional digital infrastructure for organization identity, programs, member businesses, impact, events, publication, membership, and strategic collaboration.
 
 ## Current status
 
-**Phase 0 — Foundation & Architecture**
+**Phase 1 — Premium Homepage & Global Shell complete.**
 
-The repository now contains the technical skeleton, design tokens, verified organization data, information architecture, content model, SEO baseline, security baseline, and performance rules. Public feature pages are intentionally not faked before their implementation phases.
+The public homepage now provides the institutional visual identity and primary conversion experience: real documentation, bilingual ID/EN content, flagship programs, entrepreneur ecosystem, factual impact baseline, partnership positioning, leadership, gallery, membership CTA, responsive navigation, SEO metadata, accessibility baseline, and production-optimized media.
+
+Phase 0 architecture remains the foundation for subsequent CMS, business directory, events, impact data, publications, and membership systems.
 
 ## Stack
 
@@ -21,7 +25,7 @@ The repository now contains the technical skeleton, design tokens, verified orga
 - App Router
 - Server Components by default
 - PostgreSQL-ready architecture
-- Cloudflare-compatible deployment target
+- Cloudflare Workers via vinext
 
 ## Local development
 
@@ -35,12 +39,14 @@ Validation:
 ```bash
 npm run typecheck
 npm run lint
-npm run build
+npm run build:cloudflare
 ```
+
+Production build and deployment are handled by Cloudflare Workers Builds. GitHub Actions are intentionally not used for this repository.
 
 ## Architecture docs
 
-See `/docs` for the Phase 0 decisions that govern later implementation.
+See `/docs` for the product, design, SEO, security, performance, and roadmap decisions governing implementation.
 
 ## Integrity rule
 
