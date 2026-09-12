@@ -1,45 +1,29 @@
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
-import { HomeGallery } from "@/components/home/home-gallery";
-import { HomeHero } from "@/components/home/home-hero";
-import { HomePrograms } from "@/components/home/home-programs";
-import { HomeStories } from "@/components/home/home-stories";
 import { siteConfig } from "@/config/site";
-import type { HomeLocale } from "@/content/home";
-import { getBaseUrl } from "@/lib/seo";
 
-type Props = { searchParams: Promise<{ lang?: string }> };
+const foundation = ["Information architecture", "Design tokens", "Content model", "SEO architecture", "Security baseline", "Performance budget"];
 
-export default async function Home({ searchParams }: Props) {
-  const params = await searchParams;
-  const lang: HomeLocale = params.lang === "en" ? "en" : "id";
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: siteConfig.name,
-    legalName: siteConfig.legalName,
-    url: getBaseUrl().toString(),
-    email: siteConfig.contact.email,
-    sameAs: [siteConfig.contact.instagram],
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Jl. Pelita No.364, RT.07, Kelurahan Pelita Jaya, Kecamatan Lubuklinggau Barat I",
-      addressLocality: "Lubuklinggau",
-      addressRegion: "Sumatera Selatan",
-      postalCode: "31614",
-      addressCountry: "ID"
-    }
-  };
-
-  return <>
-    <SiteHeader lang={lang} />
-    <main id="main-content" lang={lang} className="overflow-hidden bg-paper-50 text-ink-950">
-      <HomeHero lang={lang} />
-      <HomePrograms lang={lang} />
-      <HomeStories lang={lang} />
-      <HomeGallery lang={lang} />
+export default function Home() {
+  return (
+    <main id="main-content" className="min-h-screen bg-ink-950 text-white">
+      <section className="mx-auto flex min-h-screen w-full max-w-[80rem] flex-col justify-between px-6 py-8 sm:px-10 lg:px-16 lg:py-12">
+        <header className="flex items-center justify-between border-b border-white/10 pb-5 text-xs uppercase tracking-[0.18em] text-white/65">
+          <span>{siteConfig.shortName}</span>
+          <span>Foundation · Phase 0</span>
+        </header>
+        <div className="max-w-5xl py-20 sm:py-28 lg:py-32">
+          <p className="mb-7 text-sm font-semibold uppercase tracking-[0.22em] text-gold-500">Official Digital Headquarters</p>
+          <h1 className="max-w-4xl font-[family-name:var(--font-display)] text-[clamp(3.7rem,9vw,8.5rem)] leading-[0.88] tracking-[-0.055em]">Fondasi untuk ekosistem pengusaha muda yang serius.</h1>
+          <p className="mt-9 max-w-2xl text-base leading-8 text-white/67 sm:text-lg">Phase 0 mengunci arsitektur, identitas visual, struktur konten, keamanan, performa, dan SEO sebelum pengalaman publik dibangun. Tidak ada statistik palsu, halaman kosong, atau dekorasi yang berpura-pura menjadi strategi.</p>
+        </div>
+        <div className="grid gap-px border-y border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
+          {foundation.map((item, index) => (
+            <div key={item} className="bg-ink-950 px-5 py-6">
+              <span className="mb-8 block text-xs tabular-nums text-gold-500">0{index + 1}</span>
+              <span className="text-sm text-white/85">{item}</span>
+            </div>
+          ))}
+        </div>
+      </section>
     </main>
-    <SiteFooter lang={lang} />
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />
-  </>;
+  );
 }

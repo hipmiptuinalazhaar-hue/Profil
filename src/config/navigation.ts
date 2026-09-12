@@ -8,15 +8,6 @@ export const primaryNavigation = [
   { label: "Media", href: "/media" }
 ] as const;
 
-export const homepageNavigation = [
-  { label: "Tentang", href: "#about" },
-  { label: "Program", href: "#programs" },
-  { label: "Ekosistem", href: "#ecosystem" },
-  { label: "Impact", href: "#impact" },
-  { label: "Leadership", href: "#leadership" },
-  { label: "Galeri", href: "#gallery" }
-] as const;
-
 export const utilityNavigation = [
   { label: "Pengurus", href: "/team" },
   { label: "Partnership", href: "/partnership" },
