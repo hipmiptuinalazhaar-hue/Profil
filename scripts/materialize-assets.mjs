@@ -6,9 +6,18 @@ const root = process.cwd();
 const assets = [
   {
     label: "HIPMI PT shell mark",
-    parts: ["logo.part01.b64", "logo.part02.b64"],
+    parts: [
+      "logo.part01.b64",
+      "logo.part02.b64",
+      "logo.part03.b64",
+      "logo.part04.b64",
+      "logo.part05.b64",
+      "logo.part06.b64",
+      "logo.part07.b64",
+      "logo.part08.b64",
+    ],
     output: "public/assets/brand/hipmi-pt-uin-alazhaar.avif",
-    minBytes: 8_000,
+    minBytes: 40_000,
   },
   {
     label: "Pelantikan Akbar 2026 flagship hero",
