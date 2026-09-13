@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import styles from "./photo-slot.module.css";
 
 type PhotoSlotProps = {
   src: string;
@@ -25,15 +26,18 @@ export function PhotoSlot({
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <div className={`photo-slot${className ? ` ${className}` : ""}`} data-loaded={loaded ? "true" : "false"}>
-      <div className="photo-slot__fallback" aria-hidden={loaded}>
+    <div
+      className={`${styles.root}${className ? ` ${className}` : ""}`}
+      data-loaded={loaded ? "true" : "false"}
+    >
+      <div className={styles.fallback} aria-hidden={loaded}>
         <span>PHOTO ASSET</span>
         <strong>{filename}</strong>
         <small>Upload ke public/photos</small>
       </div>
 
       <Image
-        className="photo-slot__image"
+        className={styles.image}
         src={src}
         alt={alt}
         fill
