@@ -1,47 +1,103 @@
-# Cloudflare Workers deployment
+# Cloudflare Workers Deployment Policy
 
-Target: Cloudflare Workers via **vinext**, the deployment path currently recommended by Cloudflare for Next.js applications.
+Target: Cloudflare Workers via **vinext + Wrangler**.
+
+This repository intentionally does **not** use GitHub Actions. GitHub is source control/review. Cloudflare is the build and deployment platform.
 
 ## Production identity
 
 - Worker name: `profil`
-- Expected workers.dev hostname: `profil.<account-subdomain>.workers.dev`
+- Production URL: `https://profil.hipmiptuinalazhaar.workers.dev`
 - Production branch: `main`
 - Node.js build runtime: 22+
+- Runtime adapter: vinext
+- Deployment CLI: Wrangler
 
-## Dashboard connection
+## Cloudflare Git integration
 
-1. Cloudflare Dashboard → Workers & Pages → Create application / Import repository.
-2. Connect GitHub and select `hipmiptuinalazhaar-hue/Profil`.
-3. Keep the production branch as `main`.
-4. The repository already contains `vite.config.ts` and `wrangler.jsonc`, so Cloudflare should use the checked-in Workers configuration instead of inventing an unrelated deployment shape.
-5. Build command: `npm run build:cloudflare`.
-6. Deploy command: `npm run deploy:cloudflare` when a custom deploy command is requested. Cloudflare Git integration may manage the final deployment automatically after build.
-7. Do not add secrets to the repository. Add future secrets through Cloudflare Variables and Secrets.
+Cloudflare is connected directly to the GitHub repository `hipmiptuinalazhaar-hue/Profil`.
 
-## Local / CI verification
+Production settings:
+
+```text
+Production branch: main
+Root directory: /
+Build command: npm run build:cloudflare
+Deploy command: npx wrangler deploy
+```
+
+`build:cloudflare` performs:
+
+1. TypeScript typecheck
+2. ESLint
+3. vinext production build
+
+This keeps quality validation inside the Cloudflare build path without paid GitHub Actions.
+
+## Repository configuration
+
+Cloudflare deployment is driven by:
+
+- `vite.config.ts`
+- `wrangler.jsonc`
+- `package.json`
+
+`wrangler.jsonc` owns the Worker identity, compatibility date, Node compatibility flag, observability, entry point, and asset behavior.
+
+## Explicit GitHub Actions prohibition
+
+Do not create:
+
+```text
+.github/workflows/*
+```
+
+Do not add GitHub-hosted CI/CD merely to duplicate Cloudflare build/deploy.
+
+This policy may only change after explicit founder approval.
+
+## Local verification
 
 ```bash
 npm install
-npm run typecheck
-npm run lint
+npm run validate
 npm run build
 npm run build:cloudflare
 ```
 
-For a direct authenticated deployment:
+For a direct manual deployment from an authenticated development environment:
 
 ```bash
 npx wrangler login
-npm run deploy:cloudflare
+npx wrangler deploy
 ```
 
-CI/non-interactive deployments should use `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` as protected environment variables.
+Direct manual deployment is a recovery/debug path. Normal production delivery is Git push/merge to `main` followed by Cloudflare Git integration.
 
-## Why dual builds exist
+## Environment variables
 
-The normal `next build` remains available as a framework sanity check. The vinext build is the Cloudflare-specific production compatibility gate. This migration is intentionally non-destructive so the source application remains standard Next.js while Cloudflare uses the Vite/Workers runtime path.
+Never commit secrets.
 
-## Current scope
+Public build-time variable when needed:
 
-No database, KV, R2, D1, or private runtime binding is required for the Phase 0 shell. Bindings will only be added when a real feature needs them.
+```text
+NEXT_PUBLIC_SITE_URL=https://profil.hipmiptuinalazhaar.workers.dev
+```
+
+Future private secrets belong in Cloudflare Variables and Secrets.
+
+## Failure behavior
+
+A failed Cloudflare build must block the new deployment. Do not bypass typecheck/lint simply to force a release.
+
+If a production deployment fails:
+
+1. inspect the failing Cloudflare log,
+2. fix the source/configuration in a branch,
+3. validate again,
+4. merge to `main`,
+5. let Cloudflare redeploy.
+
+## Current bindings
+
+Phase 0–1 require no database, KV, R2, D1, or private runtime binding. These are introduced only when an implemented feature has a verified requirement.
