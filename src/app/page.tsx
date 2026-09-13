@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { InstitutionalStory } from "@/components/home/institutional-story";
+import { PlatformOverview } from "@/components/home/platform-overview";
 import { ProgramEcosystem } from "@/components/home/program-ecosystem";
 import { PhotoSlot } from "@/components/media/photo-slot";
 import { SiteFooter } from "@/components/shell/site-footer";
@@ -52,14 +53,9 @@ export default async function Home({ searchParams }: HomeProps) {
   const params = await searchParams;
   const locale: SiteLocale = params.lang === "en" ? "en" : "id";
   const text = copy[locale];
-  const joinSubject = encodeURIComponent(
-    locale === "id"
-      ? "Minat bergabung dengan HIPMI PT UIN Al Azhaar"
-      : "Interest in joining HIPMI PT UIN Al Azhaar",
-  );
 
   return (
-    <div className="phase-three phase-five" lang={locale}>
+    <div className="phase-three phase-five phase-nine" lang={locale}>
       <SiteHeader locale={locale} />
 
       <main id="main-content">
@@ -85,10 +81,10 @@ export default async function Home({ searchParams }: HomeProps) {
                   <span>{text.primary}</span>
                   <span className="cta-arrow" aria-hidden="true">↗</span>
                 </Link>
-                <a className="cta-secondary" href={`mailto:hipmitptuinalazhaar@gmail.com?subject=${joinSubject}`}>
+                <Link className="cta-secondary" href={`/join?lang=${locale}`}>
                   <span>{text.secondary}</span>
                   <span className="cta-arrow" aria-hidden="true">→</span>
-                </a>
+                </Link>
               </div>
 
               <div className="hero-facts" aria-label={locale === "id" ? "Ringkasan organisasi" : "Organization snapshot"}>
@@ -140,6 +136,7 @@ export default async function Home({ searchParams }: HomeProps) {
 
         <InstitutionalStory locale={locale} />
         <ProgramEcosystem locale={locale} />
+        <PlatformOverview locale={locale} />
       </main>
 
       <SiteFooter locale={locale} />

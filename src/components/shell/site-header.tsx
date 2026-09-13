@@ -20,34 +20,49 @@ const navigation = [
     enDescription: "Nine flagship programs and development architecture",
   },
   {
-    id: "ecosystem",
-    href: "/#ecosystem",
-    idLabel: "Ekosistem",
-    enLabel: "Ecosystem",
-    idDescription: "Perjalanan anggota, usaha, jejaring, dan pertumbuhan",
-    enDescription: "Member, venture, network, and growth journey",
+    id: "leadership",
+    href: "/leadership",
+    idLabel: "Pengurus",
+    enLabel: "Leadership",
+    idDescription: "BPH, enam bidang, kepala bidang, dan kompartemen",
+    enDescription: "Executive board, six divisions, heads, and compartments",
   },
   {
-    id: "network",
-    href: "/#network",
-    idLabel: "Jejaring",
-    enLabel: "Network",
-    idDescription: "Afiliasi dan koneksi ekosistem yang relevan",
-    enDescription: "Relevant affiliations and ecosystem connections",
+    id: "business",
+    href: "/business",
+    idLabel: "Ekosistem",
+    enLabel: "Ecosystem",
+    idDescription: "Usaha anggota, pengembangan, pasar, dan jejaring",
+    enDescription: "Member ventures, development, market, and network",
   },
+  {
+    id: "impact",
+    href: "/impact",
+    idLabel: "Dampak",
+    enLabel: "Impact",
+    idDescription: "Baseline terverifikasi dan standar bukti capaian",
+    enDescription: "Verified baseline and evidence standards",
+  },
+  {
+    id: "media",
+    href: "/media",
+    idLabel: "Media",
+    enLabel: "Media",
+    idDescription: "Dokumentasi resmi yang terhubung dengan folder foto repo",
+    enDescription: "Official documentation connected to the repository photo folder",
+  },
+] as const;
+
+const secondaryNavigation = [
+  { id: "events", href: "/events", idLabel: "Agenda", enLabel: "Events", idDescription: "Kalender publik dan format kegiatan", enDescription: "Public calendar and event formats" },
+  { id: "insights", href: "/insights", idLabel: "Wawasan", enLabel: "Insights", idDescription: "Playbook praktis untuk pengusaha muda", enDescription: "Practical playbooks for young entrepreneurs" },
+  { id: "partnerships", href: "/partnerships", idLabel: "Kolaborasi", enLabel: "Collaboration", idDescription: "Ruang kerja sama strategis dengan konteks yang jelas", enDescription: "Strategic collaboration with a clear purpose" },
 ] as const;
 
 export function SiteHeader({ locale }: { locale: SiteLocale }) {
   const isId = locale === "id";
-  const joinSubject = encodeURIComponent(
-    isId
-      ? "Minat bergabung dengan HIPMI PT UIN Al Azhaar"
-      : "Interest in joining HIPMI PT UIN Al Azhaar",
-  );
-  const localizedHref = (href: string) => {
-    if (href.startsWith("/#")) return `/?lang=${locale}${href.slice(1)}`;
-    return `${href}?lang=${locale}`;
-  };
+  const localizedHref = (href: string) => `${href}?lang=${locale}`;
+  const mobileNavigation = [...navigation, ...secondaryNavigation];
 
   return (
     <header className="global-header" aria-label={isId ? "Navigasi utama" : "Main navigation"} lang={locale}>
@@ -84,10 +99,10 @@ export function SiteHeader({ locale }: { locale: SiteLocale }) {
             <span aria-hidden="true">·</span>
             <Link href="/?lang=en" aria-current={!isId ? "page" : undefined}>EN</Link>
           </div>
-          <a className="header-join" href={`mailto:hipmitptuinalazhaar@gmail.com?subject=${joinSubject}`}>
+          <Link className="header-join" href={`/join?lang=${locale}`}>
             {isId ? "Gabung" : "Join"}
             <span aria-hidden="true">↗</span>
-          </a>
+          </Link>
         </div>
 
         <details className="mobile-menu">
@@ -128,7 +143,7 @@ export function SiteHeader({ locale }: { locale: SiteLocale }) {
                 </div>
 
                 <nav className="mobile-menu__navigation" aria-label={isId ? "Navigasi mobile" : "Mobile navigation"}>
-                  {navigation.map((item, index) => (
+                  {mobileNavigation.map((item, index) => (
                     <Link key={item.id} href={localizedHref(item.href)}>
                       <span className="mobile-menu__number">{String(index + 1).padStart(2, "0")}</span>
                       <span className="mobile-menu__copy">
@@ -146,10 +161,10 @@ export function SiteHeader({ locale }: { locale: SiteLocale }) {
                   <Link href="/?lang=id" aria-current={isId ? "page" : undefined}>Indonesia</Link>
                   <Link href="/?lang=en" aria-current={!isId ? "page" : undefined}>English</Link>
                 </div>
-                <a className="mobile-menu__join" href={`mailto:hipmitptuinalazhaar@gmail.com?subject=${joinSubject}`}>
+                <Link className="mobile-menu__join" href={`/join?lang=${locale}`}>
                   <span>{isId ? "Gabung HIPMI PT" : "Join HIPMI PT"}</span>
                   <span aria-hidden="true">↗</span>
-                </a>
+                </Link>
                 <a className="mobile-menu__social" href="https://instagram.com/hipmipt.alazhaar" target="_blank" rel="noreferrer">
                   Instagram · @hipmipt.alazhaar
                 </a>

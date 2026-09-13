@@ -4,11 +4,6 @@ import { siteConfig, type SiteLocale } from "@/config/site";
 
 export function SiteFooter({ locale }: { locale: SiteLocale }) {
   const isId = locale === "id";
-  const joinSubject = encodeURIComponent(
-    isId
-      ? "Kolaborasi dengan HIPMI PT UIN Al Azhaar"
-      : "Collaboration with HIPMI PT UIN Al Azhaar",
-  );
 
   return (
     <footer className="global-footer" lang={locale}>
@@ -34,11 +29,21 @@ export function SiteFooter({ locale }: { locale: SiteLocale }) {
 
         <div className="footer-directory">
           <div className="footer-directory__column">
-            <p className="footer-label">{isId ? "Jelajahi" : "Explore"}</p>
+            <p className="footer-label">{isId ? "Organisasi" : "Organization"}</p>
             <Link href={`/about?lang=${locale}`}>{isId ? "Tentang HIPMI PT" : "About HIPMI PT"}</Link>
+            <Link href={`/leadership?lang=${locale}`}>{isId ? "Kepengurusan" : "Leadership"}</Link>
             <Link href={`/programs?lang=${locale}`}>{isId ? "Program" : "Programs"}</Link>
-            <Link href={`/?lang=${locale}#ecosystem`}>{isId ? "Ekosistem pengusaha" : "Entrepreneur ecosystem"}</Link>
-            <Link href={`/?lang=${locale}#network`}>{isId ? "Jejaring & afiliasi" : "Network & affiliations"}</Link>
+            <Link href={`/business?lang=${locale}`}>{isId ? "Ekosistem bisnis" : "Business ecosystem"}</Link>
+            <Link href={`/impact?lang=${locale}`}>{isId ? "Dampak" : "Impact"}</Link>
+          </div>
+
+          <div className="footer-directory__column">
+            <p className="footer-label">{isId ? "Publik" : "Public"}</p>
+            <Link href={`/events?lang=${locale}`}>{isId ? "Agenda" : "Events"}</Link>
+            <Link href={`/insights?lang=${locale}`}>{isId ? "Wawasan" : "Insights"}</Link>
+            <Link href={`/media?lang=${locale}`}>{isId ? "Media & dokumentasi" : "Media & documentation"}</Link>
+            <Link href={`/join?lang=${locale}`}>{isId ? "Gabung" : "Join"}</Link>
+            <Link href={`/partnerships?lang=${locale}`}>{isId ? "Kolaborasi" : "Collaboration"}</Link>
           </div>
 
           <div className="footer-directory__column footer-contact">
@@ -55,9 +60,9 @@ export function SiteFooter({ locale }: { locale: SiteLocale }) {
           <span>{isId ? "Kolaborasi strategis" : "Strategic collaboration"}</span>
           <strong>{isId ? "Bangun sesuatu yang berdampak bersama kami." : "Build something meaningful with us."}</strong>
         </div>
-        <a href={`mailto:${siteConfig.contact.email}?subject=${joinSubject}`}>
-          {isId ? "Hubungi HIPMI PT" : "Contact HIPMI PT"}<span aria-hidden="true">↗</span>
-        </a>
+        <Link href={`/partnerships?lang=${locale}`}>
+          {isId ? "Buka ruang kolaborasi" : "Explore collaboration"}<span aria-hidden="true">↗</span>
+        </Link>
       </div>
 
       <div className="shell global-footer__bottom">
