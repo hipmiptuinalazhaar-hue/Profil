@@ -17,7 +17,14 @@ export function SiteFooter({ locale }: { locale: SiteLocale }) {
       <div className="shell global-footer__top">
         <div className="footer-identity">
           <div className="footer-identity__brand">
-            <Image src="/assets/brand/hipmi-pt-uin-alazhaar.avif" alt="" width={88} height={88} unoptimized />
+            <Image
+              src="/assets/brand/hipmi-pt-uin-alazhaar.avif"
+              alt=""
+              width={88}
+              height={88}
+              unoptimized
+              style={{ mixBlendMode: "normal" }}
+            />
             <div><span>HIPMI PT</span><small>UIN Al Azhaar Lubuklinggau</small></div>
           </div>
           <p>{isId ? "Rumah digital pengusaha muda" : "The digital home of young entrepreneurs"}</p>
