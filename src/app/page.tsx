@@ -61,7 +61,7 @@ export default async function Home({ searchParams }: HomeProps) {
 
             <figure className="hero-documentary">
               <div className="hero-photo-frame">
-                <Image src="/assets/documentation/pelantikan-2026/hero-pelantikan-2026.webp" alt="Delegasi HIPMI PT UIN Al Azhaar bersama pemangku kepentingan pada Pelantikan Akbar HIPMI PT Kampus se-Linggau Raya 2026" fill priority unoptimized sizes="(max-width: 899px) 100vw, 52vw" />
+                <Image src="/assets/documentation/pelantikan-2026/hero-pelantikan-2026.avif" alt="Delegasi HIPMI PT UIN Al Azhaar bersama pemangku kepentingan pada Pelantikan Akbar HIPMI PT Kampus se-Linggau Raya 2026" fill priority unoptimized sizes="(max-width: 899px) 100vw, 52vw" />
               </div>
               <figcaption>
                 <span className="hero-photo-index">01 / 03</span>
