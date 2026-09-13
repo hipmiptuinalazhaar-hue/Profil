@@ -4,13 +4,23 @@ Official digital headquarters and entrepreneur ecosystem for **HIPMI PT UIN Al A
 
 ## Product direction
 
-This is not a static student-organization profile. It is being designed as institutional digital infrastructure for organization identity, programs, member businesses, impact, events, publication, membership, and strategic collaboration.
+This is not a static student-organization profile. It is institutional digital infrastructure for organization identity, programs, member businesses, impact, events, publication, membership, and strategic collaboration.
+
+North star: **every page must build trust, create value, demonstrate impact, or enable action.**
 
 ## Current status
 
-**Phase 0 — Foundation & Architecture**
+### Phase 0 — Foundation & Architecture
+**Complete and audited.**
 
-The repository now contains the technical skeleton, design tokens, verified organization data, information architecture, content model, SEO baseline, security baseline, and performance rules. Public feature pages are intentionally not faked before their implementation phases.
+The repository contains the production technical foundation: Next.js, TypeScript strict mode, Tailwind, App Router, typed organization data, route architecture, SEO/security/performance baselines, and Cloudflare Workers deployment through vinext/Wrangler.
+
+### Phase 1 — Creative Direction & Design Blueprint
+**Complete.**
+
+The new visual blueprint is intentionally completed before production homepage implementation. It locks the international benchmark strategy, editorial art direction, typography/grid system, homepage information hierarchy, responsive wireframes, photography rules, motion language, anti-AI-slop rules, and visual quality gates.
+
+Production homepage implementation starts in Phase 3 only after Phase 2 assets are mastered.
 
 ## Stack
 
@@ -21,7 +31,24 @@ The repository now contains the technical skeleton, design tokens, verified orga
 - App Router
 - Server Components by default
 - PostgreSQL-ready architecture
-- Cloudflare-compatible deployment target
+- Cloudflare Workers via vinext + Wrangler
+
+## Deployment policy
+
+GitHub is used for source control and review only. **GitHub Actions are intentionally not used.**
+
+Cloudflare owns build and deployment:
+
+```bash
+npm run build:cloudflare
+npx wrangler deploy
+```
+
+The Cloudflare build command performs typecheck + lint before the vinext production build.
+
+Production endpoint:
+
+`https://profil.hipmiptuinalazhaar.workers.dev`
 
 ## Local development
 
@@ -33,15 +60,24 @@ npm run dev
 Validation:
 
 ```bash
-npm run typecheck
-npm run lint
+npm run validate
 npm run build
+npm run build:cloudflare
 ```
 
 ## Architecture docs
 
-See `/docs` for the Phase 0 decisions that govern later implementation.
+See `/docs`, especially:
+
+- `ROADMAP.md`
+- `PHASE-0-FOUNDATION.md`
+- `PHASE-1-CREATIVE-DIRECTION.md`
+- `PHASE-1-BENCHMARK-MATRIX.md`
+- `PHASE-1-WIREFRAME-BLUEPRINT.md`
+- `PHASE-1-MOTION-INTERACTION.md`
+- `PHASE-1-PHOTOGRAPHY-ASSET-SPEC.md`
+- `PHASE-1-QUALITY-GATES.md`
 
 ## Integrity rule
 
-Every page must build trust, create value, demonstrate impact, or enable action. No fake statistics, fake partners, dead CTAs, or decorative features presented as functionality.
+No fake statistics, fake partners, fabricated businesses, dead CTAs, blurred source imagery, AI-generated documentary photography, or decorative features presented as functionality.
