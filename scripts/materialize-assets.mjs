@@ -1,5 +1,6 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
+import sharp from "sharp";
 
 const root = process.cwd();
 
@@ -34,6 +35,12 @@ function assertAvif(buffer, label) {
   }
 }
 
+function assertJpeg(buffer, label) {
+  if (buffer[0] !== 0xff || buffer[1] !== 0xd8 || buffer.at(-2) !== 0xff || buffer.at(-1) !== 0xd9) {
+    throw new Error(`${label}: generated file is not a valid JPEG container`);
+  }
+}
+
 for (const asset of assets) {
   const encodedParts = await Promise.all(
     asset.parts.map((part) => readFile(resolve(root, "assets-src/phase-3", part), "utf8")),
@@ -53,3 +60,34 @@ for (const asset of assets) {
   await writeFile(outputPath, buffer);
   console.log(`materialized ${asset.label}: ${asset.output} (${buffer.length} bytes)`);
 }
+
+const heroAvifPath = resolve(
+  root,
+  "public/assets/documentation/pelantikan-2026/hero-pelantikan-2026.avif",
+);
+const heroJpegPath = resolve(
+  root,
+  "public/assets/documentation/pelantikan-2026/hero-pelantikan-2026.jpg",
+);
+
+const heroMetadata = await sharp(heroAvifPath).metadata();
+if (!heroMetadata.width || !heroMetadata.height || heroMetadata.width < 800 || heroMetadata.height < 500) {
+  throw new Error(
+    `Pelantikan Akbar 2026 flagship hero: invalid decoded dimensions (${heroMetadata.width ?? "?"}x${heroMetadata.height ?? "?"})`,
+  );
+}
+
+await sharp(heroAvifPath)
+  .jpeg({ quality: 88, progressive: true, chromaSubsampling: "4:2:0" })
+  .toFile(heroJpegPath);
+
+const heroJpeg = await readFile(heroJpegPath);
+if (heroJpeg.length < 50_000) {
+  throw new Error(
+    `Pelantikan Akbar 2026 flagship hero: generated JPEG is unexpectedly small (${heroJpeg.length} bytes)`,
+  );
+}
+assertJpeg(heroJpeg, "Pelantikan Akbar 2026 flagship hero JPEG fallback");
+console.log(
+  `generated browser-safe hero JPEG: public/assets/documentation/pelantikan-2026/hero-pelantikan-2026.jpg (${heroJpeg.length} bytes, ${heroMetadata.width}x${heroMetadata.height})`,
+);
