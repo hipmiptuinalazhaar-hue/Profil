@@ -21,7 +21,7 @@ export function createPageMetadata({
 } = {}): Metadata {
   const canonical = new URL(path, getBaseUrl());
   const resolvedTitle = title ? `${title} | ${siteConfig.shortName}` : `${siteConfig.name} | Digital Headquarters`;
-  const socialImage = new URL("/assets/documentation/pelantikan-2026/hero-pelantikan-2026.webp", getBaseUrl());
+  const socialImage = new URL("/assets/documentation/pelantikan-2026/hero-pelantikan-2026.avif", getBaseUrl());
 
   return {
     title: resolvedTitle,
