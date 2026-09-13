@@ -74,7 +74,15 @@ export function SiteHeader({ locale }: { locale: SiteLocale }) {
       <div className="global-header__inner">
         <Link className="brand" href={`/?lang=${locale}`} aria-label="HIPMI PT UIN Al Azhaar Lubuklinggau">
           <span className="brand__mark" aria-hidden="true">
-            <Image src="/assets/brand/hipmi-pt-uin-alazhaar.avif" alt="" width={64} height={64} priority unoptimized />
+            <Image
+              src="/assets/brand/hipmi-pt-uin-alazhaar.avif"
+              alt=""
+              width={64}
+              height={64}
+              priority
+              unoptimized
+              style={{ mixBlendMode: "normal" }}
+            />
           </span>
           <span className="brand__wordmark">
             <strong>HIPMI PT</strong>
@@ -104,7 +112,7 @@ export function SiteHeader({ locale }: { locale: SiteLocale }) {
 
         <details className="mobile-menu">
           <summary aria-label={isId ? "Buka atau tutup menu" : "Open or close menu"}>
-            <span className="mobile-menu__label">{isId ? "Menu" : "Menu"}</span>
+            <span className="mobile-menu__label">Menu</span>
             <span className="mobile-menu__icon" aria-hidden="true"><i /><i /></span>
           </summary>
 
@@ -114,7 +122,14 @@ export function SiteHeader({ locale }: { locale: SiteLocale }) {
               <div className="mobile-menu__topline">
                 <Link className="mobile-menu__brand" href={`/?lang=${locale}`} aria-label="HIPMI PT UIN Al Azhaar Lubuklinggau">
                   <span className="mobile-menu__brand-mark" aria-hidden="true">
-                    <Image src="/assets/brand/hipmi-pt-uin-alazhaar.avif" alt="" width={72} height={72} unoptimized />
+                    <Image
+                      src="/assets/brand/hipmi-pt-uin-alazhaar.avif"
+                      alt=""
+                      width={72}
+                      height={72}
+                      unoptimized
+                      style={{ mixBlendMode: "normal" }}
+                    />
                   </span>
                   <span><strong>HIPMI PT</strong><small>UIN Al Azhaar Lubuklinggau</small></span>
                 </Link>
@@ -123,7 +138,7 @@ export function SiteHeader({ locale }: { locale: SiteLocale }) {
 
               <div className="mobile-menu__layout">
                 <div className="mobile-menu__statement">
-                  <span>{isId ? "Digital Headquarters" : "Digital Headquarters"}</span>
+                  <span>Digital Headquarters</span>
                   <strong>
                     {isId ? "Muda." : "Young."}<br />
                     {isId ? "Berjejaring." : "Connected."}<br />
