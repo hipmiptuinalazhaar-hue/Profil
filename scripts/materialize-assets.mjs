@@ -8,13 +8,13 @@ const assets = [
     label: "HIPMI PT shell mark",
     parts: ["logo.part01.b64", "logo.part02.b64"],
     output: "public/assets/brand/hipmi-pt-uin-alazhaar.avif",
-    minBytes: 20_000,
+    minBytes: 8_000,
   },
   {
     label: "Pelantikan Akbar 2026 flagship hero",
     parts: ["hero.part01.b64", "hero.part02.b64", "hero.part03.b64"],
     output: "public/assets/documentation/pelantikan-2026/hero-pelantikan-2026.avif",
-    minBytes: 60_000,
+    minBytes: 15_000,
   },
 ];
 
