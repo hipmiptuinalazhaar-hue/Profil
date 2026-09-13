@@ -103,10 +103,10 @@ export default async function Home({ searchParams }: HomeProps) {
               <div className="hero-photo-frame">
                 <Image
                   className="hero-photo"
-                  src="/assets/documentation/pelantikan-2026/hero-pelantikan-2026.avif"
+                  src="/assets/documentation/pelantikan-2026/hero-pelantikan-2026.jpg"
                   alt="Delegasi HIPMI PT UIN Al Azhaar pada Pelantikan Akbar HIPMI PT Kampus se-Linggau Raya 2026"
-                  width={1536}
-                  height={1024}
+                  width={900}
+                  height={600}
                   priority
                   unoptimized
                   sizes="(max-width: 979px) 100vw, 52vw"

@@ -21,7 +21,7 @@ export function createPageMetadata({
 } = {}): Metadata {
   const canonical = new URL(path, getBaseUrl());
   const resolvedTitle = title ? `${title} | ${siteConfig.shortName}` : `${siteConfig.name} | Digital Headquarters`;
-  const socialImage = new URL("/assets/documentation/pelantikan-2026/hero-pelantikan-2026.avif", getBaseUrl());
+  const socialImage = new URL("/assets/documentation/pelantikan-2026/hero-pelantikan-2026.jpg", getBaseUrl());
 
   return {
     title: resolvedTitle,
@@ -34,7 +34,7 @@ export function createPageMetadata({
       title: resolvedTitle,
       description,
       locale: "id_ID",
-      images: [{ url: socialImage, width: 1536, height: 1024, alt: "HIPMI PT UIN Al Azhaar Lubuklinggau pada Pelantikan Akbar HIPMI PT Kampus se-Linggau Raya 2026" }],
+      images: [{ url: socialImage, width: 900, height: 600, alt: "HIPMI PT UIN Al Azhaar Lubuklinggau pada Pelantikan Akbar HIPMI PT Kampus se-Linggau Raya 2026" }],
     },
     twitter: { card: "summary_large_image", title: resolvedTitle, description, images: [socialImage] },
   };
