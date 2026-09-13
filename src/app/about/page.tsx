@@ -40,8 +40,8 @@ export default async function AboutPage({ searchParams }: AboutProps) {
               <p>{isId ? "Tentang HIPMI PT" : "About HIPMI PT"}</p>
             </div>
             <div className="inner-hero__copy">
-              <p>{isId ? "Institutional profile · 2026/2027" : "Institutional profile · 2026/2027"}</p>
-              <h1>{isId ? "Rumah digital pengusaha muda UIN Al Azhaar Lubuklinggau." : "The digital home of young entrepreneurs at UIN Al Azhaar Lubuklinggau."}</h1>
+              <p>Institutional profile · 2026/2027</p>
+              <h1>{isId ? siteConfig.positioning : siteConfig.positioningEn}</h1>
               <span>{isId ? siteConfig.legalName : "The university chapter of Indonesia's young entrepreneur ecosystem at Universitas Islam Nusantara Al Azhaar Lubuklinggau."}</span>
             </div>
           </div>
@@ -64,7 +64,7 @@ export default async function AboutPage({ searchParams }: AboutProps) {
           <div className="shell about-direction__grid">
             <div className="about-vision">
               <p>{isId ? "Visi" : "Vision"}</p>
-              <h2>“{siteConfig.vision}”</h2>
+              <h2>“{isId ? siteConfig.vision : siteConfig.visionEn}”</h2>
             </div>
             <div className="about-missions">
               <p>{isId ? "Misi" : "Mission"}</p>
