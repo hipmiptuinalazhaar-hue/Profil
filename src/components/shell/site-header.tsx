@@ -21,7 +21,7 @@ export function SiteHeader({ locale }: { locale: SiteLocale }) {
       <div className="global-header__inner">
         <Link className="brand" href={`/?lang=${locale}`} aria-label="HIPMI PT UIN Al Azhaar Lubuklinggau">
           <span className="brand__mark">
-            <Image src="/assets/brand/hipmi-pt-uin-alazhaar.webp" alt="" width={52} height={52} priority unoptimized />
+            <Image src="/assets/brand/hipmi-pt-uin-alazhaar.avif" alt="" width={52} height={52} priority unoptimized />
           </span>
           <span className="brand__wordmark"><strong>HIPMI PT</strong><span>UIN Al Azhaar · Lubuklinggau</span></span>
         </Link>
