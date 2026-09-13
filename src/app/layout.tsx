@@ -4,15 +4,15 @@ import "./globals.css";
 import { siteConfig } from "@/config/site";
 import { createPageMetadata, getBaseUrl } from "@/lib/seo";
 
-const display = Instrument_Serif({ subsets: ["latin"], variable: "--font-display", weight: "400" });
-const body = Manrope({ subsets: ["latin"], variable: "--font-body" });
+const display = Instrument_Serif({ subsets: ["latin"], variable: "--font-display", weight: "400", display: "swap" });
+const body = Manrope({ subsets: ["latin"], variable: "--font-body", display: "swap" });
 
 export const metadata: Metadata = {
   ...createPageMetadata(),
   metadataBase: getBaseUrl(),
   applicationName: siteConfig.shortName,
   category: "business",
-  keywords: ["HIPMI PT UIN Al Azhaar", "HIPMI PT Lubuklinggau", "pengusaha muda Lubuklinggau", "entrepreneur mahasiswa Lubuklinggau", "UMKM mahasiswa Lubuklinggau"]
+  keywords: ["HIPMI PT UIN Al Azhaar", "HIPMI PT Lubuklinggau", "HIPMI UIN Al Azhaar", "pengusaha muda Lubuklinggau", "entrepreneur mahasiswa Lubuklinggau", "organisasi pengusaha mahasiswa Lubuklinggau", "UMKM mahasiswa Lubuklinggau"]
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
