@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { SiteLocale } from "@/config/site";
 
 const navigation = [
@@ -18,22 +19,22 @@ export function SiteHeader({ locale }: { locale: SiteLocale }) {
   return (
     <header className="global-header" aria-label={isId ? "Navigasi utama" : "Main navigation"} lang={locale}>
       <div className="global-header__inner">
-        <a className="brand" href={`/?lang=${locale}`} aria-label="HIPMI PT UIN Al Azhaar Lubuklinggau">
+        <Link className="brand" href={`/?lang=${locale}`} aria-label="HIPMI PT UIN Al Azhaar Lubuklinggau">
           <span className="brand__mark">
             <Image src="/assets/brand/hipmi-pt-uin-alazhaar.webp" alt="" width={52} height={52} priority unoptimized />
           </span>
           <span className="brand__wordmark"><strong>HIPMI PT</strong><span>UIN Al Azhaar · Lubuklinggau</span></span>
-        </a>
+        </Link>
 
         <nav className="desktop-navigation" aria-label={isId ? "Navigasi halaman" : "Site navigation"}>
-          {navigation.map((item) => <a key={item.id} href={item.href}>{isId ? item.idLabel : item.enLabel}</a>)}
+          {navigation.map((item) => <Link key={item.id} href={item.href}>{isId ? item.idLabel : item.enLabel}</Link>)}
         </nav>
 
         <div className="header-actions">
           <div className="locale-switch" aria-label={isId ? "Pilihan bahasa" : "Language selector"}>
-            <a href="/?lang=id" aria-current={isId ? "page" : undefined}>ID</a>
+            <Link href="/?lang=id" aria-current={isId ? "page" : undefined}>ID</Link>
             <span aria-hidden="true">/</span>
-            <a href="/?lang=en" aria-current={!isId ? "page" : undefined}>EN</a>
+            <Link href="/?lang=en" aria-current={!isId ? "page" : undefined}>EN</Link>
           </div>
           <a className="header-join" href={`mailto:hipmitptuinalazhaar@gmail.com?subject=${joinSubject}`}>{isId ? "Gabung" : "Join"}<span aria-hidden="true">↗</span></a>
         </div>
@@ -44,11 +45,11 @@ export function SiteHeader({ locale }: { locale: SiteLocale }) {
             <div className="mobile-menu__meta"><span>HIPMI PT</span><span>{isId ? "Menu" : "Navigation"}</span></div>
             <nav aria-label={isId ? "Navigasi mobile" : "Mobile navigation"}>
               {navigation.map((item, index) => (
-                <a key={item.id} href={item.href}><span>{String(index + 1).padStart(2, "0")}</span><strong>{isId ? item.idLabel : item.enLabel}</strong></a>
+                <Link key={item.id} href={item.href}><span>{String(index + 1).padStart(2, "0")}</span><strong>{isId ? item.idLabel : item.enLabel}</strong></Link>
               ))}
             </nav>
             <div className="mobile-menu__footer">
-              <div className="locale-switch locale-switch--mobile"><a href="/?lang=id" aria-current={isId ? "page" : undefined}>Indonesia</a><a href="/?lang=en" aria-current={!isId ? "page" : undefined}>English</a></div>
+              <div className="locale-switch locale-switch--mobile"><Link href="/?lang=id" aria-current={isId ? "page" : undefined}>Indonesia</Link><Link href="/?lang=en" aria-current={!isId ? "page" : undefined}>English</Link></div>
               <a href={`mailto:hipmitptuinalazhaar@gmail.com?subject=${joinSubject}`}>{isId ? "Gabung HIPMI PT" : "Join HIPMI PT"} ↗</a>
             </div>
           </div>
