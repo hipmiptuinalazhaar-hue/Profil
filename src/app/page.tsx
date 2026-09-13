@@ -1,29 +1,79 @@
-import { siteConfig } from "@/config/site";
+import Image from "next/image";
+import { SiteFooter } from "@/components/shell/site-footer";
+import { SiteHeader } from "@/components/shell/site-header";
+import type { SiteLocale } from "@/config/site";
 
-const foundation = ["Information architecture", "Design tokens", "Content model", "SEO architecture", "Security baseline", "Performance budget"];
+const copy = {
+  id: {
+    label: "Official Digital Headquarters · Lubuklinggau",
+    headlineLead: "Membangun Generasi",
+    headlineAccent: "Pengusaha Muda",
+    headlineEnd: "Kampus.",
+    body: "HIPMI PT UIN Al Azhaar menghubungkan mahasiswa dengan pembelajaran bisnis, mentorship, jejaring pengusaha, dan ruang kolaborasi untuk menumbuhkan usaha yang nyata.",
+    primary: "Jelajahi HIPMI PT",
+    secondary: "Gabung jaringan",
+    photoLabel: "Dokumentasi resmi",
+    photoTitle: "Pelantikan Akbar HIPMI PT Kampus se-Linggau Raya 2026",
+    photoMeta: "Lubuklinggau · 2026",
+    proof: "Real people. Real activities. Real network.",
+  },
+  en: {
+    label: "Official Digital Headquarters · Lubuklinggau",
+    headlineLead: "Building a Generation of",
+    headlineAccent: "Young Entrepreneurs",
+    headlineEnd: "on Campus.",
+    body: "HIPMI PT UIN Al Azhaar connects students with business learning, mentorship, entrepreneur networks, and collaboration spaces designed to help real ventures grow.",
+    primary: "Explore HIPMI PT",
+    secondary: "Join the network",
+    photoLabel: "Official documentation",
+    photoTitle: "2026 Grand Inauguration of HIPMI PT Campuses across Linggau Raya",
+    photoMeta: "Lubuklinggau · 2026",
+    proof: "Real people. Real activities. Real network.",
+  },
+} as const;
 
-export default function Home() {
+type HomeProps = { searchParams: Promise<{ lang?: string | string[] }> };
+
+export default async function Home({ searchParams }: HomeProps) {
+  const params = await searchParams;
+  const locale: SiteLocale = params.lang === "en" ? "en" : "id";
+  const text = copy[locale];
+  const joinSubject = encodeURIComponent(locale === "id" ? "Minat bergabung dengan HIPMI PT UIN Al Azhaar" : "Interest in joining HIPMI PT UIN Al Azhaar");
+
   return (
-    <main id="main-content" className="min-h-screen bg-ink-950 text-white">
-      <section className="mx-auto flex min-h-screen w-full max-w-[80rem] flex-col justify-between px-6 py-8 sm:px-10 lg:px-16 lg:py-12">
-        <header className="flex items-center justify-between border-b border-white/10 pb-5 text-xs uppercase tracking-[0.18em] text-white/65">
-          <span>{siteConfig.shortName}</span>
-          <span>Foundation · Phase 0</span>
-        </header>
-        <div className="max-w-5xl py-20 sm:py-28 lg:py-32">
-          <p className="mb-7 text-sm font-semibold uppercase tracking-[0.22em] text-gold-500">Official Digital Headquarters</p>
-          <h1 className="max-w-4xl font-[family-name:var(--font-display)] text-[clamp(3.7rem,9vw,8.5rem)] leading-[0.88] tracking-[-0.055em]">Fondasi untuk ekosistem pengusaha muda yang serius.</h1>
-          <p className="mt-9 max-w-2xl text-base leading-8 text-white/67 sm:text-lg">Phase 0 mengunci arsitektur, identitas visual, struktur konten, keamanan, performa, dan SEO sebelum pengalaman publik dibangun. Tidak ada statistik palsu, halaman kosong, atau dekorasi yang berpura-pura menjadi strategi.</p>
-        </div>
-        <div className="grid gap-px border-y border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
-          {foundation.map((item, index) => (
-            <div key={item} className="bg-ink-950 px-5 py-6">
-              <span className="mb-8 block text-xs tabular-nums text-gold-500">0{index + 1}</span>
-              <span className="text-sm text-white/85">{item}</span>
+    <div className="phase-three" lang={locale}>
+      <SiteHeader locale={locale} />
+      <main id="main-content">
+        <section className="flagship-hero" aria-labelledby="hero-title">
+          <div className="hero-grid" aria-hidden="true" />
+          <div className="shell hero-shell">
+            <div className="hero-copy">
+              <p className="hero-label"><span aria-hidden="true" />{text.label}</p>
+              <h1 id="hero-title"><span>{text.headlineLead}</span><em>{text.headlineAccent}</em><span>{text.headlineEnd}</span></h1>
+              <p className="hero-body">{text.body}</p>
+              <div className="hero-actions">
+                <a className="cta-primary" href="/about">{text.primary}<span aria-hidden="true">↗</span></a>
+                <a className="cta-secondary" href={`mailto:hipmitptuinalazhaar@gmail.com?subject=${joinSubject}`}>{text.secondary}<span aria-hidden="true">→</span></a>
+              </div>
+              <div className="hero-manifesto" aria-label="HIPMI PT values"><span>Build business.</span><span>Grow network.</span><span>Create impact.</span></div>
             </div>
-          ))}
-        </div>
-      </section>
-    </main>
+
+            <figure className="hero-documentary">
+              <div className="hero-photo-frame">
+                <Image src="/assets/documentation/pelantikan-2026/hero-pelantikan-2026.webp" alt="Delegasi HIPMI PT UIN Al Azhaar bersama pemangku kepentingan pada Pelantikan Akbar HIPMI PT Kampus se-Linggau Raya 2026" fill priority unoptimized sizes="(max-width: 899px) 100vw, 52vw" />
+              </div>
+              <figcaption>
+                <span className="hero-photo-index">01 / 03</span>
+                <div><span>{text.photoLabel}</span><strong>{text.photoTitle}</strong></div>
+                <span>{text.photoMeta}</span>
+              </figcaption>
+            </figure>
+          </div>
+
+          <div className="shell hero-bottomline"><span>HIPMI PT · UIN Al Azhaar</span><span>{text.proof}</span><span>2026/2027</span></div>
+        </section>
+      </main>
+      <SiteFooter locale={locale} />
+    </div>
   );
 }
