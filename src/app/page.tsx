@@ -1,8 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
+import { PhotoSlot } from "@/components/media/photo-slot";
 import { SiteFooter } from "@/components/shell/site-footer";
 import { SiteHeader } from "@/components/shell/site-header";
 import type { SiteLocale } from "@/config/site";
+import { photoManifest } from "@/data/photo-manifest";
 
 const copy = {
   id: {
@@ -101,15 +102,14 @@ export default async function Home({ searchParams }: HomeProps) {
 
             <figure className="hero-documentary">
               <div className="hero-photo-frame">
-                <Image
+                <PhotoSlot
                   className="hero-photo"
-                  src="/assets/documentation/pelantikan-2026/hero-pelantikan-2026.jpg"
-                  alt="Delegasi HIPMI PT UIN Al Azhaar pada Pelantikan Akbar HIPMI PT Kampus se-Linggau Raya 2026"
-                  width={900}
-                  height={600}
+                  src={photoManifest.hero.path}
+                  filename={photoManifest.hero.filename}
+                  alt={photoManifest.hero.alt}
                   priority
-                  unoptimized
                   sizes="(max-width: 979px) 100vw, 52vw"
+                  objectPosition="center 46%"
                 />
                 <div className="hero-photo-shade" aria-hidden="true" />
                 <div className="hero-photo-stamp" aria-hidden="true">

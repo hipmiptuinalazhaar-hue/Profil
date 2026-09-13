@@ -1,0 +1,66 @@
+.root {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 78% 18%, rgba(215, 187, 122, 0.12), transparent 34%),
+    linear-gradient(135deg, #0b1a2b 0%, #06101b 62%, #030910 100%);
+}
+
+.image {
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 320ms ease;
+}
+
+.root[data-loaded="true"] .image {
+  opacity: 1;
+}
+
+.fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 0.55rem;
+  padding: 2rem;
+  text-align: center;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 3.5rem 3.5rem;
+  color: rgba(255,255,255,.44);
+}
+
+.fallback span {
+  color: #d7bb7a;
+  font-size: .5rem;
+  font-weight: 800;
+  letter-spacing: .18em;
+}
+
+.fallback strong {
+  max-width: 28rem;
+  color: rgba(255,255,255,.76);
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  font-weight: 400;
+  overflow-wrap: anywhere;
+}
+
+.fallback small {
+  font-size: .58rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.root[data-loaded="true"] .fallback {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image { transition: none; }
+}
