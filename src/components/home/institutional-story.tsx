@@ -21,7 +21,7 @@ export function InstitutionalStory({ locale }: { locale: SiteLocale }) {
         <div className="shell institutional-opening__grid">
           <div className="section-kicker">
             <span>04</span>
-            <p>{isId ? "Institutional Storytelling" : "Institutional Storytelling"}</p>
+            <p>Institutional Storytelling</p>
           </div>
 
           <div className="institutional-opening__statement">
@@ -72,7 +72,7 @@ export function InstitutionalStory({ locale }: { locale: SiteLocale }) {
               <p>{isId ? "Arah organisasi" : "Organizational direction"}</p>
             </div>
             <p className="vision-panel__label">{isId ? "Visi 2026/2027" : "Vision 2026/2027"}</p>
-            <h2 id="vision-title">“{siteConfig.vision}”</h2>
+            <h2 id="vision-title">“{isId ? siteConfig.vision : siteConfig.visionEn}”</h2>
             <p className="vision-panel__note">
               {isId
                 ? "Visi ini menjadi filter utama untuk program, kolaborasi, dan keputusan organisasi."
