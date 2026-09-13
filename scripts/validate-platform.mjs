@@ -1,5 +1,6 @@
-import { access, readFile } from "node:fs/promises";
+import { access, readFile, readdir } from "node:fs/promises";
 import { constants } from "node:fs";
+import { join } from "node:path";
 
 const requiredFiles = [
   "src/app/page.tsx",
@@ -18,6 +19,7 @@ const requiredFiles = [
   "src/app/robots.ts",
   "src/app/manifest.ts",
   "src/data/photo-manifest.ts",
+  "src/lib/whatsapp.ts",
   "public/photos/README.md",
 ];
 
@@ -65,10 +67,42 @@ for (const filename of requiredPhotoNames) {
 }
 
 const headerSource = await readFile("src/components/shell/site-header.tsx", "utf8");
-for (const route of ["/about", "/programs", "/leadership", "/business", "/impact", "/media", "/join"]) {
+for (const route of ["/about", "/programs", "/leadership", "/business", "/impact", "/media"]) {
   if (!headerSource.includes(route)) {
     throw new Error(`Global navigation is missing route: ${route}`);
   }
 }
 
-console.log(`platform integrity ok: ${requiredFiles.length} files, ${programSlugs.length} flagship programs, ${requiredPhotoNames.length} canonical photo checks`);
+async function sourceFiles(dir) {
+  const entries = await readdir(dir, { withFileTypes: true });
+  const files = [];
+  for (const entry of entries) {
+    const path = join(dir, entry.name);
+    if (entry.isDirectory()) files.push(...await sourceFiles(path));
+    else if (/\.(?:ts|tsx|js|jsx|mjs)$/.test(entry.name)) files.push(path);
+  }
+  return files;
+}
+
+const sourcePaths = await sourceFiles("src");
+for (const path of sourcePaths) {
+  const source = await readFile(path, "utf8");
+  if (source.includes("mailto:")) {
+    throw new Error(`Email action remains in public source: ${path}`);
+  }
+  if (source.includes("hipmitptuinalazhaar@gmail.com")) {
+    throw new Error(`Legacy email address remains in public source: ${path}`);
+  }
+}
+
+const siteConfigSource = await readFile("src/config/site.ts", "utf8");
+if (!siteConfigSource.includes('whatsappNumber: "6285783198181"')) {
+  throw new Error("Official WhatsApp number is missing or changed unexpectedly");
+}
+
+const whatsappSource = await readFile("src/lib/whatsapp.ts", "utf8");
+if (!whatsappSource.includes("https://wa.me/")) {
+  throw new Error("WhatsApp URL builder is missing the wa.me endpoint");
+}
+
+console.log(`platform integrity ok: ${requiredFiles.length} files, ${programSlugs.length} flagship programs, ${requiredPhotoNames.length} canonical photo checks, ${sourcePaths.length} source files scanned for contact-channel integrity`);
