@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Instrument_Serif, Manrope } from "next/font/google";
 import "./globals.css";
+import "./phase45.css";
 import { siteConfig } from "@/config/site";
 import { createPageMetadata, getBaseUrl } from "@/lib/seo";
 
