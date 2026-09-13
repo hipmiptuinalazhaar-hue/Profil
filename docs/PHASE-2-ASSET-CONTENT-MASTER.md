@@ -6,7 +6,7 @@ Status: **complete**
 
 All source assets were audited against the files supplied by the organization. No portrait was synthesized and no person was re-created. Background removal was deliberately not performed because that operation requires explicit approval and is not necessary for Phase 3.
 
-The source library remains the master archive. Production mirrors assets required by the current public phase while the typed registry preserves the complete mapping for later editorial phases.
+The source library remains the master archive. The typed registry preserves the complete mapping for later editorial phases, while only media required by the currently public phase is packaged into the production build.
 
 ## Brand inventory
 
@@ -36,7 +36,7 @@ Compartment members remain name + role only. No compartment portrait is part of 
 ## Documentary inventory
 
 ### Pelantikan Akbar HIPMI PT Kampus se-Linggau Raya 2026
-Nine high-resolution JPG masters are catalogued, covering the UIN Al Azhaar delegation, cross-campus group, handover, ceremony, speaker, officials, and UMKM bazaar. `IMG_6057.JPG` is selected as the Phase 3 hero because it is sharp, clearly identifies the event, and centers the UIN Al Azhaar delegation without synthetic treatment.
+Nine high-resolution masters are catalogued, covering the UIN Al Azhaar delegation, cross-campus group, handover, ceremony, speaker, officials, and UMKM bazaar. `IMG_6057.JPG` is selected as the Phase 3 hero because it is sharp, clearly identifies the event, and centers the UIN Al Azhaar delegation without synthetic treatment.
 
 ### BPC HIPMI Lubuklinggau / mentorship & network
 Three masters are catalogued: RBPH group, proposal/networking session, and meeting-room session. They are reserved for Documentary Stories in later phases.
@@ -44,14 +44,15 @@ Three masters are catalogued: RBPH group, proposal/networking session, and meeti
 ### Strategic government collaboration
 Three masters are catalogued from the agenda with Pemerintah Kota Lubuklinggau. Their public narrative is strategic collaboration in supporting local young entrepreneurs, not a fabricated formal partnership claim.
 
-## Production media installed for Phase 3
+## Production media for Phase 3
 
-- `/assets/brand/hipmi-pt-uin-alazhaar.webp`
-- `/assets/documentation/pelantikan-2026/hero-pelantikan-2026.webp`
-- `/assets/documentation/pelantikan-2026/serah-terima.webp`
-- `/assets/documentation/pelantikan-2026/bazar-umkm.webp`
+The current shell needs only two public binary assets:
+- `/assets/brand/hipmi-pt-uin-alazhaar.avif`
+- `/assets/documentation/pelantikan-2026/hero-pelantikan-2026.avif`
 
-Derived WebP files preserve original pixel dimensions and use high-quality encoding. They are not upscaled and no blur/filter is applied.
+Both are derived from verified source images without upscaling or synthetic reconstruction. They are stored in the repository as deterministic base64 source chunks under `assets-src/phase-3/` and materialized before every local/Cloudflare build by `scripts/materialize-assets.mjs`. The script validates the AVIF container signature and minimum file size before writing the production files, so corrupt or incomplete assets fail the build instead of silently publishing broken images.
+
+Other mastered photographs remain in the source archive until the phase that actually publishes them. They are not falsely marked as production assets.
 
 ## Content rules locked
 
