@@ -7,7 +7,7 @@ export function SiteFooter({ locale }: { locale: SiteLocale }) {
     <footer className="global-footer" lang={locale}>
       <div className="shell global-footer__top">
         <div className="footer-identity">
-          <Image src="/assets/brand/hipmi-pt-uin-alazhaar.webp" alt="" width={72} height={72} unoptimized />
+          <Image src="/assets/brand/hipmi-pt-uin-alazhaar.avif" alt="" width={72} height={72} unoptimized />
           <p>{siteConfig.name}</p>
           <strong>{isId ? "Rumah digital pengusaha muda UIN Al Azhaar Lubuklinggau." : "The digital home of young entrepreneurs at UIN Al Azhaar Lubuklinggau."}</strong>
         </div>
