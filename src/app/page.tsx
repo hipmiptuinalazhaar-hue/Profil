@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { SiteFooter } from "@/components/shell/site-footer";
 import { SiteHeader } from "@/components/shell/site-header";
 import type { SiteLocale } from "@/config/site";
@@ -52,7 +53,7 @@ export default async function Home({ searchParams }: HomeProps) {
               <h1 id="hero-title"><span>{text.headlineLead}</span><em>{text.headlineAccent}</em><span>{text.headlineEnd}</span></h1>
               <p className="hero-body">{text.body}</p>
               <div className="hero-actions">
-                <a className="cta-primary" href="/about">{text.primary}<span aria-hidden="true">↗</span></a>
+                <Link className="cta-primary" href="/about">{text.primary}<span aria-hidden="true">↗</span></Link>
                 <a className="cta-secondary" href={`mailto:hipmitptuinalazhaar@gmail.com?subject=${joinSubject}`}>{text.secondary}<span aria-hidden="true">→</span></a>
               </div>
               <div className="hero-manifesto" aria-label="HIPMI PT values"><span>Build business.</span><span>Grow network.</span><span>Create impact.</span></div>
