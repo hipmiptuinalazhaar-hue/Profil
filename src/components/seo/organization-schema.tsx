@@ -2,6 +2,7 @@ import { siteConfig } from "@/config/site";
 import { getBaseUrl } from "@/lib/seo";
 
 export function OrganizationSchema() {
+  const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}`;
   const data = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -9,7 +10,14 @@ export function OrganizationSchema() {
     alternateName: siteConfig.shortName,
     url: getBaseUrl().toString(),
     description: siteConfig.description,
-    email: siteConfig.contact.email,
+    telephone: siteConfig.contact.phoneE164,
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: siteConfig.contact.phoneE164,
+      contactType: "official contact",
+      availableLanguage: ["id", "en"],
+      url: whatsappUrl,
+    },
     address: {
       "@type": "PostalAddress",
       streetAddress: "Jl. Pelita No.364, RT.07, Kelurahan Pelita Jaya",
@@ -18,7 +26,7 @@ export function OrganizationSchema() {
       postalCode: "31614",
       addressCountry: "ID",
     },
-    sameAs: [siteConfig.contact.instagram],
+    sameAs: [siteConfig.contact.instagram, whatsappUrl],
   };
 
   return (

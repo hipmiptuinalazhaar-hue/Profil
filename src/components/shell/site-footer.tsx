@@ -1,25 +1,33 @@
 import Image from "next/image";
 import Link from "next/link";
 import { siteConfig, type SiteLocale } from "@/config/site";
+import { createWhatsAppUrl } from "@/lib/whatsapp";
 
 export function SiteFooter({ locale }: { locale: SiteLocale }) {
   const isId = locale === "id";
+  const generalWhatsApp = createWhatsAppUrl(
+    isId
+      ? "Halo HIPMI PT UIN Al Azhaar, saya ingin mendapatkan informasi lebih lanjut."
+      : "Hello HIPMI PT UIN Al Azhaar, I would like to get more information.",
+  );
+  const joinWhatsApp = createWhatsAppUrl(
+    isId
+      ? "Halo HIPMI PT UIN Al Azhaar, saya ingin bergabung dan mendapatkan informasi keanggotaan."
+      : "Hello HIPMI PT UIN Al Azhaar, I would like to join and get membership information.",
+  );
+  const partnershipWhatsApp = createWhatsAppUrl(
+    isId
+      ? "Halo HIPMI PT UIN Al Azhaar, saya ingin membahas peluang kolaborasi strategis."
+      : "Hello HIPMI PT UIN Al Azhaar, I would like to discuss a strategic collaboration opportunity.",
+  );
 
   return (
     <footer className="global-footer" lang={locale}>
       <div className="global-footer__glow" aria-hidden="true" />
-
       <div className="shell global-footer__top">
         <div className="footer-identity">
           <div className="footer-identity__brand">
-            <Image
-              src="/assets/brand/hipmi-pt-uin-alazhaar.avif"
-              alt=""
-              width={88}
-              height={88}
-              unoptimized
-              style={{ mixBlendMode: "normal" }}
-            />
+            <Image src="/assets/brand/hipmi-pt-uin-alazhaar.avif" alt="" width={88} height={88} unoptimized style={{ mixBlendMode: "normal" }} />
             <div><span>HIPMI PT</span><small>UIN Al Azhaar Lubuklinggau</small></div>
           </div>
           <p>{isId ? "Rumah digital pengusaha muda" : "The digital home of young entrepreneurs"}</p>
@@ -42,13 +50,13 @@ export function SiteFooter({ locale }: { locale: SiteLocale }) {
             <Link href={`/events?lang=${locale}`}>{isId ? "Agenda" : "Events"}</Link>
             <Link href={`/insights?lang=${locale}`}>{isId ? "Wawasan" : "Insights"}</Link>
             <Link href={`/media?lang=${locale}`}>{isId ? "Media & dokumentasi" : "Media & documentation"}</Link>
-            <Link href={`/join?lang=${locale}`}>{isId ? "Gabung" : "Join"}</Link>
-            <Link href={`/partnerships?lang=${locale}`}>{isId ? "Kolaborasi" : "Collaboration"}</Link>
+            <a href={joinWhatsApp} target="_blank" rel="noreferrer">{isId ? "Gabung via WhatsApp ↗" : "Join via WhatsApp ↗"}</a>
+            <Link href={`/partnerships?lang=${locale}`}>{isId ? "Info kolaborasi" : "Collaboration info"}</Link>
           </div>
 
           <div className="footer-directory__column footer-contact">
             <p className="footer-label">{isId ? "Kontak resmi" : "Official contact"}</p>
-            <a href={`mailto:${siteConfig.contact.email}`}>{siteConfig.contact.email}</a>
+            <a href={generalWhatsApp} target="_blank" rel="noreferrer">WhatsApp · {siteConfig.contact.whatsappDisplay} ↗</a>
             <a href={siteConfig.contact.instagram} target="_blank" rel="noreferrer">{siteConfig.contact.instagramHandle} ↗</a>
             <address>{siteConfig.contact.address}</address>
           </div>
@@ -56,19 +64,12 @@ export function SiteFooter({ locale }: { locale: SiteLocale }) {
       </div>
 
       <div className="shell footer-partnership">
-        <div>
-          <span>{isId ? "Kolaborasi strategis" : "Strategic collaboration"}</span>
-          <strong>{isId ? "Bangun sesuatu yang berdampak bersama kami." : "Build something meaningful with us."}</strong>
-        </div>
-        <Link href={`/partnerships?lang=${locale}`}>
-          {isId ? "Buka ruang kolaborasi" : "Explore collaboration"}<span aria-hidden="true">↗</span>
-        </Link>
+        <div><span>{isId ? "Kolaborasi strategis" : "Strategic collaboration"}</span><strong>{isId ? "Bangun sesuatu yang berdampak bersama kami." : "Build something meaningful with us."}</strong></div>
+        <a href={partnershipWhatsApp} target="_blank" rel="noreferrer">{isId ? "Hubungi via WhatsApp" : "Contact via WhatsApp"}<span aria-hidden="true">↗</span></a>
       </div>
 
       <div className="shell global-footer__bottom">
-        <span>© 2026 HIPMI PT UIN Al Azhaar Lubuklinggau</span>
-        <span>{isId ? "Periode" : "Term"} {siteConfig.period}</span>
-        <span>Lubuklinggau · Sumatera Selatan</span>
+        <span>© 2026 HIPMI PT UIN Al Azhaar Lubuklinggau</span><span>{isId ? "Periode" : "Term"} {siteConfig.period}</span><span>Lubuklinggau · Sumatera Selatan</span>
       </div>
     </footer>
   );
