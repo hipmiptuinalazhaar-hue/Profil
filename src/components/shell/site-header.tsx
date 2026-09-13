@@ -8,56 +8,32 @@ const navigation = [
     href: "/about",
     idLabel: "HIPMI PT",
     enLabel: "HIPMI PT",
-    idDescription: "Profil, visi, misi, dan organisasi",
-    enDescription: "Profile, vision, mission, and organization",
+    idDescription: "Profil, visi, misi, nilai, dan arah organisasi",
+    enDescription: "Profile, vision, mission, values, and direction",
   },
   {
     id: "programs",
     href: "/programs",
     idLabel: "Program",
     enLabel: "Programs",
-    idDescription: "Pelatihan, inkubasi, dan inisiatif strategis",
-    enDescription: "Training, incubation, and strategic initiatives",
+    idDescription: "Sembilan program unggulan dan arsitektur pengembangan",
+    enDescription: "Nine flagship programs and development architecture",
   },
   {
     id: "ecosystem",
-    href: "/business",
+    href: "/#ecosystem",
     idLabel: "Ekosistem",
     enLabel: "Ecosystem",
-    idDescription: "Bisnis anggota, UMKM, jaringan, dan pasar",
-    enDescription: "Member businesses, SMEs, network, and market",
+    idDescription: "Perjalanan anggota, usaha, jejaring, dan pertumbuhan",
+    enDescription: "Member, venture, network, and growth journey",
   },
   {
-    id: "impact",
-    href: "/impact",
-    idLabel: "Dampak",
-    enLabel: "Impact",
-    idDescription: "Capaian, pertumbuhan, dan kontribusi nyata",
-    enDescription: "Progress, growth, and measurable contribution",
-  },
-  {
-    id: "events",
-    href: "/events",
-    idLabel: "Agenda",
-    enLabel: "Events",
-    idDescription: "Kegiatan, forum, dan kalender organisasi",
-    enDescription: "Activities, forums, and organization calendar",
-  },
-  {
-    id: "insights",
-    href: "/insights",
-    idLabel: "Wawasan",
-    enLabel: "Insights",
-    idDescription: "Artikel, perspektif, dan sumber belajar",
-    enDescription: "Articles, perspectives, and learning resources",
-  },
-  {
-    id: "media",
-    href: "/media",
-    idLabel: "Media",
-    enLabel: "Media",
-    idDescription: "Dokumentasi, berita, dan publikasi",
-    enDescription: "Documentation, news, and publications",
+    id: "network",
+    href: "/#network",
+    idLabel: "Jejaring",
+    enLabel: "Network",
+    idDescription: "Afiliasi dan koneksi ekosistem yang relevan",
+    enDescription: "Relevant affiliations and ecosystem connections",
   },
 ] as const;
 
@@ -68,6 +44,10 @@ export function SiteHeader({ locale }: { locale: SiteLocale }) {
       ? "Minat bergabung dengan HIPMI PT UIN Al Azhaar"
       : "Interest in joining HIPMI PT UIN Al Azhaar",
   );
+  const localizedHref = (href: string) => {
+    if (href.startsWith("/#")) return `/?lang=${locale}${href.slice(1)}`;
+    return `${href}?lang=${locale}`;
+  };
 
   return (
     <header className="global-header" aria-label={isId ? "Navigasi utama" : "Main navigation"} lang={locale}>
@@ -92,7 +72,7 @@ export function SiteHeader({ locale }: { locale: SiteLocale }) {
 
         <nav className="desktop-navigation" aria-label={isId ? "Navigasi halaman" : "Site navigation"}>
           {navigation.map((item) => (
-            <Link key={item.id} href={item.href}>
+            <Link key={item.id} href={localizedHref(item.href)}>
               {isId ? item.idLabel : item.enLabel}
             </Link>
           ))}
@@ -149,7 +129,7 @@ export function SiteHeader({ locale }: { locale: SiteLocale }) {
 
                 <nav className="mobile-menu__navigation" aria-label={isId ? "Navigasi mobile" : "Mobile navigation"}>
                   {navigation.map((item, index) => (
-                    <Link key={item.id} href={item.href}>
+                    <Link key={item.id} href={localizedHref(item.href)}>
                       <span className="mobile-menu__number">{String(index + 1).padStart(2, "0")}</span>
                       <span className="mobile-menu__copy">
                         <strong>{isId ? item.idLabel : item.enLabel}</strong>

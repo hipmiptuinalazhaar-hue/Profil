@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { InstitutionalStory } from "@/components/home/institutional-story";
+import { ProgramEcosystem } from "@/components/home/program-ecosystem";
 import { PhotoSlot } from "@/components/media/photo-slot";
 import { SiteFooter } from "@/components/shell/site-footer";
 import { SiteHeader } from "@/components/shell/site-header";
@@ -57,7 +59,7 @@ export default async function Home({ searchParams }: HomeProps) {
   );
 
   return (
-    <div className="phase-three" lang={locale}>
+    <div className="phase-three phase-five" lang={locale}>
       <SiteHeader locale={locale} />
 
       <main id="main-content">
@@ -79,7 +81,7 @@ export default async function Home({ searchParams }: HomeProps) {
               <p className="hero-body">{text.body}</p>
 
               <div className="hero-actions">
-                <Link className="cta-primary" href="/about">
+                <Link className="cta-primary" href={`/about?lang=${locale}`}>
                   <span>{text.primary}</span>
                   <span className="cta-arrow" aria-hidden="true">↗</span>
                 </Link>
@@ -135,6 +137,9 @@ export default async function Home({ searchParams }: HomeProps) {
             <span>Create impact.</span>
           </div>
         </section>
+
+        <InstitutionalStory locale={locale} />
+        <ProgramEcosystem locale={locale} />
       </main>
 
       <SiteFooter locale={locale} />

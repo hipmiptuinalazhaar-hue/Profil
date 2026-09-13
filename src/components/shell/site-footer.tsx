@@ -35,10 +35,10 @@ export function SiteFooter({ locale }: { locale: SiteLocale }) {
         <div className="footer-directory">
           <div className="footer-directory__column">
             <p className="footer-label">{isId ? "Jelajahi" : "Explore"}</p>
-            <Link href="/about">{isId ? "Tentang HIPMI PT" : "About HIPMI PT"}</Link>
-            <Link href="/programs">{isId ? "Program" : "Programs"}</Link>
-            <Link href="/business">{isId ? "Ekosistem bisnis" : "Business ecosystem"}</Link>
-            <Link href="/impact">{isId ? "Dampak" : "Impact"}</Link>
+            <Link href={`/about?lang=${locale}`}>{isId ? "Tentang HIPMI PT" : "About HIPMI PT"}</Link>
+            <Link href={`/programs?lang=${locale}`}>{isId ? "Program" : "Programs"}</Link>
+            <Link href={`/?lang=${locale}#ecosystem`}>{isId ? "Ekosistem pengusaha" : "Entrepreneur ecosystem"}</Link>
+            <Link href={`/?lang=${locale}#network`}>{isId ? "Jejaring & afiliasi" : "Network & affiliations"}</Link>
           </div>
 
           <div className="footer-directory__column footer-contact">
