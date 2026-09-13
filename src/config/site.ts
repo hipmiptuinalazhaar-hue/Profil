@@ -10,7 +10,9 @@ export const siteConfig = {
   vision: "Membangun ekosistem pengusaha muda kampus yang inovatif, kolaboratif, berdaya saing, dan berdampak bagi masyarakat serta perekonomian daerah.",
   visionEn: "Build an innovative, collaborative, competitive campus young-entrepreneur ecosystem that creates impact for society and the regional economy.",
   contact: {
-    email: "hipmitptuinalazhaar@gmail.com",
+    whatsappNumber: "6285783198181",
+    whatsappDisplay: "0857 8319 8181",
+    phoneE164: "+6285783198181",
     instagram: "https://instagram.com/hipmipt.alazhaar",
     instagramHandle: "@hipmipt.alazhaar",
     address: "Jl. Pelita No.364, RT.07, Kelurahan Pelita Jaya, Kecamatan Lubuklinggau Barat I, Kota Lubuklinggau, Sumatera Selatan 31614"
