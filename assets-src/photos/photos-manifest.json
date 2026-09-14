@@ -1,1 +1,146 @@
-[]
+[
+  {
+    "filename": "dokumentasi-bpc-hipmi-01.jpg",
+    "offset": 0,
+    "length": 64954,
+    "sha256": "21c22187227628fe80e5e373a0c03041b9d4352550c61ea8a4c98403d4454ff7"
+  },
+  {
+    "filename": "dokumentasi-bpc-hipmi-02.jpg",
+    "offset": 64954,
+    "length": 38071,
+    "sha256": "cc5f84f9cba184a5df38c0548ea0d120e1ba108312362be9c02116016716be16"
+  },
+  {
+    "filename": "dokumentasi-bpc-hipmi-03.jpg",
+    "offset": 103025,
+    "length": 20257,
+    "sha256": "3b3bc0fff97f010293c93c15bdee062e1cb292ecce89d42010c4de2a7434534a"
+  },
+  {
+    "filename": "dokumentasi-pelantikan-2026-01.jpg",
+    "offset": 123282,
+    "length": 45339,
+    "sha256": "9112547d75ec6a7ae9e20b8ccb4abd7ba9111824b6a7326d35a08a460bf7ef7e"
+  },
+  {
+    "filename": "dokumentasi-pelantikan-2026-02.jpg",
+    "offset": 168621,
+    "length": 46158,
+    "sha256": "44529ee3501a8d01132579566410084ebf3034be987027da35bc785718f60558"
+  },
+  {
+    "filename": "dokumentasi-pelantikan-2026-03.jpg",
+    "offset": 214779,
+    "length": 47386,
+    "sha256": "6dd968c5b5e47f3af7d512cda7bad0312d16bd0385a5106202f28ef2323fe461"
+  },
+  {
+    "filename": "dokumentasi-pelantikan-2026-04.jpg",
+    "offset": 262165,
+    "length": 45306,
+    "sha256": "7e4fff4c50c8d282afb524343ac49a9060858dacd03312de365b0d594cf11528"
+  },
+  {
+    "filename": "dokumentasi-pelantikan-2026-05.jpg",
+    "offset": 307471,
+    "length": 36549,
+    "sha256": "b020202a66ec634f458d6cad75d6aa179422b86fdc3c084405a6e58a31426c64"
+  },
+  {
+    "filename": "dokumentasi-pelantikan-2026-06.jpg",
+    "offset": 344020,
+    "length": 39874,
+    "sha256": "ce14a364ab5f7dcbbee71cc24f413f7bb00b18372dadc215d75e3302cba4cb6f"
+  },
+  {
+    "filename": "dokumentasi-pelantikan-2026-07.jpg",
+    "offset": 383894,
+    "length": 49116,
+    "sha256": "ef2b6efced5a195879711ddb5cd0b306f1231a38b22717170e8ab55c9c88d9bc"
+  },
+  {
+    "filename": "dokumentasi-pelantikan-2026-08.jpg",
+    "offset": 433010,
+    "length": 24481,
+    "sha256": "a00da7165ef608170b534290266462f9c2c26761697419fdf000a7dfcc8eac31"
+  },
+  {
+    "filename": "dokumentasi-pelantikan-2026-09.jpg",
+    "offset": 457491,
+    "length": 37107,
+    "sha256": "4417d405864e68588622714508001a0687c6f7d76ed96f899114dfdb18304d69"
+  },
+  {
+    "filename": "dokumentasi-pemkot-lubuklinggau-01.jpg",
+    "offset": 494598,
+    "length": 35788,
+    "sha256": "5f819cc6cee0d2095d56f351edd20841d89cbc9f99a007e3d5ea0cce456a3455"
+  },
+  {
+    "filename": "dokumentasi-pemkot-lubuklinggau-02.jpg",
+    "offset": 530386,
+    "length": 35948,
+    "sha256": "3516e3b7f140809806f5a66efef548a12cfd8d755697bd84c6867cb02b2f29d1"
+  },
+  {
+    "filename": "dokumentasi-pemkot-lubuklinggau-03.jpg",
+    "offset": 566334,
+    "length": 62477,
+    "sha256": "2299a95ec1aa6b1ce325a5b80f274125e758cedfb0f22777d86a0ed2d7525ba9"
+  },
+  {
+    "filename": "leadership-capryan-agusto.jpg",
+    "offset": 628811,
+    "length": 13600,
+    "sha256": "f208767eb93c567586b4d84fb5a28feaf27324c2ecc4369678062d668cd14e23"
+  },
+  {
+    "filename": "leadership-dhea-mahyang-sari.jpg",
+    "offset": 642411,
+    "length": 14372,
+    "sha256": "b65ee353d1f5a545afba1b0a42639c1884c710d3aad91fb50dd845321362daa6"
+  },
+  {
+    "filename": "leadership-khusnul-khoiri.jpg",
+    "offset": 656783,
+    "length": 11467,
+    "sha256": "365dc89340e23666e0357bc6eea371c32ef09f21d9b08900f4432f237c370212"
+  },
+  {
+    "filename": "leadership-marisha-aresta.jpg",
+    "offset": 668250,
+    "length": 13888,
+    "sha256": "dc4356c7774e44a80c30827d325abd331f18d454cfd00f7c328751f0c8df9182"
+  },
+  {
+    "filename": "leadership-muhammad-jumadi.jpg",
+    "offset": 682138,
+    "length": 12106,
+    "sha256": "781fa74298e76d13291a283cbf82d07c3bca802c6a562afd242ac4c7b119c10c"
+  },
+  {
+    "filename": "leadership-ricky-reynaldo.jpg",
+    "offset": 694244,
+    "length": 10514,
+    "sha256": "146ad0add090f80fcf7dc34f0fbd9ae69c69a19de5a245bd5952019524bfa9c2"
+  },
+  {
+    "filename": "leadership-robi-apri-yansah.jpg",
+    "offset": 704758,
+    "length": 7365,
+    "sha256": "05796006ba5536f6e6e220e4d13bdfb789c2ae6223334468eb0fa858519581f6"
+  },
+  {
+    "filename": "leadership-suci-maharani.jpg",
+    "offset": 712123,
+    "length": 11664,
+    "sha256": "bdf78db5d12a51fa09a304ff2563bb8847b91236b68c516657dd2130dcc63b38"
+  },
+  {
+    "filename": "leadership-yosi-anita.jpg",
+    "offset": 723787,
+    "length": 11805,
+    "sha256": "35e67359fd8c3e96f2e201d04f545bb928b020652aa9ef69a68927041d516533"
+  }
+]
