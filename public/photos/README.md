@@ -1,24 +1,35 @@
-# Folder Foto HIPMI PT UIN Al Azhaar Lubuklinggau
+# Foto HIPMI PT UIN Al Azhaar Lubuklinggau
 
-Folder ini khusus untuk foto asli yang akan diunggah manual oleh pengelola. Jangan ubah nama file setelah diunggah karena kode website membaca nama-nama ini secara langsung dari `src/data/photo-manifest.ts`.
+Folder production untuk foto asli website.
 
-Format yang disarankan: JPG, orientasi sesuai kebutuhan, kualitas tinggi, tanpa watermark tambahan.
+## Alur upload manual
 
-## Leadership — 9 foto wajib
+1. Ekstrak paket `HIPMI-PT-FOTO-JPG-SIAP-UPLOAD.zip`.
+2. Buka repository `hipmiptuinalazhaar-hue/Profil`.
+3. Masuk ke `public/photos/`.
+4. Pilih **Add file → Upload files**.
+5. Upload **24 file `.jpg`** dari paket. Jangan upload ZIP ke folder ini.
+6. Jangan mengubah nama file. Website membaca nama ini langsung dari `src/data/photo-manifest.ts`.
+7. Commit ke branch `main`.
+8. Tunggu Cloudflare build/deploy selesai, lalu cek homepage, `/leadership`, dan `/media`.
 
-- `leadership-capryan-agusto.jpg` — Ketua Umum, Capryan Agusto
-- `leadership-robi-apri-yansah.jpg` — Sekretaris, Robi Apri Yansah
-- `leadership-dhea-mahyang-sari.jpg` — Bendahara, Dhea Mahyang Sari
-- `leadership-suci-maharani.jpg` — Kepala Bidang I, Suci Maharani
-- `leadership-marisha-aresta.jpg` — Kepala Bidang II, Marisha Aresta
-- `leadership-muhammad-jumadi.jpg` — Kepala Bidang III, Muhammad Jumadi
-- `leadership-yosi-anita.jpg` — Kepala Bidang IV, Yosi Anita
-- `leadership-khusnul-khoiri.jpg` — Kepala Bidang V, Khusnul Khoiri
-- `leadership-ricky-reynaldo.jpg` — Kepala Bidang VI, Ricky Reynaldo
+Tidak ada proses konversi foto di build. Foto dikelola manual di folder ini.
 
-## Dokumentasi Pelantikan Akbar / Bazar UMKM — 9 foto
+## Leadership — 9 foto
 
-Foto `dokumentasi-pelantikan-2026-01.jpg` juga dipakai sebagai foto hero utama homepage.
+- `leadership-capryan-agusto.jpg`
+- `leadership-robi-apri-yansah.jpg`
+- `leadership-dhea-mahyang-sari.jpg`
+- `leadership-suci-maharani.jpg`
+- `leadership-marisha-aresta.jpg`
+- `leadership-muhammad-jumadi.jpg`
+- `leadership-yosi-anita.jpg`
+- `leadership-khusnul-khoiri.jpg`
+- `leadership-ricky-reynaldo.jpg`
+
+## Dokumentasi Pelantikan — 9 foto
+
+`dokumentasi-pelantikan-2026-01.jpg` juga dipakai sebagai hero homepage.
 
 - `dokumentasi-pelantikan-2026-01.jpg`
 - `dokumentasi-pelantikan-2026-02.jpg`
@@ -30,7 +41,7 @@ Foto `dokumentasi-pelantikan-2026-01.jpg` juga dipakai sebagai foto hero utama h
 - `dokumentasi-pelantikan-2026-08.jpg`
 - `dokumentasi-pelantikan-2026-09.jpg`
 
-## Dokumentasi BPC HIPMI Lubuklinggau — 3 foto
+## Dokumentasi BPC HIPMI — 3 foto
 
 - `dokumentasi-bpc-hipmi-01.jpg`
 - `dokumentasi-bpc-hipmi-02.jpg`
@@ -42,4 +53,4 @@ Foto `dokumentasi-pelantikan-2026-01.jpg` juga dipakai sebagai foto hero utama h
 - `dokumentasi-pemkot-lubuklinggau-02.jpg`
 - `dokumentasi-pemkot-lubuklinggau-03.jpg`
 
-Total saat ini: 24 foto. Semua nama file di atas adalah nama kanonis production.
+**Total: 24 JPG.** Nama di atas adalah nama kanonis production.
