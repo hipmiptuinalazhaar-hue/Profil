@@ -1,0 +1,1 @@
+Official HIPMI PT photo source assets. Build materialization writes verified JPEG files to public/photos.
