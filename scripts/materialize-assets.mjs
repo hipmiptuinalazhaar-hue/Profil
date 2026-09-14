@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 
@@ -28,6 +29,14 @@ function assertAvif(buffer, label) {
   }
 }
 
+function assertJpeg(buffer, label) {
+  const startsWithSoi = buffer.length >= 4 && buffer[0] === 0xff && buffer[1] === 0xd8;
+  const endsWithEoi = buffer.length >= 4 && buffer.at(-2) === 0xff && buffer.at(-1) === 0xd9;
+  if (!startsWithSoi || !endsWithEoi) {
+    throw new Error(`${label}: reconstructed file is not a valid JPEG`);
+  }
+}
+
 for (const asset of assets) {
   const encodedParts = await Promise.all(
     asset.parts.map((part) =>
@@ -52,4 +61,48 @@ for (const asset of assets) {
   console.log(`materialized ${asset.label}: ${asset.output} (${buffer.length} bytes)`);
 }
 
-console.log("photo assets are user-managed under public/photos; no photo conversion runs during build");
+const photoSourceDir = resolve(root, "assets-src/photos");
+const encodedPhotoPack = (await readFile(resolve(photoSourceDir, "photos.pack.b64"), "utf8")).replace(/\s+/g, "");
+const photoPack = Buffer.from(encodedPhotoPack, "base64");
+const photoManifest = JSON.parse(await readFile(resolve(photoSourceDir, "photos-manifest.json"), "utf8"));
+
+if (!Array.isArray(photoManifest) || photoManifest.length !== 24) {
+  throw new Error(`official photos: expected 24 manifest entries, found ${Array.isArray(photoManifest) ? photoManifest.length : "invalid manifest"}`);
+}
+
+const seenFilenames = new Set();
+let highestByte = 0;
+for (const photo of photoManifest) {
+  const { filename, offset, length, sha256 } = photo;
+
+  if (typeof filename !== "string" || !/^[a-z0-9-]+\.jpg$/.test(filename)) {
+    throw new Error(`official photos: unsafe or invalid filename ${String(filename)}`);
+  }
+  if (seenFilenames.has(filename)) {
+    throw new Error(`official photos: duplicate filename ${filename}`);
+  }
+  seenFilenames.add(filename);
+
+  if (!Number.isInteger(offset) || !Number.isInteger(length) || offset < 0 || length <= 0 || offset + length > photoPack.length) {
+    throw new Error(`official photos: invalid byte range for ${filename}`);
+  }
+
+  const buffer = photoPack.subarray(offset, offset + length);
+  assertJpeg(buffer, filename);
+
+  const digest = createHash("sha256").update(buffer).digest("hex");
+  if (digest !== sha256) {
+    throw new Error(`official photos: integrity check failed for ${filename}`);
+  }
+
+  const outputPath = resolve(root, "public/photos", filename);
+  await mkdir(dirname(outputPath), { recursive: true });
+  await writeFile(outputPath, buffer);
+  highestByte = Math.max(highestByte, offset + length);
+}
+
+if (highestByte !== photoPack.length) {
+  throw new Error(`official photos: photo pack length mismatch (${highestByte} mapped of ${photoPack.length} bytes)`);
+}
+
+console.log(`materialized ${photoManifest.length} official HIPMI photos into public/photos (${photoPack.length} packed bytes)`);
