@@ -1,0 +1,226 @@
+/* V2.1 — 3D HIPMI logo + documentary fusion hero */
+
+.v2-scene__brand {
+  position: absolute;
+  z-index: 5;
+  left: 48%;
+  top: 39%;
+  width: clamp(10.5rem, 22vw, 15rem);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%)
+    rotateX(calc(var(--pointer-y) * -8deg))
+    rotateY(calc(var(--pointer-x) * 11deg))
+    translateZ(72px);
+  transform-style: preserve-3d;
+  transition: transform .18s ease-out;
+  pointer-events: none;
+}
+
+.v2-scene__brand-glow {
+  position: absolute;
+  inset: 11%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(234,211,155,.28) 0%, rgba(199,161,90,.09) 38%, transparent 72%);
+  filter: blur(24px);
+  transform: translateZ(-55px) scale(1.28);
+}
+
+.v2-scene__brand-orbit {
+  position: absolute;
+  inset: -17%;
+  border: 1px solid rgba(215,187,122,.22);
+  border-radius: 50%;
+  transform: rotateX(67deg) rotateZ(-16deg) translateZ(-32px);
+  box-shadow: 0 0 0 2.2rem rgba(215,187,122,.018), 0 0 42px rgba(215,187,122,.08);
+}
+
+.v2-scene__brand-face {
+  position: absolute;
+  inset: 9%;
+  display: grid;
+  place-items: center;
+  transform-style: preserve-3d;
+  filter: drop-shadow(0 30px 35px rgba(0,0,0,.42));
+}
+
+.v2-scene__brand-face::before,
+.v2-scene__brand-face::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/assets/brand/hipmi-pt-uin-alazhaar.avif") center / contain no-repeat;
+  pointer-events: none;
+}
+
+.v2-scene__brand-face::before {
+  opacity: .7;
+  filter: brightness(.22) sepia(.55) saturate(1.4);
+  transform: translate3d(10px, 13px, -38px);
+}
+
+.v2-scene__brand-face::after {
+  opacity: .5;
+  filter: brightness(.48) sepia(.42) saturate(1.25);
+  transform: translate3d(5px, 7px, -20px);
+}
+
+.v2-scene__brand-face img {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: translateZ(22px);
+  filter: drop-shadow(0 0 18px rgba(234,211,155,.18));
+}
+
+.v2-scene__brand-caption {
+  position: absolute;
+  left: 50%;
+  bottom: -1.8rem;
+  transform: translateX(-50%) translateZ(15px);
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  color: rgba(255,255,255,.48);
+  font-size: .43rem;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.v2-scene__brand-caption::before {
+  content: "";
+  width: 1.7rem;
+  height: 1px;
+  background: var(--v2-gold);
+  box-shadow: 0 0 14px rgba(215,187,122,.45);
+}
+
+/* Documentary panel becomes the rear spatial layer, not the focal object. */
+.v2-scene__photo {
+  z-index: 2;
+  right: 0;
+  bottom: -1.2rem;
+  width: min(58%, 20rem);
+  transform: rotateY(calc(-11deg + var(--pointer-x) * -5deg))
+    rotateX(calc(var(--pointer-y) * 4deg))
+    translateZ(-78px);
+  opacity: .92;
+}
+
+.v2-scene__photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border: 1px solid rgba(215,187,122,.16);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.04);
+  pointer-events: none;
+}
+
+.v2-scene__ring--one {
+  width: 26rem;
+  height: 26rem;
+  opacity: .82;
+}
+
+.v2-scene__ring--two {
+  width: 34rem;
+  height: 34rem;
+  opacity: .6;
+}
+
+.v2-scene__node {
+  z-index: 7;
+}
+
+@media (max-width: 899px) {
+  .v2-scene {
+    min-height: 34rem;
+  }
+
+  .v2-scene__brand {
+    left: 50%;
+    top: 31%;
+    width: 10.2rem;
+    transform: translate(-50%, -50%) rotateX(5deg) rotateY(-6deg) translateZ(42px);
+  }
+
+  .v2-scene__brand-caption {
+    bottom: -1.35rem;
+    font-size: .38rem;
+    letter-spacing: .14em;
+  }
+
+  .v2-scene__brand-orbit {
+    inset: -12%;
+  }
+
+  .v2-scene__photo {
+    right: 7%;
+    bottom: 1.1rem;
+    width: 60%;
+    max-width: 17rem;
+    transform: rotateY(-7deg) rotateX(2deg) translateZ(-52px);
+  }
+
+  .v2-scene__ring {
+    top: 42%;
+  }
+
+  .v2-scene__ring--one {
+    width: 21rem;
+    height: 21rem;
+  }
+
+  .v2-scene__ring--two {
+    width: 27rem;
+    height: 27rem;
+  }
+
+  .v2-scene__node--1 { left: 2%; top: 17%; }
+  .v2-scene__node--2 { right: 1%; top: 14%; }
+  .v2-scene__node--3 { left: 0; bottom: 27%; }
+  .v2-scene__node--4 { right: 0; bottom: 32%; }
+  .v2-scene__node--5 { right: 17%; bottom: 3%; }
+}
+
+@media (max-width: 520px) {
+  .v2-scene {
+    min-height: 31rem;
+  }
+
+  .v2-scene__brand {
+    top: 29%;
+    width: 8.8rem;
+  }
+
+  .v2-scene__brand-face {
+    inset: 6%;
+  }
+
+  .v2-scene__photo {
+    right: 8%;
+    bottom: 1.4rem;
+    width: 61%;
+  }
+
+  .v2-scene__node {
+    padding: .42rem .5rem;
+    font-size: .43rem;
+  }
+
+  .v2-scene__node--1 { left: 0; top: 15%; }
+  .v2-scene__node--2 { right: 0; top: 12%; }
+  .v2-scene__node--3 { left: 0; bottom: 28%; }
+  .v2-scene__node--4 { right: 0; bottom: 31%; }
+  .v2-scene__node--5 { right: 12%; bottom: 2%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v2-scene__brand {
+    transition: none;
+  }
+}
