@@ -152,8 +152,13 @@ export function V2ImmersiveHome({ locale, joinWhatsApp }: { locale: SiteLocale; 
           <div className="v2-scene" aria-label={locale === "id" ? "Representasi visual ekosistem HIPMI PT" : "Visual representation of the HIPMI PT ecosystem"}>
             <div className="v2-scene__ring v2-scene__ring--one" aria-hidden="true" />
             <div className="v2-scene__ring v2-scene__ring--two" aria-hidden="true" />
-            <div className="v2-scene__core" aria-hidden="true">
-              <span>HIPMI</span><strong>PT</strong><small>UIN AL AZHAAR</small>
+            <div className="v2-scene__brand" aria-hidden="true">
+              <div className="v2-scene__brand-glow" />
+              <div className="v2-scene__brand-orbit" />
+              <div className="v2-scene__brand-face">
+                <Image src="/assets/brand/hipmi-pt-uin-alazhaar.avif" alt="" width={420} height={420} priority unoptimized />
+              </div>
+              <div className="v2-scene__brand-caption">Official Identity · 2026</div>
             </div>
             {journey[locale].slice(1, 6).map((item, index) => (
               <div className={`v2-scene__node v2-scene__node--${index + 1}`} key={item} aria-hidden="true"><i /><span>{item}</span></div>
