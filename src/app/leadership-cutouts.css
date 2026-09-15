@@ -1,0 +1,75 @@
+/* Leadership portrait cutout treatment */
+
+.leader-profile-card__photo,
+.division-card__photo {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 50% 22%, rgba(215,187,122,.17), transparent 34%),
+    linear-gradient(180deg, #101c2b 0%, #07111f 58%, #030910 100%);
+}
+
+.leader-profile-card__photo::before,
+.division-card__photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .42;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 3.5rem 3.5rem;
+  mask-image: linear-gradient(to bottom, #000 20%, transparent 92%);
+}
+
+.leader-profile-card__photo::after,
+.division-card__photo::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: -12%;
+  width: 82%;
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(215,187,122,.18), rgba(15,106,81,.06) 42%, transparent 70%);
+  filter: blur(18px);
+  pointer-events: none;
+}
+
+.leader-profile-card__photo > div,
+.division-card__photo > div {
+  position: relative;
+  z-index: 2;
+  background: transparent !important;
+}
+
+.leader-profile-card__photo img,
+.division-card__photo img {
+  object-fit: contain !important;
+  object-position: center bottom !important;
+  transform: scale(1.035);
+  transform-origin: center bottom;
+  filter:
+    drop-shadow(0 28px 26px rgba(0,0,0,.42))
+    drop-shadow(0 0 24px rgba(215,187,122,.06))
+    saturate(.96)
+    contrast(1.025);
+}
+
+.leader-profile-card__photo > span {
+  z-index: 4;
+}
+
+@media (min-width: 820px) {
+  .leader-profile-card__photo img { transform: scale(1.055); }
+  .division-card__photo img { transform: scale(1.035); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .leader-profile-card__photo img,
+  .division-card__photo img { transform: none; }
+}
