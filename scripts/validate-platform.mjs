@@ -66,6 +66,26 @@ for (const filename of requiredPhotoNames) {
   }
 }
 
+const requiredCutouts = [
+  "leadership-capryan-agusto-cutout.png",
+  "leadership-robi-apri-yansah-cutout.png",
+  "leadership-dhea-mahyang-sari-cutout.png",
+  "leadership-suci-maharani-cutout.png",
+  "leadership-marisha-aresta-cutout.png",
+  "leadership-muhammad-jumadi-cutout.png",
+  "leadership-yosi-anita-cutout.png",
+  "leadership-khusnul-khoiri-cutout.png",
+  "leadership-ricky-reynaldo-cutout.png",
+];
+
+for (const filename of requiredCutouts) {
+  const path = join("public/photos/cutouts", filename);
+  await access(path, constants.R_OK);
+  if (!photoManifest.includes(`cutouts/${filename}`)) {
+    throw new Error(`Generated leadership cutout is not mapped in photo manifest: ${filename}`);
+  }
+}
+
 const headerSource = await readFile("src/components/shell/site-header.tsx", "utf8");
 for (const route of ["/about", "/programs", "/leadership", "/business", "/impact", "/media"]) {
   if (!headerSource.includes(route)) {
@@ -105,4 +125,4 @@ if (!whatsappSource.includes("https://wa.me/")) {
   throw new Error("WhatsApp URL builder is missing the wa.me endpoint");
 }
 
-console.log(`platform integrity ok: ${requiredFiles.length} files, ${programSlugs.length} flagship programs, ${requiredPhotoNames.length} canonical photo checks, ${sourcePaths.length} source files scanned for contact-channel integrity`);
+console.log(`platform integrity ok: ${requiredFiles.length} files, ${programSlugs.length} flagship programs, ${requiredPhotoNames.length} canonical photo checks, ${requiredCutouts.length} transparent leadership cutouts, ${sourcePaths.length} source files scanned for contact-channel integrity`);
