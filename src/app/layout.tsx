@@ -6,6 +6,7 @@ import "./phase69.css";
 import "./launch.css";
 import "./v2.css";
 import "./v2-logo-fusion.css";
+import "./leadership-cutouts.css";
 import { OrganizationSchema } from "@/components/seo/organization-schema";
 import { siteConfig } from "@/config/site";
 import { createPageMetadata, getBaseUrl } from "@/lib/seo";
