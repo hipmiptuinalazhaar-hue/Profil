@@ -15,7 +15,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install PDF tools
-        run: pip install --disable-pip-version-check requests pypdf
+        run: pip install --disable-pip-version-check requests pypdf cryptography
       - name: Download official statements and build original-page compilation
         shell: python
         run: |
