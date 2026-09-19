@@ -1,0 +1,123 @@
+name: Temp Indofood PDF Export
+on:
+  push:
+    branches:
+      - tmp-indofood-pdf-export
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install PDF tools
+        run: pip install --disable-pip-version-check requests pypdf
+      - name: Download official statements and build original-page compilation
+        shell: python
+        run: |
+          import os, time
+          import requests
+          from pypdf import PdfReader, PdfWriter
+
+          os.makedirs("build", exist_ok=True)
+
+          sources = {
+              "2020": [
+                  "https://indofoodtbk.com/investor-relation/annual-report/AnnualReport_2020-full.pdf",
+              ],
+              "2021": [
+                  "https://www.indofood.com/uploads/statement/INDF_billingual_31_Dec_2021_released.pdf",
+                  "https://indofoodtbk.com/investor-relation/annual-report/AnnualReport_2021-full.pdf",
+              ],
+              "2022": [
+                  "https://www.indofood.com/uploads/statement/indofood%20_billingual_31_december_2022_released.pdf",
+              ],
+              "2023": [
+                  "https://www.indofood.com/uploads/statement/INDF_billingual_31_december_2023_released.pdf",
+                  "https://indopremier.com/xdir/news/LAPORAN%20KEUANGAN/q4_2023/INDF_Q4_2023.pdf",
+              ],
+              "2024": [
+                  "https://www.indofood.com/uploads/statement/INDF_billingual_31_desember_2024_released%20unlock.pdf",
+              ],
+              "2025": [
+                  "https://www.indofood.com/uploads/statement/ISM_billingual_31_december_2025_released.pdf",
+                  "https://www.indopremier.com/xdir/news/LAPORAN%20KEUANGAN/2025/q4/INDF_Q4_2025.pdf",
+              ],
+          }
+
+          # Exact 1-based PDF page ranges previously verified against the original documents.
+          ranges = {
+              "2020": (183, 190),
+              "2021": (6, 13),
+              "2022": (13, 20),
+              "2023": (13, 20),
+              "2024": (13, 20),
+              "2025": (13, 20),
+          }
+
+          headers = {
+              "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/131 Safari/537.36",
+              "Accept": "application/pdf,*/*",
+          }
+
+          session = requests.Session()
+          session.headers.update(headers)
+
+          def download(year):
+              errors = []
+              for url in sources[year]:
+                  try:
+                      print(f"Downloading {year}: {url}", flush=True)
+                      r = session.get(url, timeout=120, allow_redirects=True)
+                      print("status", r.status_code, "bytes", len(r.content), "type", r.headers.get("content-type"), flush=True)
+                      if r.status_code == 200 and r.content.startswith(b"%PDF") and len(r.content) > 100_000:
+                          path = f"build/{year}.pdf"
+                          with open(path, "wb") as f:
+                              f.write(r.content)
+                          return path
+                      errors.append(f"{url}: status={r.status_code}, len={len(r.content)}, type={r.headers.get('content-type')}")
+                  except Exception as e:
+                      errors.append(f"{url}: {e!r}")
+                  time.sleep(1)
+              raise RuntimeError(f"Could not download {year}: " + " | ".join(errors))
+
+          final = PdfWriter()
+          summary = []
+
+          for year in ["2020","2021","2022","2023","2024","2025"]:
+              path = download(year)
+              reader = PdfReader(path)
+              start, end = ranges[year]
+              if len(reader.pages) < end:
+                  raise RuntimeError(f"{year}: expected at least {end} pages, got {len(reader.pages)}")
+              for p in range(start - 1, end):
+                  final.add_page(reader.pages[p])
+              summary.append(f"{year}: source_pages={len(reader.pages)} selected={start}-{end}")
+
+          out = "build/Laporan_Keuangan_Asli_Indofood_2020_2025_Siap_Print.pdf"
+          with open(out, "wb") as f:
+              final.write(f)
+
+          check = PdfReader(out)
+          if len(check.pages) != 48:
+              raise RuntimeError(f"Expected 48 pages, got {len(check.pages)}")
+
+          with open("build/verification.txt", "w", encoding="utf-8") as f:
+              f.write("\n".join(summary))
+              f.write(f"\nFINAL_PAGES={len(check.pages)}\n")
+              f.write(f"FINAL_BYTES={os.path.getsize(out)}\n")
+          print(open("build/verification.txt").read(), flush=True)
+
+      - name: Upload final PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: indofood-original-financial-statements-2020-2025
+          path: |
+            build/Laporan_Keuangan_Asli_Indofood_2020_2025_Siap_Print.pdf
+            build/verification.txt
+          if-no-files-found: error
+          retention-days: 1
