@@ -73,7 +73,7 @@ export default async function MediaPage({ searchParams }: MediaProps) {
 
         <NewsBrowser isId={isId} />
 
-        <section className="media-guide">
+        <section className="media-guide" id="galeri-dokumentasi">
           <div className="shell media-guide__grid">
             <div><p>{isId ? "Aturan dokumentasi" : "Documentation rule"}</p><h2>{isId ? "Wajah, konteks kegiatan, dan kebenaran dokumenter tetap dijaga." : "Faces, event context, and documentary truth stay intact."}</h2></div>
             <div><p>{isId ? "Galeri menerima foto asli tanpa mengubah wajah, pakaian, proporsi tubuh, atau konteks kegiatan. Foto yang belum tersedia tetap tampil sebagai placeholder bernama, bukan gambar palsu." : "The gallery accepts original photos without altering faces, clothing, body proportions, or event context. Missing photos remain named placeholders rather than fabricated imagery."}</p></div>
@@ -81,7 +81,7 @@ export default async function MediaPage({ searchParams }: MediaProps) {
         </section>
 
         {collections.map((collection, collectionIndex) => (
-          <section className="media-collection" id={collectionIndex === 0 ? "media-pelantikan" : undefined} key={collection.key} aria-labelledby={`media-${collection.key}`}>
+          <section className="media-collection" id={collection.key === "pelantikan" ? "galeri-pelantikan" : collection.key === "bpc" ? "galeri-bpc" : undefined} key={collection.key} aria-labelledby={`media-${collection.key}`}>
             <div className="shell media-collection__heading">
               <div><span>{String(collectionIndex + 1).padStart(2, "0")}</span><p>{isId ? collection.metaId : collection.metaEn}</p></div>
               <h2 id={`media-${collection.key}`}>{isId ? collection.titleId : collection.titleEn}</h2>
