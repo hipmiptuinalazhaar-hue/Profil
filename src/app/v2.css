@@ -602,3 +602,25 @@
     transition: none;
   }
 }
+
+
+/* Fix documentary hero crop: preserve the complete photo instead of cutting off people */
+.v2-scene__photo {
+  background: #09284a;
+}
+.v2-scene__photo img {
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+.v2-scene__photo::after {
+  background: linear-gradient(90deg, rgba(5,27,51,.78) 0%, rgba(6,35,66,.52) 34%, rgba(8,38,72,.20) 62%, rgba(7,31,58,.12) 100%),
+    linear-gradient(0deg, rgba(5,25,47,.56) 0%, transparent 45%, rgba(5,25,47,.08) 100%);
+}
+@media (max-width: 759px) {
+  .v2-hero { min-height: 0; }
+  .v2-hero__layout { min-height: 35rem; }
+  .v2-scene__photo img {
+    object-fit: cover !important;
+    object-position: center 20% !important;
+  }
+}
