@@ -1962,18 +1962,12 @@
   isolation: isolate;
 }
 .v2-hero__slides { position: absolute; inset: 0; z-index: -3; overflow: hidden; background: #07111f; }
-.v2-hero__slide { position: absolute; inset: 0; opacity: 0; animation: v2-hero-crossfade 36s infinite both; }
+.v2-hero__slide { position: absolute; inset: 0; opacity: 1; animation: v2-hero-photo-enter .45s ease-out both; }
 .v2-hero__slide img { object-fit: cover; object-position: center 38%; filter: saturate(.82) contrast(1.04); transform: scale(1.025); }
 .v2-hero__slide::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(2,7,12,.88) 0%, rgba(2,7,12,.76) 37%, rgba(2,7,12,.38) 68%, rgba(2,7,12,.32) 100%), linear-gradient(0deg, rgba(2,7,12,.82) 0%, transparent 45%, rgba(2,7,12,.28) 100%); }
-.v2-hero__slide--1 { animation-delay: 0s; }
-.v2-hero__slide--2 { animation-delay: 6s; }
-.v2-hero__slide--3 { animation-delay: 12s; }
-.v2-hero__slide--4 { animation-delay: 18s; }
-.v2-hero__slide--5 { animation-delay: 24s; }
-.v2-hero__slide--6 { animation-delay: 30s; }
-@keyframes v2-hero-crossfade {
-  0%, 16.666% { opacity: 1; }
-  20%, 100% { opacity: 0; }
+@keyframes v2-hero-photo-enter {
+  from { opacity: .35; }
+  to { opacity: 1; }
 }
 .v2-hero__ambient, .v2-hero__grid { display: none; }
 .v2-hero__layout { position: relative; z-index: 1; grid-template-columns: minmax(0, 1fr); gap: 0; }
@@ -1994,7 +1988,6 @@
 @media (max-width: 759px) {
   .v2-hero { height: auto; min-height: 100svh; padding: 6.8rem 0 1rem; align-content: space-between; }
   .v2-hero__slides { position: absolute; inset: 0; }
-  .v2-hero__slide { will-change: opacity; }
   .v2-hero__slide img { object-position: 57% center; }
   .v2-hero__slide::after { background: linear-gradient(90deg, rgba(2,7,12,.78), rgba(2,7,12,.38)), linear-gradient(0deg, rgba(2,7,12,.92) 0%, rgba(2,7,12,.28) 58%, rgba(2,7,12,.48) 100%); }
   .v2-hero__layout { min-height: 0; }
@@ -2008,5 +2001,4 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .v2-hero__slide { animation: none; }
-  .v2-hero__slide--1 { opacity: 1; }
 }
