@@ -3,12 +3,11 @@ import Link from "next/link";
 import { SiteFooter } from "@/components/shell/site-footer";
 import { SiteHeader } from "@/components/shell/site-header";
 import type { SiteLocale } from "@/config/site";
-import { ecosystemJourney, flagshipPrograms } from "@/content/programs";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Program Unggulan",
-  description: "Sepuluh program unggulan HIPMI PT UIN Al Azhaar Lubuklinggau untuk pembelajaran, jejaring, pengembangan usaha, dan akses ekosistem.",
+  description: "DigiFin Academy, program unggulan HIPMI PT UIN Al Azhaar Lubuklinggau untuk literasi keuangan, investasi, pengembangan bisnis, dan jejaring.",
   path: "/programs",
 });
 
@@ -28,8 +27,8 @@ export default async function ProgramsPage({ searchParams }: ProgramsProps) {
             <div className="section-kicker section-kicker--light"><span>01</span><p>{isId ? "Program unggulan" : "Flagship programs"}</p></div>
             <div className="inner-hero__copy">
               <p>{isId ? "Program architecture · 2026/2027" : "Program architecture · 2026/2027"}</p>
-              <h1>{isId ? "Sepuluh jalur untuk belajar, terhubung, membangun, dan tumbuh." : "Ten pathways to learn, connect, build, and grow."}</h1>
-              <span>{isId ? "Program disusun sebagai portofolio fungsi, bukan tumpukan acara. Setiap inisiatif punya peran dalam perjalanan anggota dan usaha." : "Programs are structured as a portfolio of functions, not a pile of events. Each initiative has a role in the member and venture journey."}</span>
+              <h1>{isId ? "Satu program unggulan untuk belajar, membangun, dan bertumbuh." : "One flagship program to learn, build, and grow."}</h1>
+              <span>{isId ? "DigiFin Academy menghubungkan literasi keuangan, investasi, kewirausahaan digital, dan jejaring dalam satu jalur pengembangan anggota." : "DigiFin Academy connects financial literacy, investing, digital entrepreneurship, and networking in one member-development pathway."}</span>
             </div>
           </div>
         </section>
@@ -37,23 +36,40 @@ export default async function ProgramsPage({ searchParams }: ProgramsProps) {
         <section className="programs-catalog">
           <div className="shell programs-catalog__intro">
             <p>{isId ? "Portofolio program" : "Program portfolio"}</p>
-            <h2>{isId ? "Setiap program menjawab kebutuhan yang berbeda dalam satu ekosistem." : "Each program answers a different need within one ecosystem."}</h2>
+            <h2>{isId ? "DigiFin Academy" : "DigiFin Academy"}</h2>
           </div>
           <div className="shell programs-catalog__list">
-            {flagshipPrograms.map((program, index) => (
-              <Link className="program-card" href={`/programs/${program.slug}?lang=${locale}`} key={program.slug}>
-                <div className="program-card__topline">
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <p>{isId ? program.cluster.id : program.cluster.en}</p>
+            <article className="program-card program-card--featured">
+              <div className="program-card__topline">
+                <span>01</span>
+                <p>{isId ? "PROGRAM UNGGULAN" : "FLAGSHIP PROGRAM"}</p>
+              </div>
+              <h3>DigiFin Academy</h3>
+              <p>{isId
+                ? "Wadah pembelajaran dan pengembangan kompetensi anggota dalam keuangan, investasi, dan kewirausahaan digital. Kelas, klinik bisnis, pitching, serta networking menjadi bentuk kegiatan di dalam program ini, bukan program unggulan yang terpisah."
+                : "A learning and capability-building hub for finance, investment, and digital entrepreneurship. Classes, business clinics, pitching, and networking are activities within this program, not separate flagship programs."}</p>
+              <div className="program-focus-grid">
+                <div className="program-focus">
+                  <span>01</span>
+                  <h4>{isId ? "Investasi & Permodalan" : "Investment & Capital"}</h4>
+                  <p>{isId ? "Literasi keuangan, dasar investasi, pemahaman risiko, dan pengenalan akses pendanaan usaha." : "Financial literacy, investment fundamentals, risk awareness, and business funding pathways."}</p>
                 </div>
-                <h3>{program.title}</h3>
-                <p>{isId ? program.summary.id : program.summary.en}</p>
-                <div className="program-card__footer">
-                  <span>{isId ? "Lihat arsitektur program" : "View program architecture"}</span>
-                  <span aria-hidden="true">↗</span>
+                <div className="program-focus">
+                  <span>02</span>
+                  <h4>{isId ? "Pengembangan Bisnis" : "Business Development"}</h4>
+                  <p>{isId ? "Pengembangan ide usaha, model bisnis, pemasaran digital, dan pengelolaan UMKM." : "Business ideas, business models, digital marketing, and MSME management."}</p>
                 </div>
-              </Link>
-            ))}
+                <div className="program-focus">
+                  <span>03</span>
+                  <h4>{isId ? "Jejaring & Kolaborasi" : "Networking & Collaboration"}</h4>
+                  <p>{isId ? "Mentoring, koneksi dengan pengusaha, kemitraan, dan peluang kolaborasi." : "Mentoring, entrepreneur connections, partnerships, and collaboration opportunities."}</p>
+                </div>
+              </div>
+              <div className="program-card__footer">
+                <span>{isId ? "Lihat detail DigiFin Academy" : "Explore DigiFin Academy"}</span>
+                <Link href={"/programs/digifin-academy?lang=" + locale} aria-label={isId ? "Lihat detail DigiFin Academy" : "Explore DigiFin Academy"}>↗</Link>
+              </div>
+            </article>
           </div>
         </section>
 
@@ -61,13 +77,16 @@ export default async function ProgramsPage({ searchParams }: ProgramsProps) {
           <div className="shell programs-journey__heading">
             <div className="section-kicker"><span>02</span><p>{isId ? "Ecosystem journey" : "Ecosystem journey"}</p></div>
             <div>
-              <h2>{isId ? "Program bekerja sebagai rangkaian, bukan pulau-pulau terpisah." : "Programs work as a sequence, not isolated islands."}</h2>
-              <p>{isId ? "Anggota dapat masuk dari titik yang berbeda. Namun arsitektur besarnya tetap mengarahkan mereka dari komunitas menuju usaha yang semakin matang." : "Members can enter at different points, while the overall architecture still moves them from community toward increasingly mature ventures."}</p>
+              <h2>{isId ? "Satu program, beragam bentuk kegiatan." : "One program, multiple ways to learn."}</h2>
+              <p>{isId ? "Kelas, studi kasus, klinik bisnis, pitching, kunjungan usaha, dan networking menjadi aktivitas yang dipilih sesuai kebutuhan anggota serta kesiapan pelaksanaan." : "Classes, case studies, business clinics, pitching, business visits, and networking are activities selected according to member needs and delivery readiness."}</p>
             </div>
           </div>
           <div className="shell programs-journey__track">
-            {ecosystemJourney.map((step, index) => (
-              <div key={step.id}><span>{String(index + 1).padStart(2, "0")}</span><strong>{isId ? step.id : step.en}</strong></div>
+            {(isId
+              ? ["Belajar", "Menerapkan", "Menguji ide", "Membangun usaha", "Berjejaring", "Bertumbuh"]
+              : ["Learn", "Apply", "Test ideas", "Build ventures", "Connect", "Grow"]
+            ).map((step, index) => (
+              <div key={step}><span>{String(index + 1).padStart(2, "0")}</span><strong>{step}</strong></div>
             ))}
           </div>
         </section>
