@@ -64,9 +64,9 @@ export default async function MediaPage({ searchParams }: MediaProps) {
           <div className="shell inner-hero__grid">
             <div className="section-kicker section-kicker--light"><span>07</span><p>{isId ? "Media & dokumentasi" : "Media & documentation"}</p></div>
             <div className="inner-hero__copy">
-              <p>{isId ? "Repository-backed gallery" : "Repository-backed gallery"}</p>
-              <h1>{isId ? "Dokumentasi resmi, dengan nama file yang sudah ditetapkan." : "Official documentation, with canonical filenames already defined."}</h1>
-              <span>{isId ? "Foto tidak dibenamkan ke kode. Anda cukup mengunggah file ke public/photos dengan nama yang sudah dicatat, lalu slot terkait akan menampilkannya otomatis." : "Photos are not embedded into source code. Upload each file into public/photos using its canonical name and the matching slot will display it automatically."}</span>
+              <p>{isId ? "Media & Berita HIPMI PT" : "Repository-backed gallery"}</p>
+              <h1>{isId ? "Kabar organisasi, informasi bisnis, dan dokumentasi kegiatan." : "Organization updates, business information, and event documentation."}</h1>
+              <span>{isId ? "Jelajahi berita internal, sumber berita eksternal, dan galeri dokumentasi HIPMI PT UIN Al Azhaar." : "Explore internal updates, external news sources, and the HIPMI PT UIN Al Azhaar photo gallery."}</span>
             </div>
           </div>
         </section>
