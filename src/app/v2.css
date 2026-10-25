@@ -1029,3 +1029,37 @@
   .v2-signal-bar > div:nth-child(2n) { border-right: 0; }
   .v2-signal-bar > div:nth-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,.2); }
 }
+
+
+/* User-approved direction: the hero background must be the photograph itself, with no color overlays */
+.v2-hero {
+  background: transparent !important;
+}
+.v2-hero__layout {
+  background: transparent !important;
+}
+.v2-scene,
+.v2-scene__photo {
+  background: transparent !important;
+}
+.v2-scene__photo::before,
+.v2-scene__photo::after {
+  display: none !important;
+  content: none !important;
+  background: none !important;
+}
+.v2-scene__photo img {
+  object-fit: cover !important;
+  object-position: center 42% !important;
+  filter: none !important;
+}
+@media (max-width: 979px) {
+  .v2-scene__photo img {
+    object-position: center 42% !important;
+  }
+}
+@media (max-width: 759px) {
+  .v2-scene__photo img {
+    object-position: center 42% !important;
+  }
+}
