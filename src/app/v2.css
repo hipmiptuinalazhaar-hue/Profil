@@ -2005,32 +2005,49 @@
 
 
 
-/* Temporary neutral hero slideshow: images rotate without transition effects. */
+/* Cinematic dissolve hero: restrained motion, layered crossfade, no hard cuts. */
 .v2-hero .v2-hero__slides {
   position: absolute !important;
   inset: 0 !important;
   z-index: 0 !important;
   overflow: hidden !important;
+  isolation: isolate !important;
   background: #050b12 !important;
 }
+.v2-hero .v2-hero__slides::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: -2% !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+  background: radial-gradient(ellipse at 52% 48%, transparent 28%, rgba(0,0,0,.42) 100%) !important;
+  transition: opacity 2.3s cubic-bezier(.22,.61,.36,1) !important;
+}
+.v2-hero .v2-hero__slides--transitioning::after { opacity: .82 !important; }
 .v2-hero .v2-hero__slide {
   position: absolute !important;
   inset: 0 !important;
   overflow: hidden !important;
-  opacity: 1 !important;
-  transform: none !important;
+  opacity: 0 !important;
+  transform: translateZ(0) !important;
   animation: none !important;
-  transition: none !important;
+  transition: opacity 2.3s cubic-bezier(.22,.61,.36,1) !important;
   backface-visibility: hidden;
+  will-change: opacity;
 }
+.v2-hero .v2-hero__slide--active { opacity: 1 !important; z-index: 0 !important; }
+.v2-hero .v2-hero__slide--incoming { opacity: 0 !important; z-index: 1 !important; }
+.v2-hero .v2-hero__slides--transitioning .v2-hero__slide--incoming { opacity: 1 !important; }
 .v2-hero .v2-hero__slide img {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
   object-position: center 42% !important;
-  transform: none !important;
+  transform: scale(1.055) translateZ(0) !important;
+  transform-origin: center center !important;
+  animation: v2-cinematic-zoom-out 8.3s cubic-bezier(.18,.55,.28,1) both !important;
   transition: none !important;
-  animation: none !important;
   filter: saturate(.88) contrast(1.035) brightness(.84) !important;
 }
 .v2-hero .v2-hero__slide::after {
@@ -2042,6 +2059,10 @@
     linear-gradient(90deg, rgba(2,8,16,.78) 0%, rgba(2,8,16,.58) 36%, rgba(2,8,16,.2) 72%, rgba(2,8,16,.28) 100%),
     linear-gradient(0deg, rgba(2,8,16,.72) 0%, rgba(2,8,16,.08) 48%, rgba(2,8,16,.24) 100%) !important;
   pointer-events: none !important;
+}
+@keyframes v2-cinematic-zoom-out {
+  from { transform: scale(1.055) translateZ(0); }
+  to { transform: scale(1) translateZ(0); }
 }
 .v2-hero .v2-hero__layout,
 .v2-hero .v2-signal-bar {
@@ -2061,6 +2082,7 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  .v2-hero .v2-hero__slides::after,
   .v2-hero .v2-hero__slide,
   .v2-hero .v2-hero__slide img {
     transition: none !important;
