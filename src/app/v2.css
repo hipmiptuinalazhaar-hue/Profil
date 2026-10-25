@@ -1952,17 +1952,17 @@
 }
 
 
-/* Documentary hero: landscape proportions on desktop, content-led layout on mobile. */
+/* Documentary hero: landscape proportions, but never clip its text or actions. */
 .v2-hero {
-  height: clamp(620px, 56.25vw, 860px);
-  min-height: 0;
+  height: auto;
+  min-height: clamp(620px, 56.25vw, 860px);
   padding: 7.5rem 0 1.5rem;
-  overflow: clip;
+  overflow: hidden;
   background: #07111f;
   isolation: isolate;
 }
 .v2-hero__slides { position: absolute; inset: 0; z-index: -3; overflow: hidden; background: #07111f; }
-.v2-hero__slide { position: absolute; inset: 0; opacity: 0; animation: v2-hero-crossfade 36s infinite; }
+.v2-hero__slide { position: absolute; inset: 0; opacity: 0; animation: v2-hero-crossfade 36s infinite both; }
 .v2-hero__slide img { object-fit: cover; object-position: center 38%; filter: saturate(.82) contrast(1.04); transform: scale(1.025); }
 .v2-hero__slide::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(2,7,12,.88) 0%, rgba(2,7,12,.76) 37%, rgba(2,7,12,.38) 68%, rgba(2,7,12,.32) 100%), linear-gradient(0deg, rgba(2,7,12,.82) 0%, transparent 45%, rgba(2,7,12,.28) 100%); }
 .v2-hero__slide--1 { animation-delay: 0s; }
@@ -1987,12 +1987,14 @@
 .v2-hero .v2-signal-bar > div { border-color: rgba(255,255,255,.28); }
 .v2-hero .v2-signal-bar strong { text-shadow: 0 2px 14px rgba(0,0,0,.45); }
 @media (min-width: 980px) {
-  .v2-hero { height: clamp(620px, 56.25vw, 860px); min-height: 0; padding-top: 7.5rem; }
+  .v2-hero { height: auto; min-height: clamp(620px, 56.25vw, 860px); padding-top: 7.5rem; }
   .v2-hero__layout { min-height: auto; grid-template-columns: minmax(0, 1fr); }
   .v2-hero__copy { max-width: 55rem; }
 }
 @media (max-width: 759px) {
   .v2-hero { height: auto; min-height: 100svh; padding: 6.8rem 0 1rem; align-content: space-between; }
+  .v2-hero__slides { position: absolute; inset: 0; }
+  .v2-hero__slide { will-change: opacity; }
   .v2-hero__slide img { object-position: 57% center; }
   .v2-hero__slide::after { background: linear-gradient(90deg, rgba(2,7,12,.78), rgba(2,7,12,.38)), linear-gradient(0deg, rgba(2,7,12,.92) 0%, rgba(2,7,12,.28) 58%, rgba(2,7,12,.48) 100%); }
   .v2-hero__layout { min-height: 0; }
