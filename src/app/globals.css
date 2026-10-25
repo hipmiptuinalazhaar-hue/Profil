@@ -212,21 +212,20 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 }
 
 @media (min-width: 980px) {
-  .global-header__inner { min-height: 6.15rem; }
-  .brand__mark { width: 3.35rem; height: 3.8rem; }
-  .brand { gap: .55rem; }
-  .brand__mark { width: 2.8rem; height: 3.2rem; }
-  .brand__wordmark { flex: 0 0 auto; }
-  .brand__wordmark strong { font-size: clamp(.65rem, .78vw, .78rem); letter-spacing: .015em; }
+  .global-header__inner { min-height: 6.15rem; gap: .65rem; }
+  .brand { gap: .45rem; flex: 0 0 17.5rem; }
+  .brand__mark { width: 2.7rem; height: 3.1rem; }
+  .brand__wordmark { display: block !important; min-width: 0; }
+  .brand__wordmark strong { font-size: clamp(.65rem, .82vw, .8rem); letter-spacing: .005em; white-space: nowrap; }
   .brand__wordmark span { font-size: .44rem; letter-spacing: .12em; }
-  .desktop-navigation { display: flex; align-items: center; gap: clamp(.55rem, .9vw, 1rem); margin-left: auto; flex: 0 1 auto; }
-  .desktop-navigation a { position: relative; padding: .75rem 0; color: rgba(255,255,255,.56); font-size: .56rem; font-weight: 650; letter-spacing: .035em; transition: color 180ms ease; }
+  .desktop-navigation { display: flex; align-items: center; gap: clamp(.5rem, .75vw, .9rem); margin-left: auto; flex: 0 1 auto; min-width: 0; }
+  .desktop-navigation a { position: relative; padding: .75rem 0; color: rgba(255,255,255,.56); font-size: .55rem; font-weight: 650; letter-spacing: .01em; white-space: nowrap; transition: color 180ms ease; }
   .desktop-navigation a::after { content: ""; position: absolute; left: 50%; right: 50%; bottom: .42rem; height: 1px; background: linear-gradient(90deg, transparent, var(--gold-400), transparent); transition: left 180ms ease, right 180ms ease; }
   .desktop-navigation a:hover { color: white; }
   .desktop-navigation a:hover::after { left: 0; right: 0; }
-  .header-actions { margin-left: .25rem; gap: .65rem; }
-  .header-join { min-width: 6.2rem; padding: .72rem .75rem; gap: .65rem; }
-  .locale-switch { gap: .3rem; font-size: .56rem; }
+  .header-actions { margin-left: .15rem; gap: .45rem; flex: 0 0 auto; }
+  .header-join { min-width: 5.6rem; padding: .68rem .6rem; gap: .45rem; font-size: .56rem; }
+  .locale-switch { gap: .25rem; font-size: .53rem; }
   .mobile-menu { display: none; }
   .hero-orbit--one { width: 48rem; height: 48rem; right: -24rem; top: 3rem; }
   .hero-orbit--two { display: block; }
@@ -246,6 +245,15 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
   .global-footer__top { grid-template-columns: minmax(0,1.18fr) minmax(26rem,.82fr); gap: clamp(4rem, 9vw, 9rem); padding-block: 6rem 4.6rem; }
   .footer-directory { align-self: end; }
   .footer-partnership { padding-block: 2.5rem; }
+}
+
+@media (min-width: 980px) and (max-width: 1199px) {
+  .brand { flex-basis: 15rem; }
+  .brand__wordmark strong { font-size: .64rem; }
+  .desktop-navigation { gap: .45rem; }
+  .desktop-navigation a { font-size: .51rem; }
+  .header-actions { gap: .35rem; }
+  .header-join { min-width: 5rem; padding-inline: .45rem; }
 }
 
 @media (min-width: 1280px) {
