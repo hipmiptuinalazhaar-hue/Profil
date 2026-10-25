@@ -1682,3 +1682,112 @@
   .v2-field-node { min-height: 4.4rem !important; padding: .8rem !important; }
   .v2-impact__signals { grid-template-columns: repeat(2,minmax(0,1fr)) !important; }
 }
+
+ 
+/* Premium corporate palette refinement: navy section anchors, soft neutral surfaces, accessible contrast */
+.v2-programs {
+  background: #0b2340 !important;
+  color: #f8fafc !important;
+}
+.v2-programs .v2-kicker,
+.v2-programs .v2-section-head h2 {
+  color: #f8fafc !important;
+}
+.v2-programs .v2-kicker > span {
+  background: #d8b45a !important;
+}
+.v2-program-universe {
+  gap: .9rem !important;
+}
+.v2-program-node {
+  background: #132f50 !important;
+  border-color: rgba(218, 230, 244, .17) !important;
+  color: #f8fafc !important;
+  box-shadow: 0 4px 14px rgba(0,0,0,.08) !important;
+}
+.v2-program-node > span {
+  color: #d8b45a !important;
+}
+.v2-program-node strong {
+  color: #f8fafc !important;
+}
+.v2-program-node > b {
+  color: #c1ccda !important;
+}
+.v2-program-node:hover {
+  background: #193a60 !important;
+  border-color: rgba(216,180,90,.7) !important;
+  box-shadow: 0 8px 22px rgba(0,0,0,.14) !important;
+}
+.v2-leadership {
+  background: #f2f5f9 !important;
+  color: #102b4c !important;
+}
+.v2-leadership .v2-kicker,
+.v2-leadership .v2-section-head h2 {
+  color: #102b4c !important;
+}
+.v2-leadership .v2-kicker > span {
+  background: #b48b35 !important;
+}
+.v2-constellation {
+  gap: .8rem !important;
+}
+.v2-person-node,
+.v2-field-node {
+  background: #fff !important;
+  border-color: #d7e0eb !important;
+  color: #102b4c !important;
+  box-shadow: 0 3px 12px rgba(16,43,76,.035) !important;
+}
+.v2-person-node span,
+.v2-field-node span {
+  color: #637b97 !important;
+}
+.v2-person-node strong,
+.v2-field-node strong {
+  color: #102b4c !important;
+}
+.v2-person-node:hover,
+.v2-field-node:hover {
+  background: #fff !important;
+  border-color: #b48b35 !important;
+  box-shadow: 0 7px 20px rgba(16,43,76,.09) !important;
+}
+.v2-impact {
+  background: #e7edf5 !important;
+  color: #102b4c !important;
+}
+.v2-impact .v2-kicker,
+.v2-impact .v2-section-head h2 {
+  color: #102b4c !important;
+}
+.v2-impact .v2-kicker > span {
+  background: #b48b35 !important;
+}
+.v2-impact__signals {
+  border-top-color: #cbd6e4 !important;
+}
+.v2-impact__signals > div {
+  border-bottom-color: #cbd6e4 !important;
+}
+.v2-impact__signals > div span {
+  color: #536b87 !important;
+}
+.v2-impact__signals > div strong {
+  color: #102f52 !important;
+}
+.v2-impact__signals > a {
+  color: #174f89 !important;
+  border-bottom-color: #cbd6e4 !important;
+}
+.v2-programs .v2-section-head,
+.v2-leadership .v2-section-head,
+.v2-impact .v2-section-head {
+  position: relative !important;
+}
+.v2-programs .v2-section-head h2,
+.v2-leadership .v2-section-head h2,
+.v2-impact .v2-section-head h2 {
+  max-width: 20ch !important;
+}
