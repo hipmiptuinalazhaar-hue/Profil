@@ -222,7 +222,7 @@ export function V2ImmersiveHome({ locale, joinWhatsApp }: { locale: SiteLocale; 
           <div><span>01</span><strong>2026/2027</strong><small>{locale === "id" ? "Periode" : "Term"}</small></div>
           <div><span>02</span><strong>6</strong><small>{locale === "id" ? "Bidang" : "Divisions"}</small></div>
           <div><span>03</span><strong>01</strong><small>{locale === "id" ? "Program unggulan" : "Flagship program"}</small></div>
-          <div><span>04</span><strong>Linggau Raya</strong><small>{locale === "id" ? "Jejaring" : "Network"}</small></div>
+          <div><span>04</span><strong>57</strong><small>{locale === "id" ? "Anggota" : "Members"}</small></div>
         </div>
       </section>
 
