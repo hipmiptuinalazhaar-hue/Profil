@@ -1952,9 +1952,10 @@
 }
 
 
-/* Full-bleed documentary hero: responsive crop, no exposed color gutters. */
+/* Documentary hero: landscape proportions on desktop, content-led layout on mobile. */
 .v2-hero {
-  min-height: max(760px, 100svh);
+  height: clamp(620px, 56.25vw, 860px);
+  min-height: 0;
   padding: 7.5rem 0 1.5rem;
   overflow: clip;
   background: #07111f;
@@ -1986,12 +1987,12 @@
 .v2-hero .v2-signal-bar > div { border-color: rgba(255,255,255,.28); }
 .v2-hero .v2-signal-bar strong { text-shadow: 0 2px 14px rgba(0,0,0,.45); }
 @media (min-width: 980px) {
-  .v2-hero { min-height: max(760px, 100svh); padding-top: 7.5rem; }
+  .v2-hero { height: clamp(620px, 56.25vw, 860px); min-height: 0; padding-top: 7.5rem; }
   .v2-hero__layout { min-height: auto; grid-template-columns: minmax(0, 1fr); }
   .v2-hero__copy { max-width: 55rem; }
 }
 @media (max-width: 759px) {
-  .v2-hero { min-height: 100svh; padding: 6.8rem 0 1rem; align-content: space-between; }
+  .v2-hero { height: auto; min-height: 100svh; padding: 6.8rem 0 1rem; align-content: space-between; }
   .v2-hero__slide img { object-position: 57% center; }
   .v2-hero__slide::after { background: linear-gradient(90deg, rgba(2,7,12,.78), rgba(2,7,12,.38)), linear-gradient(0deg, rgba(2,7,12,.92) 0%, rgba(2,7,12,.28) 58%, rgba(2,7,12,.48) 100%); }
   .v2-hero__layout { min-height: 0; }
