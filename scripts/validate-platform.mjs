@@ -30,6 +30,7 @@ for (const path of requiredFiles) {
 const programsSource = await readFile("src/content/programs.ts", "utf8");
 const programSlugs = [
   "business-academy",
+  "digifin-academy",
   "pitching-access-to-capital",
   "networking-business-expo",
   "100-pengusaha-muda",

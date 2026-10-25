@@ -8,7 +8,7 @@ import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Program Unggulan",
-  description: "Sembilan program unggulan HIPMI PT UIN Al Azhaar Lubuklinggau untuk pembelajaran, jejaring, pengembangan usaha, dan akses ekosistem.",
+  description: "Sepuluh program unggulan HIPMI PT UIN Al Azhaar Lubuklinggau untuk pembelajaran, jejaring, pengembangan usaha, dan akses ekosistem.",
   path: "/programs",
 });
 
@@ -28,7 +28,7 @@ export default async function ProgramsPage({ searchParams }: ProgramsProps) {
             <div className="section-kicker section-kicker--light"><span>01</span><p>{isId ? "Program unggulan" : "Flagship programs"}</p></div>
             <div className="inner-hero__copy">
               <p>{isId ? "Program architecture · 2026/2027" : "Program architecture · 2026/2027"}</p>
-              <h1>{isId ? "Sembilan jalur untuk belajar, terhubung, membangun, dan tumbuh." : "Nine pathways to learn, connect, build, and grow."}</h1>
+              <h1>{isId ? "Sepuluh jalur untuk belajar, terhubung, membangun, dan tumbuh." : "Ten pathways to learn, connect, build, and grow."}</h1>
               <span>{isId ? "Program disusun sebagai portofolio fungsi, bukan tumpukan acara. Setiap inisiatif punya peran dalam perjalanan anggota dan usaha." : "Programs are structured as a portfolio of functions, not a pile of events. Each initiative has a role in the member and venture journey."}</span>
             </div>
           </div>
