@@ -388,3 +388,159 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
   .programs-page .program-focus { padding: .95rem; }
   .programs-page .program-card--featured > p { font-size: .88rem; }
 }
+
+
+/* Programs page: desktop journey and principle cards, high-contrast editorial layout */
+.programs-page .programs-journey {
+  padding: clamp(4.5rem, 7vw, 7rem) 0;
+  background: #f4f7fb;
+  color: #102b4c;
+}
+.programs-page .programs-journey__heading {
+  align-items: end;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+.programs-page .programs-journey__heading > div:first-child > p {
+  margin-bottom: 1rem;
+  color: #8a6722;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.programs-page .programs-journey__heading h2 {
+  max-width: 11ch;
+  font-family: inherit;
+  font-size: clamp(2.5rem, 4.4vw, 4.4rem);
+  font-weight: 750;
+  line-height: 1.02;
+  letter-spacing: -.045em;
+  color: #102b4c;
+}
+.programs-page .programs-journey__heading > div > p {
+  max-width: 42rem;
+  color: #526780;
+  font-size: .98rem;
+  line-height: 1.85;
+}
+.programs-page .programs-journey__track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: .75rem;
+  margin-top: clamp(2.5rem, 4vw, 4rem);
+  border: 0;
+}
+.programs-page .programs-journey__track > div {
+  position: relative;
+  min-width: 0;
+  min-height: 10.5rem;
+  padding: 1.25rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2.5rem;
+  border: 1px solid #dce4ee;
+  border-radius: .7rem;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(16,43,76,.045);
+  color: #102b4c;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.programs-page .programs-journey__track > div:hover {
+  transform: translateY(-4px);
+  border-color: #c2a45c;
+  box-shadow: 0 14px 30px rgba(16,43,76,.09);
+}
+.programs-page .programs-journey__track > div > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid #e7d9b7;
+  border-radius: 50%;
+  background: #fbf7eb;
+  color: #89671f;
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+}
+.programs-page .programs-journey__track > div strong {
+  display: block;
+  max-width: 100%;
+  color: #153657;
+  font-family: inherit;
+  font-size: clamp(.92rem, 1.15vw, 1.08rem);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -.015em;
+  overflow-wrap: anywhere;
+}
+.programs-page .programs-principles {
+  padding: 0 0 clamp(4.5rem, 7vw, 7rem);
+  background: #f4f7fb;
+  color: #102b4c;
+}
+.programs-page .programs-principles__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  border: 0;
+  background: transparent;
+}
+.programs-page .programs-principles article {
+  min-width: 0;
+  min-height: 17rem;
+  padding: clamp(1.4rem, 2vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 1px solid #d8e2ee;
+  border-top: 3px solid #c5a04c;
+  border-radius: .75rem;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(16,43,76,.055);
+}
+.programs-page .programs-principles article > span {
+  color: #987326;
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+}
+.programs-page .programs-principles article h3 {
+  margin: 2.5rem 0 .8rem;
+  color: #102b4c;
+  font-family: inherit;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  font-weight: 750;
+  line-height: 1.15;
+  letter-spacing: -.03em;
+}
+.programs-page .programs-principles article p {
+  max-width: 36rem;
+  margin: 0;
+  color: #526780;
+  font-size: .94rem;
+  line-height: 1.8;
+}
+@media (min-width: 1500px) {
+  .programs-page .programs-journey__track { gap: 1rem; }
+  .programs-page .programs-journey__track > div { min-height: 11rem; padding: 1.5rem; }
+}
+@media (max-width: 1100px) {
+  .programs-page .programs-journey__track { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .programs-page .programs-journey__track > div { min-height: 9rem; }
+}
+@media (max-width: 700px) {
+  .programs-page .programs-journey__track { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; }
+  .programs-page .programs-journey__track > div { min-height: 8rem; padding: 1rem; gap: 1.5rem; }
+  .programs-page .programs-principles__grid { grid-template-columns: 1fr; gap: .75rem; }
+  .programs-page .programs-principles article { min-height: 0; padding: 1.25rem; }
+  .programs-page .programs-principles article h3 { margin: 1.5rem 0 .55rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .programs-page .programs-journey__track > div { transition: none; }
+  .programs-page .programs-journey__track > div:hover { transform: none; }
+}
