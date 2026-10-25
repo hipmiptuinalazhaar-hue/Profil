@@ -1388,3 +1388,96 @@
     margin-top: .75rem !important;
   }
 }
+
+
+/* Mobile hero should behave like desktop: photograph is the full-bleed background */
+@media (max-width: 759px) {
+  .v2-hero {
+    position: relative !important;
+    isolation: isolate !important;
+    overflow: hidden !important;
+    padding: 5.5rem 0 1rem !important;
+    background: #09284a !important;
+  }
+  .v2-hero__layout {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: stretch !important;
+    min-height: 37rem !important;
+    padding: 2rem 1.25rem 6rem !important;
+    gap: 0 !important;
+  }
+  .v2-scene {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    aspect-ratio: auto !important;
+    pointer-events: none !important;
+  }
+  .v2-scene__photo {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    aspect-ratio: auto !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: #09284a !important;
+    overflow: hidden !important;
+  }
+  .v2-scene__photo img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 42% !important;
+    filter: none !important;
+  }
+  .v2-scene__photo::after {
+    display: block !important;
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background: linear-gradient(90deg, rgba(4,24,45,.88) 0%, rgba(4,24,45,.72) 55%, rgba(4,24,45,.34) 100%), linear-gradient(0deg, rgba(4,24,45,.62) 0%, transparent 75%) !important;
+    pointer-events: none !important;
+  }
+  .v2-hero__copy {
+    position: relative !important;
+    z-index: 2 !important;
+    order: 0 !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 0 !important;
+    padding: .75rem 0 1rem !important;
+    background: transparent !important;
+    color: #fff !important;
+  }
+  .v2-hero h1,
+  .v2-hero__body,
+  .v2-hero .v2-kicker {
+    color: #fff !important;
+    text-shadow: 0 2px 9px rgba(0,0,0,.75) !important;
+  }
+  .v2-hero h1 em {
+    color: #f0c64e !important;
+    text-shadow: 0 2px 9px rgba(0,0,0,.75) !important;
+  }
+  .v2-hero .v2-button--ghost {
+    color: #fff !important;
+    background: rgba(5,25,47,.62) !important;
+    border-color: rgba(255,255,255,.9) !important;
+  }
+  .v2-signal-bar {
+    position: relative !important;
+    z-index: 3 !important;
+    margin-top: -4.7rem !important;
+    background: rgba(5,30,55,.88) !important;
+  }
+}
