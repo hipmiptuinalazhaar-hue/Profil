@@ -1063,3 +1063,101 @@
     object-position: center 42% !important;
   }
 }
+
+
+/* Show the entire original documentary photo: never crop it to fill the hero */
+.v2-hero {
+  background: #fff !important;
+}
+.v2-scene__photo {
+  overflow: visible !important;
+  background: transparent !important;
+}
+.v2-scene__photo img {
+  object-fit: contain !important;
+  object-position: center center !important;
+  filter: none !important;
+}
+.v2-scene__photo::before,
+.v2-scene__photo::after {
+  display: none !important;
+  content: none !important;
+}
+@media (min-width: 760px) {
+  .v2-hero__layout {
+    min-height: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  .v2-scene {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9;
+  }
+  .v2-scene__photo {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .v2-scene__photo img {
+    object-fit: contain !important;
+  }
+  .v2-hero__copy {
+    position: absolute !important;
+    left: max(1.5rem, calc((100% - 80rem) / 2)) !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: min(39rem, 46%) !important;
+  }
+}
+@media (max-width: 759px) {
+  .v2-hero__layout {
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+  }
+  .v2-scene {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 4 / 3;
+    order: 0;
+  }
+  .v2-scene__photo {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .v2-scene__photo img {
+    object-fit: contain !important;
+  }
+  .v2-hero__copy {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    padding: 1.5rem 1.25rem !important;
+    color: #09284a !important;
+    background: #fff !important;
+  }
+  .v2-hero h1,
+  .v2-hero__body,
+  .v2-hero .v2-kicker {
+    color: #09284a !important;
+  }
+  .v2-hero h1 em { color: #b58a1c !important; }
+  .v2-hero .v2-button--ghost {
+    color: #09284a !important;
+    border-color: #09284a !important;
+    background: transparent !important;
+  }
+}
