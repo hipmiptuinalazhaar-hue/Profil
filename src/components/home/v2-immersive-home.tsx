@@ -70,6 +70,15 @@ const copy = {
   },
 } as const;
 
+const heroSlides = [
+  "/photos/dokumentasi-pelantikan-2026-01.jpg",
+  "/photos/dokumentasi-pelantikan-2026-03.jpg",
+  "/photos/dokumentasi-pelantikan-2026-05.jpg",
+  "/photos/dokumentasi-bpc-hipmi-01.jpg",
+  "/photos/dokumentasi-pemkot-lubuklinggau-01.jpg",
+  "/photos/dokumentasi-pelantikan-2026-08.jpg",
+] as const;
+
 const documentary = [
   "/photos/dokumentasi-pelantikan-2026-02.jpg",
   "/photos/dokumentasi-bpc-hipmi-01.jpg",
