@@ -72,13 +72,18 @@ export default async function MediaPage({ searchParams }: MediaProps) {
 
         <section className="news-hub" aria-labelledby="news-hub-title">
           <div className="shell">
+            <nav className="news-hub__tabs" aria-label={isId ? "Kategori media" : "Media categories"}>
+              <a href="#internal-news-title">{isId ? "Berita Internal" : "Internal News"}</a>
+              <a href="#external-news-title">{isId ? "Berita Eksternal" : "External News"}</a>
+              <a href="#media-pelantikan">{isId ? "Galeri" : "Gallery"}</a>
+            </nav>
             <div className="news-hub__intro">
               <p>{isId ? "Ruang redaksi HIPMI PT" : "HIPMI PT newsroom"}</p>
               <h2 id="news-hub-title">{isId ? "Berita internal dan pantauan eksternal, dalam satu ruang." : "Internal updates and external coverage, in one place."}</h2>
               <span>{isId ? "Informasi organisasi dipisahkan dari berita pihak luar agar sumber, konteks, dan tanggung jawab editorial tetap jelas." : "Organization updates are separated from third-party coverage so sources, context, and editorial responsibility stay clear."}</span>
             </div>
             <div className="news-hub__grid">
-              <section className="news-hub__column" aria-labelledby="internal-news-title">
+              <section className="news-hub__column" id="berita-internal" aria-labelledby="internal-news-title">
                 <div className="news-hub__column-head"><span>01 / {isId ? "INTERNAL" : "INTERNAL"}</span><h3 id="internal-news-title">{isId ? "Berita internal" : "Internal news"}</h3></div>
                 <article className="news-hub__story">
                   <p>{isId ? "Organisasi · Dokumentasi" : "Organization · Documentation"}</p>
@@ -93,7 +98,7 @@ export default async function MediaPage({ searchParams }: MediaProps) {
                   <a href="#media-bpc">{isId ? "Lihat dokumentasi" : "View documentation"} <span aria-hidden="true">↗</span></a>
                 </article>
               </section>
-              <section className="news-hub__column news-hub__column--external" aria-labelledby="external-news-title">
+              <section className="news-hub__column news-hub__column--external" id="berita-eksternal" aria-labelledby="external-news-title">
                 <div className="news-hub__column-head"><span>02 / {isId ? "EKSTERNAL" : "EXTERNAL"}</span><h3 id="external-news-title">{isId ? "Pantauan berita eksternal" : "External news watch"}</h3></div>
                 <p className="news-hub__editorial-note">{isId ? "Rujukan resmi untuk mengikuti perkembangan kebijakan dan ekosistem usaha. Tautan mengarah ke penerbit asli, bukan artikel yang disalin ulang." : "Official sources for tracking policy and business ecosystem developments. Links go to the original publishers, not republished copies."}</p>
                 <a className="news-hub__source" href="https://www.bi.go.id/id/publikasi/ruang-media/default.aspx" target="_blank" rel="noreferrer"><span><strong>Bank Indonesia</strong><small>{isId ? "Kebijakan moneter, sistem pembayaran, ekonomi" : "Monetary policy, payments, economy"}</small></span><b aria-hidden="true">↗</b></a>
@@ -113,7 +118,7 @@ export default async function MediaPage({ searchParams }: MediaProps) {
         </section>
 
         {collections.map((collection, collectionIndex) => (
-          <section className="media-collection" key={collection.key} aria-labelledby={`media-${collection.key}`}>
+          <section className="media-collection" id={collectionIndex === 0 ? "media-pelantikan" : undefined} key={collection.key} aria-labelledby={`media-${collection.key}`}>
             <div className="shell media-collection__heading">
               <div><span>{String(collectionIndex + 1).padStart(2, "0")}</span><p>{isId ? collection.metaId : collection.metaEn}</p></div>
               <h2 id={`media-${collection.key}`}>{isId ? collection.titleId : collection.titleEn}</h2>
