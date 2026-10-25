@@ -96,7 +96,7 @@
 .v2-program-node b { position: absolute; right: .8rem; top: .7rem; color: var(--v2-gold-soft); font-size: .72rem; font-weight: 400; }
 .v2-program-node--1 { left: 1%; top: 8%; }.v2-program-node--2 { left: 37%; top: 1%; }.v2-program-node--3 { right: 0; top: 11%; }
 .v2-program-node--4 { left: 0; top: 40%; }.v2-program-node--5 { right: 0; top: 43%; }
-.v2-program-node--6 { left: 4%; bottom: 10%; }.v2-program-node--7 { left: 39%; bottom: 0; }.v2-program-node--8 { right: 1%; bottom: 12%; }.v2-program-node--9 { left: 41%; top: 25%; }
+.v2-program-node--6 { left: 4%; bottom: 10%; }.v2-program-node--7 { left: 39%; bottom: 0; }.v2-program-node--8 { right: 1%; bottom: 12%; }.v2-program-node--9 { left: 41%; top: 25%; } .v2-program-node--10 { right: 3%; top: 26%; }
 
 .v2-leadership { padding: 7rem 0; background: var(--v2-paper-2); color: #07111f; }
 .v2-leadership__layout { display: grid; gap: 4rem; }
