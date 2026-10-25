@@ -88,14 +88,24 @@ const documentary = [
 export function V2ImmersiveHome({ locale, joinWhatsApp }: { locale: SiteLocale; joinWhatsApp: string }) {
   const rootRef = useRef<HTMLDivElement>(null);
   const [activeHeroSlide, setActiveHeroSlide] = useState(0);
+  const [previousHeroSlide, setPreviousHeroSlide] = useState<number | null>(null);
   const text = copy[locale];
 
   useEffect(() => {
     const timer = window.setInterval(() => {
-      setActiveHeroSlide((current) => (current + 1) % heroSlides.length);
-    }, 3500);
+      setActiveHeroSlide((current) => {
+        setPreviousHeroSlide(current);
+        return (current + 1) % heroSlides.length;
+      });
+    }, 5000);
     return () => window.clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+    if (previousHeroSlide === null) return;
+    const timer = window.setTimeout(() => setPreviousHeroSlide(null), 1100);
+    return () => window.clearTimeout(timer);
+  }, [previousHeroSlide]);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -140,7 +150,12 @@ export function V2ImmersiveHome({ locale, joinWhatsApp }: { locale: SiteLocale; 
         <div className="v2-hero__grid" aria-hidden="true" />
 
         <div className="v2-hero__slides" aria-hidden="true">
-          <div className="v2-hero__slide" key={heroSlides[activeHeroSlide]}>
+          {previousHeroSlide !== null && (
+            <div className="v2-hero__slide v2-hero__slide--previous" key={heroSlides[previousHeroSlide]}>
+              <Image src={heroSlides[previousHeroSlide]} alt="" fill sizes="100vw" />
+            </div>
+          )}
+          <div className="v2-hero__slide v2-hero__slide--active" key={heroSlides[activeHeroSlide]}>
             <Image
               src={heroSlides[activeHeroSlide]}
               alt=""
