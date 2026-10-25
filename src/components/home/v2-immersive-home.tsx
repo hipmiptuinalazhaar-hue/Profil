@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { SiteLocale } from "@/config/site";
 
 const programFocus = {
@@ -87,7 +87,15 @@ const documentary = [
 
 export function V2ImmersiveHome({ locale, joinWhatsApp }: { locale: SiteLocale; joinWhatsApp: string }) {
   const rootRef = useRef<HTMLDivElement>(null);
+  const [activeHeroSlide, setActiveHeroSlide] = useState(0);
   const text = copy[locale];
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveHeroSlide((current) => (current + 1) % heroSlides.length);
+    }, 6500);
+    return () => window.clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -132,11 +140,15 @@ export function V2ImmersiveHome({ locale, joinWhatsApp }: { locale: SiteLocale; 
         <div className="v2-hero__grid" aria-hidden="true" />
 
         <div className="v2-hero__slides" aria-hidden="true">
-          {heroSlides.map((src, index) => (
-            <div className={`v2-hero__slide v2-hero__slide--${index + 1}`} key={src}>
-              <Image src={src} alt="" fill priority={index === 0} sizes="100vw" />
-            </div>
-          ))}
+          <div className="v2-hero__slide" key={heroSlides[activeHeroSlide]}>
+            <Image
+              src={heroSlides[activeHeroSlide]}
+              alt=""
+              fill
+              priority={activeHeroSlide === 0}
+              sizes="100vw"
+            />
+          </div>
         </div>
 
         <div className="shell v2-hero__layout">
