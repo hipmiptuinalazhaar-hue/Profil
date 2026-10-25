@@ -88,33 +88,15 @@ const documentary = [
 export function V2ImmersiveHome({ locale, joinWhatsApp }: { locale: SiteLocale; joinWhatsApp: string }) {
   const rootRef = useRef<HTMLDivElement>(null);
   const [activeHeroSlide, setActiveHeroSlide] = useState(0);
-  const [previousHeroSlide, setPreviousHeroSlide] = useState<number | null>(null);
-  const [heroTransitionStarted, setHeroTransitionStarted] = useState(false);
-  const heroIndexRef = useRef(0);
+
   const text = copy[locale];
 
   useEffect(() => {
     const timer = window.setInterval(() => {
-      const next = (heroIndexRef.current + 1) % heroSlides.length;
-      setPreviousHeroSlide(heroIndexRef.current);
-      heroIndexRef.current = next;
-      setHeroTransitionStarted(false);
-      setActiveHeroSlide(next);
-      window.requestAnimationFrame(() => {
-        window.requestAnimationFrame(() => setHeroTransitionStarted(true));
-      });
+      setActiveHeroSlide((current) => (current + 1) % heroSlides.length);
     }, 6000);
     return () => window.clearInterval(timer);
   }, []);
-
-  useEffect(() => {
-    if (previousHeroSlide === null) return;
-    const timer = window.setTimeout(() => {
-      setPreviousHeroSlide(null);
-      setHeroTransitionStarted(false);
-    }, 2600);
-    return () => window.clearTimeout(timer);
-  }, [previousHeroSlide]);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -159,12 +141,7 @@ export function V2ImmersiveHome({ locale, joinWhatsApp }: { locale: SiteLocale; 
         <div className="v2-hero__grid" aria-hidden="true" />
 
         <div className="v2-hero__slides" aria-hidden="true">
-          {previousHeroSlide !== null && (
-            <div className={`v2-hero__slide v2-hero__slide--previous ${heroTransitionStarted ? "is-fading" : ""}`} key={heroSlides[previousHeroSlide]}>
-              <Image src={heroSlides[previousHeroSlide]} alt="" fill sizes="100vw" />
-            </div>
-          )}
-          <div className={`v2-hero__slide v2-hero__slide--active ${heroTransitionStarted ? "is-settled" : "is-preparing"}`} key={heroSlides[activeHeroSlide]}>
+          <div className="v2-hero__slide v2-hero__slide--active" key={heroSlides[activeHeroSlide]}>
             <Image
               src={heroSlides[activeHeroSlide]}
               alt=""
