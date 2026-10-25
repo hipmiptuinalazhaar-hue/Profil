@@ -2079,3 +2079,15 @@
 @keyframes hipmi-zoom-out{from{transform:scale(1.12)}to{transform:scale(1.025)}}
 @keyframes hipmi-zoom-previous{from{transform:scale(1.025)}to{transform:scale(1.065)}}
 @media(prefers-reduced-motion:reduce){.v2-hero .v2-hero__slide--previous,.v2-hero .v2-hero__slide--active,.v2-hero .v2-hero__slide--previous img,.v2-hero .v2-hero__slide--active img{animation:none!important}}
+
+
+/* Final override: true cinematic dissolve + continuous zoom-out, including a smooth incoming start. */
+.v2-hero .v2-hero__slide--previous{z-index:1!important;animation:hipmi-dissolve-out 2.4s linear both!important;}
+.v2-hero .v2-hero__slide--active{z-index:2!important;animation:hipmi-dissolve-in 2.4s linear both!important;}
+.v2-hero .v2-hero__slide--active img{animation:hipmi-slow-zoom-out 5s cubic-bezier(.16,1,.3,1) both!important;}
+.v2-hero .v2-hero__slide--previous img{animation:hipmi-slow-zoom-away 2.4s cubic-bezier(.16,1,.3,1) both!important;}
+@keyframes hipmi-dissolve-in{0%{opacity:0}15%{opacity:.04}45%{opacity:.28}75%{opacity:.72}100%{opacity:1}}
+@keyframes hipmi-dissolve-out{0%{opacity:1}25%{opacity:.96}60%{opacity:.66}85%{opacity:.24}100%{opacity:0}}
+@keyframes hipmi-slow-zoom-out{0%{transform:scale(1.13)}100%{transform:scale(1.025)}}
+@keyframes hipmi-slow-zoom-away{0%{transform:scale(1.025)}100%{transform:scale(1.07)}}
+@media(prefers-reduced-motion:reduce){.v2-hero .v2-hero__slide--previous,.v2-hero .v2-hero__slide--active,.v2-hero .v2-hero__slide--previous img,.v2-hero .v2-hero__slide--active img{animation:none!important}}
