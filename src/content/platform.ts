@@ -3,7 +3,7 @@ import type { LocalizedText } from "@/content/programs";
 export const verifiedBaseline = [
   { value: "2026/2027", label: { id: "Periode kepengurusan", en: "Leadership term" } },
   { value: "6", label: { id: "Bidang organisasi", en: "Organization divisions" } },
-  { value: "9", label: { id: "Program unggulan", en: "Flagship programs" } },
+  { value: "10", label: { id: "Program unggulan", en: "Flagship programs" } },
   { value: "5", label: { id: "Misi organisasi", en: "Organization missions" } },
 ] as const satisfies readonly { value: string; label: LocalizedText }[];
 
@@ -67,6 +67,11 @@ export const businessEcosystemLayers = [
 ] as const;
 
 export const eventFormats = [
+  {
+    name: "DIGIFIN Academy",
+    type: { id: "Akademi & lokakarya", en: "Academy & workshop" },
+    note: { id: "Literasi keuangan, investasi, kewirausahaan digital, dan teknologi untuk mahasiswa.", en: "Financial literacy, investing, digital entrepreneurship, and technology for students." },
+  },
   {
     name: "Business Academy",
     type: { id: "Kelas & workshop", en: "Class & workshop" },
