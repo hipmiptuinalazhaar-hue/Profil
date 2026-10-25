@@ -30,6 +30,24 @@ export const flagshipPrograms: readonly FlagshipProgram[] = [
     },
   },
   {
+    slug: "digifin-academy",
+    title: "DIGIFIN Academy",
+    cluster: { id: "Literasi Keuangan & Inovasi", en: "Financial Literacy & Innovation" },
+    summary: {
+      id: "Akademi pembelajaran praktis yang menghubungkan literasi keuangan, investasi, kewirausahaan digital, dan teknologi untuk membekali mahasiswa mengambil keputusan yang lebih terukur.",
+      en: "A practical learning academy connecting financial literacy, investing, digital entrepreneurship, and technology to help students make more informed decisions.",
+    },
+    purpose: {
+      id: "Membangun kompetensi mahasiswa dalam mengelola keuangan, memahami risiko investasi, mengembangkan usaha, dan memanfaatkan teknologi digital melalui kelas, studi kasus, praktik, serta proyek.",
+      en: "Build student capability in personal and business finance, investment risk awareness, venture development, and digital technology through classes, case studies, practice, and projects.",
+    },
+    audience: { id: "Mahasiswa yang ingin meningkatkan literasi keuangan, keterampilan investasi, dan kemampuan membangun usaha digital.", en: "Students seeking stronger financial literacy, investment skills, and digital venture capabilities." },
+    focus: {
+      id: ["Financial Management", "Investasi & Pasar Modal Syariah", "Digital Entrepreneurship", "AI, Fintech & Blockchain"],
+      en: ["Financial Management", "Investing & Islamic Capital Markets", "Digital Entrepreneurship", "AI, Fintech & Blockchain"],
+    },
+  },
+  {
     slug: "pitching-access-to-capital",
     title: "Pitching & Access to Capital",
     cluster: { id: "Pendanaan", en: "Capital" },
