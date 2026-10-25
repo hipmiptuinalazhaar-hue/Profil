@@ -93,7 +93,7 @@ export function V2ImmersiveHome({ locale, joinWhatsApp }: { locale: SiteLocale; 
   useEffect(() => {
     const timer = window.setInterval(() => {
       setActiveHeroSlide((current) => (current + 1) % heroSlides.length);
-    }, 6500);
+    }, 3500);
     return () => window.clearInterval(timer);
   }, []);
 
