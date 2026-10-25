@@ -1481,3 +1481,204 @@
     background: rgba(5,30,55,.88) !important;
   }
 }
+
+ 
+/* Simplified homepage sections: clear hierarchy, restrained color, no decorative constellation/orbit effects */
+.v2-programs {
+  padding: 5rem 0;
+  background: #f7f9fc !important;
+  color: #102b4c !important;
+}
+.v2-programs .v2-section-head h2,
+.v2-leadership .v2-section-head h2,
+.v2-impact .v2-section-head h2 {
+  max-width: 18ch !important;
+  font-family: inherit !important;
+  font-size: clamp(1.8rem, 3.5vw, 3rem) !important;
+  line-height: 1.15 !important;
+  font-weight: 650 !important;
+  letter-spacing: -.035em !important;
+}
+.v2-program-universe {
+  min-height: 0 !important;
+  margin-top: 2rem !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: .8rem !important;
+}
+.v2-program-universe::before,
+.v2-program-universe__core {
+  display: none !important;
+}
+.v2-program-node {
+  position: relative !important;
+  inset: auto !important;
+  width: auto !important;
+  min-height: 5.5rem !important;
+  padding: 1.1rem 1rem !important;
+  display: grid !important;
+  grid-template-columns: 2rem minmax(0,1fr) auto !important;
+  align-items: center !important;
+  gap: .7rem !important;
+  border: 1px solid #e0e7f0 !important;
+  border-radius: .55rem !important;
+  background: #fff !important;
+  box-shadow: none !important;
+  color: #183858 !important;
+  transform: none !important;
+  text-align: left !important;
+}
+.v2-program-node > span {
+  color: #6d7f95 !important;
+  font-size: .72rem !important;
+  letter-spacing: .02em !important;
+}
+.v2-program-node strong {
+  font-family: inherit !important;
+  font-size: .92rem !important;
+  line-height: 1.4 !important;
+  font-weight: 600 !important;
+}
+.v2-program-node > b {
+  color: #8a9bb0 !important;
+  font-size: .9rem !important;
+  font-weight: 400 !important;
+}
+.v2-program-node:hover {
+  border-color: #a9bdd5 !important;
+  background: #fff !important;
+  box-shadow: 0 5px 18px rgba(15, 43, 76, .06) !important;
+  transform: translateY(-2px) !important;
+}
+.v2-leadership {
+  padding: 5rem 0 !important;
+  background: #fff !important;
+  color: #102b4c !important;
+}
+.v2-leadership__layout {
+  align-items: start !important;
+  gap: 3rem !important;
+}
+.v2-constellation {
+  min-height: 0 !important;
+  padding: 0 !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0,1fr)) !important;
+  gap: .75rem !important;
+}
+.v2-constellation::before,
+.v2-constellation::after,
+.v2-constellation__line {
+  display: none !important;
+}
+.v2-person-node,
+.v2-field-node {
+  position: relative !important;
+  inset: auto !important;
+  min-height: 5rem !important;
+  padding: 1rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  gap: .45rem !important;
+  border: 1px solid #e1e8f0 !important;
+  border-radius: .5rem !important;
+  background: #f8fafc !important;
+  box-shadow: none !important;
+  color: #173858 !important;
+  transform: none !important;
+}
+.v2-person-node--lead {
+  grid-column: auto !important;
+}
+.v2-person-node span,
+.v2-field-node span {
+  color: #71839a !important;
+  font-size: .68rem !important;
+}
+.v2-person-node strong,
+.v2-field-node strong {
+  font-family: inherit !important;
+  font-size: .86rem !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+}
+.v2-person-node:hover,
+.v2-field-node:hover {
+  border-color: #a9bdd5 !important;
+  background: #fff !important;
+  transform: translateY(-2px) !important;
+}
+.v2-impact {
+  padding: 5rem 0 !important;
+  background: #f7f9fc !important;
+  color: #102b4c !important;
+}
+.v2-impact__grid {
+  align-items: start !important;
+  gap: 3rem !important;
+}
+.v2-impact .v2-kicker,
+.v2-impact .v2-section-head h2 {
+  color: #102b4c !important;
+}
+.v2-impact__signals {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0,1fr)) !important;
+  gap: 0 1.25rem !important;
+  border-top: 1px solid #dfe7f0 !important;
+}
+.v2-impact__signals > div {
+  min-height: 6.5rem !important;
+  padding: 1.1rem 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  gap: .5rem !important;
+  border-bottom: 1px solid #dfe7f0 !important;
+}
+.v2-impact__signals > div span {
+  color: #6b7d93 !important;
+  font-size: .66rem !important;
+  font-weight: 600 !important;
+  letter-spacing: .04em !important;
+}
+.v2-impact__signals > div strong {
+  color: #153a62 !important;
+  font-family: inherit !important;
+  font-size: clamp(1.3rem, 2.4vw, 2rem) !important;
+  font-weight: 650 !important;
+  letter-spacing: -.03em !important;
+}
+.v2-impact__signals > a {
+  grid-column: 1 / -1 !important;
+  min-height: 3.5rem !important;
+  padding: 1rem 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  color: #245da8 !important;
+  border-bottom: 1px solid #dfe7f0 !important;
+  text-transform: none !important;
+  font-size: .84rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+}
+@media (max-width: 900px) {
+  .v2-program-universe { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
+  .v2-leadership__layout,
+  .v2-impact__grid { grid-template-columns: 1fr !important; gap: 1.75rem !important; }
+}
+@media (max-width: 600px) {
+  .v2-programs,
+  .v2-leadership,
+  .v2-impact { padding: 3.5rem 0 !important; }
+  .v2-program-universe { grid-template-columns: 1fr !important; gap: .6rem !important; }
+  .v2-program-node { min-height: 4.5rem !important; padding: .85rem !important; }
+  .v2-constellation { grid-template-columns: repeat(2, minmax(0,1fr)) !important; gap: .6rem !important; }
+  .v2-person-node,
+  .v2-field-node { min-height: 4.4rem !important; padding: .8rem !important; }
+  .v2-impact__signals { grid-template-columns: repeat(2,minmax(0,1fr)) !important; }
+}
