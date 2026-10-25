@@ -18,6 +18,11 @@ export const metadata: Metadata = {
   ...createPageMetadata(),
   metadataBase: getBaseUrl(),
   applicationName: siteConfig.shortName,
+  icons: {
+    icon: [{ url: "/assets/brand/hipmi-pt-uin-alazhaar.avif", type: "image/avif" }],
+    shortcut: ["/assets/brand/hipmi-pt-uin-alazhaar.avif"],
+    apple: [{ url: "/assets/brand/hipmi-pt-uin-alazhaar.avif", type: "image/avif" }],
+  },
   category: "business",
   keywords: [
     "HIPMI PT UIN Al Azhaar",
