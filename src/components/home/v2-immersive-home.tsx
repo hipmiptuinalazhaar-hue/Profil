@@ -40,8 +40,8 @@ const copy = {
   id: {
     eyebrow: "DIGITAL ENTREPRENEURSHIP UNIVERSE · LUBUKLINGGAU",
     lead: "Pengusaha Muda",
-    accent: "Lebih Baik",
-    end: "untuk Masa Depan yang",
+    accent: "untuk Masa Depan",
+    end: "yang Lebih Baik",
     body: "HIPMI PT UIN Al-Azhaar Lubuklinggau adalah wadah bagi mahasiswa yang berjiwa wirausaha, berkolaborasi, dan berkomitmen menciptakan dampak nyata bagi kampus, masyarakat, dan bangsa.",
     explore: "Tentang Kami",
     join: "Lihat Program",
@@ -62,8 +62,8 @@ const copy = {
   en: {
     eyebrow: "DIGITAL ENTREPRENEURSHIP UNIVERSE · LUBUKLINGGAU",
     lead: "Young Entrepreneurs",
-    accent: "A Better Future",
-    end: "Building",
+    accent: "for a Better",
+    end: "Future",
     body: "HIPMI PT UIN Al-Azhaar Lubuklinggau brings entrepreneurial students together to collaborate, build ventures, and create meaningful impact for campus and society.",
     explore: "About Us",
     join: "View Programs",
