@@ -88,15 +88,31 @@ const documentary = [
 export function V2ImmersiveHome({ locale, joinWhatsApp }: { locale: SiteLocale; joinWhatsApp: string }) {
   const rootRef = useRef<HTMLDivElement>(null);
   const [activeHeroSlide, setActiveHeroSlide] = useState(0);
+  const [incomingHeroSlide, setIncomingHeroSlide] = useState<number | null>(null);
 
   const text = copy[locale];
 
+  // Keep each frame on screen for six seconds, then blend the next image over it.
   useEffect(() => {
-    const timer = window.setInterval(() => {
-      setActiveHeroSlide((current) => (current + 1) % heroSlides.length);
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const nextIndex = (activeHeroSlide + 1) % heroSlides.length;
+    const transitionDuration = reduceMotion ? 0 : 2300;
+    const transitionTimer = window.setTimeout(() => {
+      setIncomingHeroSlide(nextIndex);
+      const finishTimer = window.setTimeout(() => {
+        setActiveHeroSlide(nextIndex);
+        setIncomingHeroSlide(null);
+      }, transitionDuration);
+      finishRef.current = finishTimer;
     }, 6000);
-    return () => window.clearInterval(timer);
-  }, []);
+
+    return () => {
+      window.clearTimeout(transitionTimer);
+      if (finishRef.current !== null) window.clearTimeout(finishRef.current);
+    };
+  }, [activeHeroSlide]);
+
+  const finishRef = useRef<ReturnType<typeof window.setTimeout> | null>(null);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -140,16 +156,15 @@ export function V2ImmersiveHome({ locale, joinWhatsApp }: { locale: SiteLocale; 
         <div className="v2-hero__ambient" aria-hidden="true" />
         <div className="v2-hero__grid" aria-hidden="true" />
 
-        <div className="v2-hero__slides" aria-hidden="true">
+        <div className={`v2-hero__slides${incomingHeroSlide !== null ? " v2-hero__slides--transitioning" : ""}`} aria-hidden="true">
           <div className="v2-hero__slide v2-hero__slide--active" key={heroSlides[activeHeroSlide]}>
-            <Image
-              src={heroSlides[activeHeroSlide]}
-              alt=""
-              fill
-              priority={activeHeroSlide === 0}
-              sizes="100vw"
-            />
+            <Image src={heroSlides[activeHeroSlide]} alt="" fill priority={activeHeroSlide === 0} sizes="100vw" />
           </div>
+          {incomingHeroSlide !== null && (
+            <div className="v2-hero__slide v2-hero__slide--incoming" key={heroSlides[incomingHeroSlide]}>
+              <Image src={heroSlides[incomingHeroSlide]} alt="" fill priority sizes="100vw" />
+            </div>
+          )}
         </div>
 
         <div className="shell v2-hero__layout">
