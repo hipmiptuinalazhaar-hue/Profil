@@ -2089,3 +2089,42 @@
     animation: none !important;
   }
 }
+
+
+/* Ultra-soft hero dissolve refinement: preloaded frames, no transform reset or dark flash. */
+.v2-hero .v2-hero__slides::after {
+  opacity: 0 !important;
+  background: radial-gradient(ellipse at 50% 46%, transparent 36%, rgba(0,0,0,.22) 100%) !important;
+  transition: opacity 3.2s cubic-bezier(.4, 0, .2, 1) !important;
+}
+.v2-hero .v2-hero__slides--transitioning::after {
+  opacity: .28 !important;
+}
+.v2-hero .v2-hero__slide {
+  transition: opacity 3.2s cubic-bezier(.4, 0, .2, 1) !important;
+  will-change: opacity;
+}
+.v2-hero .v2-hero__slide img {
+  transform: scale(1.018) translateZ(0) !important;
+  animation: none !important;
+  transition: none !important;
+  filter: saturate(.88) contrast(1.025) brightness(.86) !important;
+}
+.v2-hero .v2-hero__slide--active img {
+  transform: scale(1.018) translateZ(0) !important;
+}
+.v2-hero .v2-hero__slide::after {
+  transition: opacity 3.2s cubic-bezier(.4, 0, .2, 1) !important;
+}
+@media (max-width: 759px) {
+  .v2-hero .v2-hero__slide img {
+    transform: scale(1.018) translateZ(0) !important;
+    animation: none !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .v2-hero .v2-hero__slides::after,
+  .v2-hero .v2-hero__slide {
+    transition: none !important;
+  }
+}
