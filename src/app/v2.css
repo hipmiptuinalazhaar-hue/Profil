@@ -2128,3 +2128,27 @@
     transition: none !important;
   }
 }
+
+
+/* Vision and mission section */
+.v2-vision { position: relative; padding: 6.5rem 0; overflow: hidden; color: #fff; background: radial-gradient(circle at 90% 12%,rgba(15,106,81,.22),transparent 28rem),linear-gradient(135deg,#07111f,#030910 72%); }
+.v2-vision::before { content: "V/M"; position: absolute; right: -1rem; top: 1rem; color: rgba(215,187,122,.035); font-family: var(--font-display),serif; font-size: clamp(10rem,26vw,24rem); line-height: .8; pointer-events: none; }
+.v2-vision__layout { position: relative; z-index: 1; display: grid; gap: 2.5rem; }
+.v2-vision__intro h2 { max-width: 10ch; margin: 1.2rem 0 0; font-family: var(--font-display),serif; font-size: clamp(3rem,8vw,6rem); font-weight: 400; line-height: .9; letter-spacing: -.045em; }
+.v2-vision__intro > p:not(.v2-kicker) { max-width: 34rem; margin: 1.4rem 0 0; color: rgba(255,255,255,.58); font-size: .82rem; line-height: 1.85; }
+.v2-vision__index { display: inline-block; margin-top: 2rem; color: var(--v2-gold); font-size: .48rem; font-weight: 800; letter-spacing: .17em; }
+.v2-vision__content { border-top: 1px solid var(--v2-line-dark); }
+.v2-vision__statement { padding: 1.5rem 0 2rem; border-bottom: 1px solid var(--v2-line-dark); }
+.v2-vision__number { margin: 0; color: var(--v2-gold); font-size: .52rem; font-weight: 800; letter-spacing: .16em; }
+.v2-vision__statement h3 { max-width: 22ch; margin: 1.1rem 0 0; font-family: var(--font-display),serif; font-size: clamp(2rem,5vw,3.8rem); line-height: 1.03; font-weight: 400; letter-spacing: -.025em; }
+.v2-vision__missions { padding-top: 1.4rem; }
+.v2-vision__missions > div { display: grid; grid-template-columns: 2rem 1fr; gap: .8rem; padding: 1rem 0; border-bottom: 1px solid var(--v2-line-dark); }
+.v2-vision__missions > div > span { padding-top: .2rem; color: var(--v2-gold); font-size: .5rem; }
+.v2-vision__missions > div p { margin: 0; color: rgba(255,255,255,.76); font-size: .78rem; line-height: 1.75; }
+.v2-vision__note { grid-column: 1 / -1; margin: -.5rem 0 0; color: rgba(255,255,255,.38); font-size: .58rem; line-height: 1.6; }
+@media (min-width: 900px) {
+  .v2-vision { padding: 8rem 0; }
+  .v2-vision__layout { grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); column-gap: clamp(3rem,8vw,8rem); align-items: start; }
+  .v2-vision__intro { position: sticky; top: 5rem; }
+  .v2-vision__note { grid-column: 2; }
+}
