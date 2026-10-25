@@ -1161,3 +1161,166 @@
     background: transparent !important;
   }
 }
+
+
+/* Hero readability + responsive full-photo treatment */
+.v2-hero {
+  position: relative !important;
+  isolation: isolate !important;
+  background: #09284a !important;
+  color: #fff !important;
+}
+.v2-hero__layout {
+  position: relative !important;
+  z-index: 2 !important;
+}
+.v2-hero__copy {
+  z-index: 4 !important;
+}
+.v2-hero .v2-kicker {
+  color: #f3cc55 !important;
+  text-shadow: 0 1px 8px rgba(0,0,0,.8) !important;
+}
+.v2-hero h1 {
+  color: #fff !important;
+  text-shadow: 0 2px 12px rgba(0,0,0,.65) !important;
+}
+.v2-hero h1 em {
+  color: #ffd34f !important;
+  text-shadow: 0 2px 12px rgba(0,0,0,.72) !important;
+}
+.v2-hero__body {
+  color: #fff !important;
+  text-shadow: 0 1px 7px rgba(0,0,0,.9) !important;
+}
+.v2-hero .v2-button--ghost {
+  color: #fff !important;
+  background: rgba(5,25,47,.68) !important;
+  border-color: rgba(255,255,255,.9) !important;
+  text-shadow: none !important;
+}
+.v2-hero .v2-button--gold {
+  color: #09284a !important;
+  background: #f0c64e !important;
+  border-color: #f0c64e !important;
+}
+.v2-scene {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none !important;
+}
+.v2-scene__photo {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  aspect-ratio: auto !important;
+  background: #09284a !important;
+  overflow: hidden !important;
+}
+.v2-scene__photo img {
+  object-fit: cover !important;
+  object-position: center 42% !important;
+  filter: none !important;
+}
+.v2-scene__photo::before {
+  display: none !important;
+  content: none !important;
+}
+.v2-scene__photo::after {
+  display: block !important;
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(90deg, rgba(4,24,45,.88) 0%, rgba(4,24,45,.74) 36%, rgba(4,24,45,.25) 68%, rgba(4,24,45,.10) 100%) !important;
+  pointer-events: none !important;
+}
+@media (min-width: 760px) {
+  .v2-hero__layout {
+    min-height: clamp(34rem, 43vw, 40rem) !important;
+    padding-top: 2.5rem !important;
+    padding-bottom: 5.5rem !important;
+  }
+  .v2-hero__copy {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: min(39rem, 52%) !important;
+    padding: 1.2rem 0 2rem !important;
+  }
+  .v2-scene__photo img {
+    object-fit: cover !important;
+    object-position: center 42% !important;
+  }
+}
+@media (max-width: 759px) {
+  .v2-hero {
+    padding: 5.5rem 0 .8rem !important;
+    background: #09284a !important;
+  }
+  .v2-hero__layout {
+    display: flex !important;
+    position: relative !important;
+    min-height: 34rem !important;
+    padding: 1.5rem 1.25rem 5.5rem !important;
+    align-items: center !important;
+  }
+  .v2-hero__copy {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 0 !important;
+    padding: .5rem 0 1rem !important;
+    background: transparent !important;
+    color: #fff !important;
+  }
+  .v2-hero h1,
+  .v2-hero__body {
+    color: #fff !important;
+  }
+  .v2-hero h1 { font-size: clamp(2.65rem, 10.5vw, 3.8rem) !important; }
+  .v2-hero__body { font-size: .88rem !important; }
+  .v2-hero .v2-actions {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    flex-direction: row !important;
+    gap: .65rem !important;
+  }
+  .v2-hero .v2-button {
+    min-width: 0 !important;
+    width: auto !important;
+  }
+  .v2-scene {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .v2-scene__photo {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    aspect-ratio: auto !important;
+  }
+  .v2-scene__photo img {
+    object-fit: cover !important;
+    object-position: center 42% !important;
+  }
+  .v2-scene__photo::after {
+    background: linear-gradient(90deg, rgba(4,24,45,.88) 0%, rgba(4,24,45,.76) 52%, rgba(4,24,45,.38) 100%), linear-gradient(0deg, rgba(4,24,45,.75) 0%, rgba(4,24,45,.10) 70%) !important;
+  }
+  .v2-signal-bar {
+    position: relative !important;
+    z-index: 4 !important;
+    margin-top: -4.7rem !important;
+    background: rgba(5,30,55,.88) !important;
+  }
+}
