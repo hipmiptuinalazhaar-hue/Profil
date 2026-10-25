@@ -166,6 +166,30 @@ export function V2ImmersiveHome({ locale, joinWhatsApp }: { locale: SiteLocale; 
         </div>
       </section>
 
+      <section className="v2-identity-ticker" aria-label={locale === "id" ? "Nilai dan semangat HIPMI PT" : "HIPMI PT values and spirit"}>
+        <div className="v2-identity-ticker__label"><span className="v2-identity-ticker__dot" />{locale === "id" ? "GERAKAN PENGUSAHA MUDA" : "YOUNG ENTREPRENEUR MOVEMENT"}</div>
+        <div className="v2-identity-ticker__viewport">
+          <div className="v2-identity-ticker__track">
+            {[0, 1].map((copyIndex) => (
+              <div className="v2-identity-ticker__group" key={copyIndex} aria-hidden={copyIndex === 1}>
+                {[
+                  locale === "id" ? "Berani Berusaha" : "Dare to Build",
+                  locale === "id" ? "Tumbuh Bersama" : "Grow Together",
+                  locale === "id" ? "Kolaborasi Tanpa Batas" : "Boundless Collaboration",
+                  locale === "id" ? "Perluas Jejaring" : "Expand Your Network",
+                  locale === "id" ? "Ciptakan Dampak Nyata" : "Create Real Impact",
+                ].map((item) => (
+                  <span className="v2-identity-ticker__item" key={item}>
+                    <Image src="/assets/brand/hipmi-pt-uin-alazhaar.avif" alt="" width={24} height={24} unoptimized />
+                    <strong>{item}</strong><i aria-hidden="true">✳</i>
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="v2-journey">
         <div className="shell v2-section-head" data-v2-reveal>
           <p className="v2-kicker v2-kicker--dark"><span />{text.journeyKicker}</p>
