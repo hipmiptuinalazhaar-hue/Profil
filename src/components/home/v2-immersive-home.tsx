@@ -92,21 +92,36 @@ export function V2ImmersiveHome({ locale, joinWhatsApp }: { locale: SiteLocale; 
 
   const text = copy[locale];
 
-  // Keep each frame on screen for six seconds, then blend the next image over it.
+  // Warm the next frame in the browser cache before the dissolve begins.
   useEffect(() => {
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let cancelled = false;
     const nextIndex = (activeHeroSlide + 1) % heroSlides.length;
-    const transitionDuration = reduceMotion ? 0 : 2300;
-    const transitionTimer = window.setTimeout(() => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const transitionDuration = reduceMotion ? 0 : 3200;
+    const preload = new window.Image();
+    preload.decoding = "async";
+    preload.src = heroSlides[nextIndex];
+
+    const transitionTimer = window.setTimeout(async () => {
+      try {
+        if (typeof preload.decode === "function") await preload.decode();
+      } catch {
+        // A failed decode should not freeze the slideshow; Next/Image can retry rendering it.
+      }
+      if (cancelled) return;
+
       setIncomingHeroSlide(nextIndex);
       const finishTimer = window.setTimeout(() => {
+        if (cancelled) return;
         setActiveHeroSlide(nextIndex);
         setIncomingHeroSlide(null);
+        finishRef.current = null;
       }, transitionDuration);
       finishRef.current = finishTimer;
     }, 6000);
 
     return () => {
+      cancelled = true;
       window.clearTimeout(transitionTimer);
       if (finishRef.current !== null) window.clearTimeout(finishRef.current);
     };
