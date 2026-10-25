@@ -8,6 +8,7 @@ import type { SiteLocale } from "@/config/site";
 const programs = {
   id: [
     "Business Academy",
+    "DIGIFIN Academy",
     "Pitching & Access to Capital",
     "Networking & Business Expo",
     "100 Pengusaha Muda",
@@ -48,7 +49,7 @@ const copy = {
     journeyTitle: "Bukan sekadar acara. Ini jalur pertumbuhan.",
     journeyBody: "Satu perjalanan yang menghubungkan pembelajaran, pembangunan usaha, jejaring, akses, dan pertumbuhan dalam satu ekosistem kampus.",
     programsKicker: "Program Universe",
-    programsTitle: "Sembilan program. Satu arah: pengusaha muda yang lebih siap.",
+    programsTitle: "Sepuluh program. Satu arah: pengusaha muda yang lebih siap.",
     leadershipKicker: "Leadership Constellation",
     leadershipTitle: "Struktur yang bekerja sebagai jaringan, bukan daftar nama.",
     impactKicker: "Verified Signal",
@@ -70,7 +71,7 @@ const copy = {
     journeyTitle: "Not merely events. A path for growth.",
     journeyBody: "One journey connecting learning, venture building, networking, access, and growth inside a campus entrepreneurship ecosystem.",
     programsKicker: "Program Universe",
-    programsTitle: "Nine programs. One direction: more capable young entrepreneurs.",
+    programsTitle: "Ten programs. One direction: more capable young entrepreneurs.",
     leadershipKicker: "Leadership Constellation",
     leadershipTitle: "A structure that works as a network, not a list of names.",
     impactKicker: "Verified Signal",
@@ -173,7 +174,7 @@ export function V2ImmersiveHome({ locale, joinWhatsApp }: { locale: SiteLocale; 
         <div className="shell v2-signal-bar" aria-label={locale === "id" ? "Ringkasan organisasi" : "Organization summary"}>
           <div><span>01</span><strong>2026/2027</strong><small>{locale === "id" ? "Periode" : "Term"}</small></div>
           <div><span>02</span><strong>6</strong><small>{locale === "id" ? "Bidang" : "Divisions"}</small></div>
-          <div><span>03</span><strong>9</strong><small>{locale === "id" ? "Program unggulan" : "Flagship programs"}</small></div>
+          <div><span>03</span><strong>10</strong><small>{locale === "id" ? "Program unggulan" : "Flagship programs"}</small></div>
           <div><span>04</span><strong>Linggau Raya</strong><small>{locale === "id" ? "Jejaring" : "Network"}</small></div>
         </div>
       </section>
@@ -197,7 +198,7 @@ export function V2ImmersiveHome({ locale, joinWhatsApp }: { locale: SiteLocale; 
           <h2>{text.programsTitle}</h2>
         </div>
         <div className="shell v2-program-universe" data-v2-reveal>
-          <div className="v2-program-universe__core" aria-hidden="true"><span>09</span><small>PROGRAMS</small></div>
+          <div className="v2-program-universe__core" aria-hidden="true"><span>10</span><small>PROGRAMS</small></div>
           {programs[locale].map((program, index) => (
             <Link href={`/programs?lang=${locale}`} className={`v2-program-node v2-program-node--${index + 1}`} key={program}>
               <span>{String(index + 1).padStart(2, "0")}</span><strong>{program}</strong><b aria-hidden="true">↗</b>
@@ -232,7 +233,7 @@ export function V2ImmersiveHome({ locale, joinWhatsApp }: { locale: SiteLocale; 
           <div className="v2-impact__signals" data-v2-reveal>
             <div><span>TERM</span><strong>2026/2027</strong></div>
             <div><span>DIVISIONS</span><strong>06</strong></div>
-            <div><span>FLAGSHIP PROGRAMS</span><strong>09</strong></div>
+            <div><span>FLAGSHIP PROGRAMS</span><strong>10</strong></div>
             <Link href={`/impact?lang=${locale}`}><span>{locale === "id" ? "Buka halaman dampak" : "Open impact page"}</span><b>↗</b></Link>
           </div>
         </div>
