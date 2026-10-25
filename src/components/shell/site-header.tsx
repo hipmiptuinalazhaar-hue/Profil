@@ -10,7 +10,7 @@ const navigation = [
   { id: "leadership", href: "/leadership", idLabel: "Pengurus", enLabel: "Leadership", idDescription: "BPH, enam bidang, kepala bidang, dan kompartemen", enDescription: "Executive board, six divisions, heads, and compartments" },
   { id: "business", href: "/business", idLabel: "Ekosistem", enLabel: "Ecosystem", idDescription: "Direktori usaha mahasiswa dan anggota", enDescription: "Student and member business directory" },
   { id: "events", href: "/events", idLabel: "Agenda", enLabel: "Events", idDescription: "Kalender kegiatan dan agenda organisasi", enDescription: "Organization calendar and events" },
-  { id: "media", href: "/media", idLabel: "Media", enLabel: "Media", idDescription: "Berita internal, berita eksternal, dan dokumentasi", enDescription: "Internal news, external news, and documentation" },
+  { id: "media", href: "/media", idLabel: "Media & Berita", enLabel: "Media & News", idDescription: "Berita internal, berita eksternal, wawasan, dan dokumentasi", enDescription: "Internal news, external news, insights, and documentation" },
   { id: "partnerships", href: "/partnerships", idLabel: "Kolaborasi", enLabel: "Collaboration", idDescription: "Ruang kerja sama strategis", enDescription: "Strategic collaboration" },
 ] as const;
 
