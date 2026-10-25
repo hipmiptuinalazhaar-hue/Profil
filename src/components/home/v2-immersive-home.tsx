@@ -250,6 +250,32 @@ export function V2ImmersiveHome({ locale, joinWhatsApp }: { locale: SiteLocale; 
         </div>
       </section>
 
+      <section className="v2-vision" aria-labelledby="v2-vision-title">
+        <div className="shell v2-vision__layout" data-v2-reveal>
+          <div className="v2-vision__intro">
+            <p className="v2-kicker"><span />{locale === "id" ? "ARAH GERAK ORGANISASI" : "OUR DIRECTION"}</p>
+            <h2 id="v2-vision-title">{locale === "id" ? "Visi yang menggerakkan. Misi yang dikerjakan." : "A vision to move us. A mission to act on."}</h2>
+            <p>{locale === "id" ? "HIPMI PT menjadi ruang tumbuh bagi mahasiswa untuk mengembangkan usaha, memperluas kolaborasi, dan menghadirkan dampak yang terukur." : "HIPMI PT is a place for students to grow ventures, expand collaboration, and create measurable impact."}</p>
+            <span className="v2-vision__index">VISION / MISSION · 2026</span>
+          </div>
+          <div className="v2-vision__content">
+            <article className="v2-vision__statement">
+              <span className="v2-vision__number">01 / {locale === "id" ? "VISI" : "VISION"}</span>
+              <h3>{locale === "id" ? "Menjadi ekosistem kewirausahaan mahasiswa yang progresif, kolaboratif, dan berdampak bagi kampus serta masyarakat." : "To become a progressive, collaborative, and impactful student entrepreneurship ecosystem for campus and society."}</h3>
+            </article>
+            <div className="v2-vision__missions">
+              <p className="v2-vision__number">02 / {locale === "id" ? "MISI" : "MISSION"}</p>
+              <div><span>01</span><p>{locale === "id" ? "Mengembangkan kompetensi kewirausahaan melalui pembelajaran, pendampingan, dan praktik bisnis." : "Develop entrepreneurial skills through learning, mentoring, and business practice."}</p></div>
+              <div><span>02</span><p>{locale === "id" ? "Mendorong lahirnya usaha mahasiswa yang inovatif, adaptif, dan berkelanjutan." : "Encourage innovative, adaptable, and sustainable student-led ventures."}</p></div>
+              <div><span>03</span><p>{locale === "id" ? "Memperluas jejaring dan kemitraan dengan pelaku usaha, alumni, kampus, dan pemangku kepentingan." : "Expand networks and partnerships with entrepreneurs, alumni, the university, and stakeholders."}</p></div>
+              <div><span>04</span><p>{locale === "id" ? "Membuka akses terhadap informasi, mentoring, kolaborasi, dan peluang pengembangan usaha." : "Improve access to information, mentoring, collaboration, and business development opportunities."}</p></div>
+              <div><span>05</span><p>{locale === "id" ? "Membangun organisasi yang profesional, inklusif, dan berorientasi pada dampak nyata." : "Build a professional, inclusive organization focused on real-world impact."}</p></div>
+            </div>
+          </div>
+          <p className="v2-vision__note">{locale === "id" ? "Rumusan kerja untuk ditinjau dan disahkan oleh pengurus." : "Working draft for review and formal approval by the board."}</p>
+        </div>
+      </section>
+
       <section className="v2-journey">
         <div className="shell v2-section-head" data-v2-reveal>
           <p className="v2-kicker v2-kicker--dark"><span />{text.journeyKicker}</p>
