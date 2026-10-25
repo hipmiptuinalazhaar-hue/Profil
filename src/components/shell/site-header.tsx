@@ -4,8 +4,9 @@ import type { SiteLocale } from "@/config/site";
 import { createWhatsAppUrl } from "@/lib/whatsapp";
 
 const navigation = [
+  { id: "home", href: "/", idLabel: "Beranda", enLabel: "Home", idDescription: "Kembali ke halaman utama", enDescription: "Return to the homepage" },
   { id: "about", href: "/about", idLabel: "HIPMI PT", enLabel: "HIPMI PT", idDescription: "Profil, visi, misi, nilai, dan arah organisasi", enDescription: "Profile, vision, mission, values, and direction" },
-  { id: "programs", href: "/programs", idLabel: "Program", enLabel: "Programs", idDescription: "Sembilan program unggulan dan arsitektur pengembangan", enDescription: "Nine flagship programs and development architecture" },
+  { id: "programs", href: "/programs", idLabel: "Program", enLabel: "Programs", idDescription: "Program unggulan dan fokus pengembangan", enDescription: "Flagship program and development focus" },
   { id: "leadership", href: "/leadership", idLabel: "Pengurus", enLabel: "Leadership", idDescription: "BPH, enam bidang, kepala bidang, dan kompartemen", enDescription: "Executive board, six divisions, heads, and compartments" },
   { id: "business", href: "/business", idLabel: "Ekosistem", enLabel: "Ecosystem", idDescription: "Usaha anggota, pengembangan, pasar, dan jejaring", enDescription: "Member ventures, development, market, and network" },
   { id: "impact", href: "/impact", idLabel: "Dampak", enLabel: "Impact", idDescription: "Baseline terverifikasi dan standar bukti capaian", enDescription: "Verified baseline and evidence standards" },
@@ -33,7 +34,7 @@ export function SiteHeader({ locale }: { locale: SiteLocale }) {
       <div className="global-header__inner">
         <Link className="brand" href={`/?lang=${locale}`} aria-label="HIPMI PT UIN Al Azhaar Lubuklinggau">
           <span className="brand__mark" aria-hidden="true"><Image src="/assets/brand/hipmi-pt-uin-alazhaar.avif" alt="" width={64} height={64} priority unoptimized style={{ mixBlendMode: "normal" }} /></span>
-          <span className="brand__wordmark"><strong>HIPMI PT</strong><span>UIN Al Azhaar · Lubuklinggau</span></span>
+          <span className="brand__wordmark"><strong>HIPMI PT UIN AL AZHAAR</strong><span>LUBUK LINGGAU</span></span>
         </Link>
 
         <nav className="desktop-navigation" aria-label={isId ? "Navigasi halaman" : "Site navigation"}>
@@ -55,7 +56,7 @@ export function SiteHeader({ locale }: { locale: SiteLocale }) {
               <div className="mobile-menu__topline">
                 <Link className="mobile-menu__brand" href={`/?lang=${locale}`} aria-label="HIPMI PT UIN Al Azhaar Lubuklinggau">
                   <span className="mobile-menu__brand-mark" aria-hidden="true"><Image src="/assets/brand/hipmi-pt-uin-alazhaar.avif" alt="" width={72} height={72} unoptimized style={{ mixBlendMode: "normal" }} /></span>
-                  <span><strong>HIPMI PT</strong><small>UIN Al Azhaar Lubuklinggau</small></span>
+                  <span><strong>HIPMI PT UIN AL AZHAAR</strong><small>LUBUK LINGGAU</small></span>
                 </Link>
                 <span className="mobile-menu__edition">2026 / 2027</span>
               </div>
