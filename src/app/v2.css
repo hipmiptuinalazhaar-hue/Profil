@@ -2002,3 +2002,16 @@
 @media (prefers-reduced-motion: reduce) {
   .v2-hero__slide { animation: none; }
 }
+
+
+/* Final hero image fix: one photo layer only; prevent the legacy scene photo from leaking through. */
+.v2-hero .v2-scene { display: none !important; }
+.v2-hero .v2-hero__slides { z-index: 0 !important; }
+.v2-hero .v2-hero__layout,
+.v2-hero .v2-signal-bar { position: relative !important; z-index: 2 !important; }
+.v2-hero .v2-hero__slide { animation: none !important; opacity: 1 !important; }
+.v2-hero .v2-hero__slide img { object-fit: contain !important; object-position: center center !important; transform: none !important; }
+.v2-hero .v2-hero__slide::after { z-index: 1; }
+@media (max-width: 759px) {
+  .v2-hero .v2-hero__slide img { object-fit: cover !important; object-position: center 42% !important; }
+}
