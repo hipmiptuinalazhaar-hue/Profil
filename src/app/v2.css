@@ -2048,3 +2048,21 @@
     animation: none !important;
   }
 }
+
+
+/* Final editorial hero treatment: consistent full-bleed photos and a soft cross-dissolve. */
+.v2-hero .v2-hero__slides{position:absolute!important;inset:0!important;z-index:0!important;overflow:hidden!important;background:#07111f!important}
+.v2-hero .v2-hero__slide{position:absolute!important;inset:0!important;overflow:hidden!important;animation:none!important;opacity:1;will-change:opacity;transform:translateZ(0)}
+.v2-hero .v2-hero__slide img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center 42%!important;transform:scale(1.04)!important;filter:saturate(.88) contrast(1.035) brightness(.84)!important}
+.v2-hero .v2-hero__slide--previous{z-index:1!important;animation:v2-editorial-out 1.45s cubic-bezier(.76,0,.24,1) both!important}
+.v2-hero .v2-hero__slide--previous img{animation:v2-editorial-drift-out 1.6s cubic-bezier(.2,.65,.3,1) both!important}
+.v2-hero .v2-hero__slide--active{z-index:2!important;animation:v2-editorial-in 1.45s cubic-bezier(.22,1,.36,1) both!important}
+.v2-hero .v2-hero__slide--active img{animation:v2-editorial-drift-in 5.8s cubic-bezier(.2,.65,.3,1) both!important}
+.v2-hero .v2-hero__slide::after{content:""!important;position:absolute!important;inset:0!important;z-index:1!important;background:linear-gradient(90deg,rgba(2,8,16,.78) 0%,rgba(2,8,16,.58) 36%,rgba(2,8,16,.2) 72%,rgba(2,8,16,.28) 100%),linear-gradient(0deg,rgba(2,8,16,.72) 0%,rgba(2,8,16,.08) 48%,rgba(2,8,16,.24) 100%)!important;pointer-events:none!important}
+.v2-hero .v2-hero__layout,.v2-hero .v2-signal-bar{position:relative!important;z-index:3!important}
+@keyframes v2-editorial-in{from{opacity:0}to{opacity:1}}
+@keyframes v2-editorial-out{from{opacity:1}to{opacity:0}}
+@keyframes v2-editorial-drift-in{from{transform:scale(1.075)}to{transform:scale(1.025)}}
+@keyframes v2-editorial-drift-out{from{transform:scale(1.025)}to{transform:scale(1.055)}}
+@media(max-width:759px){.v2-hero .v2-hero__slide img{object-position:56% center!important;filter:saturate(.84) contrast(1.025) brightness(.78)!important}.v2-hero .v2-hero__slide::after{background:linear-gradient(90deg,rgba(2,8,16,.7),rgba(2,8,16,.42)),linear-gradient(0deg,rgba(2,8,16,.8),rgba(2,8,16,.12) 55%,rgba(2,8,16,.32))!important}}
+@media(prefers-reduced-motion:reduce){.v2-hero .v2-hero__slide--previous,.v2-hero .v2-hero__slide--active,.v2-hero .v2-hero__slide--previous img,.v2-hero .v2-hero__slide--active img{animation:none!important}}
