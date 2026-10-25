@@ -70,6 +70,41 @@ export default async function MediaPage({ searchParams }: MediaProps) {
           </div>
         </section>
 
+        <section className="news-hub" aria-labelledby="news-hub-title">
+          <div className="shell">
+            <div className="news-hub__intro">
+              <p>{isId ? "Ruang redaksi HIPMI PT" : "HIPMI PT newsroom"}</p>
+              <h2 id="news-hub-title">{isId ? "Berita internal dan pantauan eksternal, dalam satu ruang." : "Internal updates and external coverage, in one place."}</h2>
+              <span>{isId ? "Informasi organisasi dipisahkan dari berita pihak luar agar sumber, konteks, dan tanggung jawab editorial tetap jelas." : "Organization updates are separated from third-party coverage so sources, context, and editorial responsibility stay clear."}</span>
+            </div>
+            <div className="news-hub__grid">
+              <section className="news-hub__column" aria-labelledby="internal-news-title">
+                <div className="news-hub__column-head"><span>01 / {isId ? "INTERNAL" : "INTERNAL"}</span><h3 id="internal-news-title">{isId ? "Berita internal" : "Internal news"}</h3></div>
+                <article className="news-hub__story">
+                  <p>{isId ? "Organisasi · Dokumentasi" : "Organization · Documentation"}</p>
+                  <h4>{isId ? "Pelantikan Akbar HIPMI PT Kampus se-Linggau Raya 2026" : "2026 Grand Inauguration of HIPMI PT Campuses across Linggau Raya"}</h4>
+                  <span>{isId ? "Dokumentasi kegiatan organisasi dan jejaring lintas kampus tersedia pada galeri resmi." : "Official gallery documentation is available for the organization event and inter-campus network."}</span>
+                  <a href="#media-pelantikan">{isId ? "Lihat dokumentasi" : "View documentation"} <span aria-hidden="true">↗</span></a>
+                </article>
+                <article className="news-hub__story">
+                  <p>{isId ? "Jejaring · Kemitraan" : "Network · Partnership"}</p>
+                  <h4>{isId ? "Membangun jejaring dengan BPC HIPMI Lubuklinggau" : "Building a network with BPC HIPMI Lubuklinggau"}</h4>
+                  <span>{isId ? "Lihat dokumentasi jejaring yang tersedia. Informasi kegiatan baru akan diterbitkan setelah diverifikasi pengurus." : "Explore available network documentation. New activity updates will be published after leadership verification."}</span>
+                  <a href="#media-bpc">{isId ? "Lihat dokumentasi" : "View documentation"} <span aria-hidden="true">↗</span></a>
+                </article>
+              </section>
+              <section className="news-hub__column news-hub__column--external" aria-labelledby="external-news-title">
+                <div className="news-hub__column-head"><span>02 / {isId ? "EKSTERNAL" : "EXTERNAL"}</span><h3 id="external-news-title">{isId ? "Pantauan berita eksternal" : "External news watch"}</h3></div>
+                <p className="news-hub__editorial-note">{isId ? "Rujukan resmi untuk mengikuti perkembangan kebijakan dan ekosistem usaha. Tautan mengarah ke penerbit asli, bukan artikel yang disalin ulang." : "Official sources for tracking policy and business ecosystem developments. Links go to the original publishers, not republished copies."}</p>
+                <a className="news-hub__source" href="https://www.bi.go.id/id/publikasi/ruang-media/default.aspx" target="_blank" rel="noreferrer"><span><strong>Bank Indonesia</strong><small>{isId ? "Kebijakan moneter, sistem pembayaran, ekonomi" : "Monetary policy, payments, economy"}</small></span><b aria-hidden="true">↗</b></a>
+                <a className="news-hub__source" href="https://www.ojk.go.id/id/berita-dan-kegiatan/siaran-pers/Default.aspx" target="_blank" rel="noreferrer"><span><strong>Otoritas Jasa Keuangan</strong><small>{isId ? "Jasa keuangan, literasi, dan regulasi" : "Financial services, literacy, and regulation"}</small></span><b aria-hidden="true">↗</b></a>
+                <a className="news-hub__source" href="https://www.kemenkopukm.go.id/" target="_blank" rel="noreferrer"><span><strong>{isId ? "Kementerian UMKM" : "Ministry of MSMEs"}</strong><small>{isId ? "UMKM, kewirausahaan, dan program pemerintah" : "MSMEs, entrepreneurship, and government programs"}</small></span><b aria-hidden="true">↗</b></a>
+                <p className="news-hub__disclaimer">{isId ? "Sumber eksternal di atas merupakan rujukan penerbit, bukan klaim bahwa seluruh beritanya telah ditinjau atau didukung HIPMI PT." : "These are publisher sources, not a claim that every item has been reviewed or endorsed by HIPMI PT."}</p>
+              </section>
+            </div>
+          </div>
+        </section>
+
         <section className="media-guide">
           <div className="shell media-guide__grid">
             <div><p>{isId ? "Aturan dokumentasi" : "Documentation rule"}</p><h2>{isId ? "Wajah, konteks kegiatan, dan kebenaran dokumenter tetap dijaga." : "Faces, event context, and documentary truth stay intact."}</h2></div>
