@@ -112,7 +112,7 @@ export function V2ImmersiveHome({ locale, joinWhatsApp }: { locale: SiteLocale; 
     };
   }, [activeHeroSlide]);
 
-  const finishRef = useRef<ReturnType<typeof window.setTimeout> | null>(null);
+  const finishRef = useRef<number | null>(null);
 
   useEffect(() => {
     const root = rootRef.current;
