@@ -131,6 +131,14 @@ export function V2ImmersiveHome({ locale, joinWhatsApp }: { locale: SiteLocale; 
         <div className="v2-hero__ambient" aria-hidden="true" />
         <div className="v2-hero__grid" aria-hidden="true" />
 
+        <div className="v2-hero__slides" aria-hidden="true">
+          {heroSlides.map((src, index) => (
+            <div className={`v2-hero__slide v2-hero__slide--${index + 1}`} key={src}>
+              <Image src={src} alt="" fill priority={index === 0} sizes="100vw" />
+            </div>
+          ))}
+        </div>
+
         <div className="shell v2-hero__layout">
           <div className="v2-hero__copy" data-v2-reveal>
             <p className="v2-kicker"><span />{text.eyebrow}</p>
