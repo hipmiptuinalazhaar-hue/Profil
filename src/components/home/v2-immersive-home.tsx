@@ -190,7 +190,7 @@ export function V2ImmersiveHome({ locale, joinWhatsApp }: { locale: SiteLocale; 
               <span className="v2-program-feature__number">01 / PROGRAM UNGGULAN</span>
               <span className="v2-program-feature__status">{locale === "id" ? "Program utama" : "Flagship program"}</span>
             </div>
-            <h3>DigiFin Academy</h3>
+            <h3>DIGIFIN ACADEMY</h3>
             <p>{locale === "id"
               ? "Wadah pembelajaran dan pengembangan kompetensi anggota dalam keuangan, investasi, dan kewirausahaan digital. Kegiatan seperti kelas, klinik bisnis, pitching, dan networking menjadi bagian dari perjalanan program, bukan program unggulan yang berdiri sendiri."
               : "A learning and capability-building hub for finance, investment, and digital entrepreneurship. Classes, business clinics, pitching, and networking are delivered as activities within this program, not as separate flagship programs."}</p>
