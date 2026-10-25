@@ -8,15 +8,15 @@ const navigation = [
   { id: "about", href: "/about", idLabel: "HIPMI PT", enLabel: "HIPMI PT", idDescription: "Profil, visi, misi, nilai, dan arah organisasi", enDescription: "Profile, vision, mission, values, and direction" },
   { id: "programs", href: "/programs", idLabel: "Program", enLabel: "Programs", idDescription: "Program unggulan dan fokus pengembangan", enDescription: "Flagship program and development focus" },
   { id: "leadership", href: "/leadership", idLabel: "Pengurus", enLabel: "Leadership", idDescription: "BPH, enam bidang, kepala bidang, dan kompartemen", enDescription: "Executive board, six divisions, heads, and compartments" },
-  { id: "business", href: "/business", idLabel: "Ekosistem", enLabel: "Ecosystem", idDescription: "Usaha anggota, pengembangan, pasar, dan jejaring", enDescription: "Member ventures, development, market, and network" },
-  { id: "impact", href: "/impact", idLabel: "Dampak", enLabel: "Impact", idDescription: "Baseline terverifikasi dan standar bukti capaian", enDescription: "Verified baseline and evidence standards" },
-  { id: "media", href: "/media", idLabel: "Media", enLabel: "Media", idDescription: "Dokumentasi resmi yang terhubung dengan folder foto repo", enDescription: "Official documentation connected to the repository photo folder" },
+  { id: "business", href: "/business", idLabel: "Ekosistem", enLabel: "Ecosystem", idDescription: "Direktori usaha mahasiswa dan anggota", enDescription: "Student and member business directory" },
+  { id: "events", href: "/events", idLabel: "Agenda", enLabel: "Events", idDescription: "Kalender kegiatan dan agenda organisasi", enDescription: "Organization calendar and events" },
+  { id: "media", href: "/media", idLabel: "Media", enLabel: "Media", idDescription: "Berita internal, berita eksternal, dan dokumentasi", enDescription: "Internal news, external news, and documentation" },
+  { id: "partnerships", href: "/partnerships", idLabel: "Kolaborasi", enLabel: "Collaboration", idDescription: "Ruang kerja sama strategis", enDescription: "Strategic collaboration" },
 ] as const;
 
 const secondaryNavigation = [
-  { id: "events", href: "/events", idLabel: "Agenda", enLabel: "Events", idDescription: "Kalender publik dan format kegiatan", enDescription: "Public calendar and event formats" },
+  { id: "impact", href: "/impact", idLabel: "Dampak", enLabel: "Impact", idDescription: "Capaian dan bukti dampak organisasi", enDescription: "Organization outcomes and evidence" },
   { id: "insights", href: "/insights", idLabel: "Wawasan", enLabel: "Insights", idDescription: "Playbook praktis untuk pengusaha muda", enDescription: "Practical playbooks for young entrepreneurs" },
-  { id: "partnerships", href: "/partnerships", idLabel: "Kolaborasi", enLabel: "Collaboration", idDescription: "Ruang kerja sama strategis dengan konteks yang jelas", enDescription: "Strategic collaboration with a clear purpose" },
 ] as const;
 
 export function SiteHeader({ locale }: { locale: SiteLocale }) {
