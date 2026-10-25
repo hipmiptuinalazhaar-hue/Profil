@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/shell/site-header";
 import type { SiteLocale } from "@/config/site";
 import { businessEcosystemLayers } from "@/content/platform";
 import { createPageMetadata } from "@/lib/seo";
+import { createWhatsAppUrl } from "@/lib/whatsapp";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Ekosistem Bisnis",
@@ -18,6 +19,9 @@ export default async function BusinessPage({ searchParams }: BusinessProps) {
   const params = await searchParams;
   const locale: SiteLocale = params.lang === "en" ? "en" : "id";
   const isId = locale === "id";
+  const submitBusinessUrl = createWhatsAppUrl(isId
+    ? "Halo HIPMI PT UIN Al Azhaar, saya ingin mendaftarkan usaha untuk direktori usaha anggota. Nama pemilik: ____. Nama usaha: ____. Kategori: ____. Produk/jasa: ____. Kontak publik usaha: ____. Instagram/website: ____. Saya bersedia data usaha diverifikasi sebelum dipublikasikan."
+    : "Hello HIPMI PT UIN Al Azhaar, I would like to submit my business for the member directory. Owner: ____. Business name: ____. Category: ____. Products/services: ____. Public business contact: ____. Instagram/website: ____. I agree to verification before publication.");
 
   return (
     <div className="phase-three inner-page phase-nine" lang={locale}>
@@ -56,7 +60,9 @@ export default async function BusinessPage({ searchParams }: BusinessProps) {
             <div>
               <p>{isId ? "Direktori bisnis anggota" : "Member business directory"}</p>
               <h2 id="directory-title">{isId ? "Belum dipublikasikan sebelum data usaha diverifikasi." : "Not published until member-business data is verified."}</h2>
-              <span>{isId ? "Kami tidak mengisi direktori dengan usaha contoh, logo palsu, omzet rekaan, atau profil yang belum dikonfirmasi. Ketika data anggota tersedia, direktori ini siap menerima nama usaha, kategori, pemilik, kanal kontak publik, status verifikasi, dan kebutuhan pengembangan." : "We do not fill the directory with sample ventures, fake logos, invented revenue, or unconfirmed profiles. Once member data is available, the directory is ready for venture name, category, owner, public contact channel, verification status, and development needs."}</span>
+              <span>{isId ? "Kami tidak mengisi direktori dengan usaha contoh, logo palsu, omzet rekaan, atau profil yang belum dikonfirmasi. Anggota dapat mengirimkan data usaha melalui WhatsApp pengurus; profil akan diperiksa sebelum ditampilkan secara publik." : "We do not fill the directory with sample ventures, fake logos, invented revenue, or unconfirmed profiles. Members can submit their business details through the leadership WhatsApp channel; profiles will be reviewed before public listing."}</span>
+              <a className="business-directory-submit" href={submitBusinessUrl} target="_blank" rel="noreferrer">{isId ? "Daftarkan usaha anggota" : "Submit a member business"} <span aria-hidden="true">↗</span></a>
+              <p className="business-directory-submit__note">{isId ? "Siapkan nama usaha, kategori, deskripsi produk/jasa, dan kontak bisnis yang memang boleh dipublikasikan." : "Prepare the business name, category, product/service description, and a contact channel approved for public display."}</p>
             </div>
             <div className="business-directory-state__schema" aria-label={isId ? "Struktur data direktori" : "Directory data structure"}>
               {[isId ? "Nama usaha" : "Business name", isId ? "Kategori" : "Category", isId ? "Pemilik" : "Owner", isId ? "Kontak publik" : "Public contact", isId ? "Status verifikasi" : "Verification status", isId ? "Kebutuhan pengembangan" : "Development needs"].map((item, index) => (
