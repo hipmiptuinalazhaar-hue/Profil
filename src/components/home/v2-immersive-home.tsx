@@ -5,29 +5,16 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 import type { SiteLocale } from "@/config/site";
 
-const programs = {
+const programFocus = {
   id: [
-    "Business Academy",
-    "DIGIFIN Academy",
-    "Pitching & Access to Capital",
-    "Networking & Business Expo",
-    "100 Pengusaha Muda",
-    "LinggauPreneur Summit",
-    "Business Visit",
-    "Entrepreneur Talk",
-    "Business Incubator",
-    "Investment Club",
+    { title: "Investasi & Permodalan", detail: "Literasi investasi, analisis pasar modal, dan pengenalan akses pendanaan." },
+    { title: "Pengembangan Bisnis", detail: "Ide usaha, pemasaran digital, pengelolaan UMKM, dan pengembangan produk." },
+    { title: "Jejaring & Kolaborasi", detail: "Mentoring, koneksi pengusaha, kemitraan, dan peluang kolaborasi." },
   ],
   en: [
-    "Business Academy",
-    "Pitching & Access to Capital",
-    "Networking & Business Expo",
-    "100 Young Entrepreneurs",
-    "LinggauPreneur Summit",
-    "Business Visit",
-    "Entrepreneur Talk",
-    "Business Incubator",
-    "Investment Club",
+    { title: "Investment & Capital", detail: "Investment literacy, capital-market analysis, and funding access." },
+    { title: "Business Development", detail: "Business ideas, digital marketing, MSME management, and product growth." },
+    { title: "Networking & Collaboration", detail: "Mentoring, entrepreneur connections, partnerships, and collaboration." },
   ],
 } as const;
 
@@ -49,7 +36,7 @@ const copy = {
     journeyTitle: "Bukan sekadar acara. Ini jalur pertumbuhan.",
     journeyBody: "Satu perjalanan yang menghubungkan pembelajaran, pembangunan usaha, jejaring, akses, dan pertumbuhan dalam satu ekosistem kampus.",
     programsKicker: "Program Unggulan",
-    programsTitle: "Program untuk belajar, membangun usaha, dan memperluas jejaring.",
+    programsTitle: "Satu program unggulan. Tiga fokus pengembangan.",
     leadershipKicker: "Kepengurusan",
     leadershipTitle: "Tim yang menggerakkan organisasi.",
     impactKicker: "Profil Organisasi",
@@ -71,7 +58,7 @@ const copy = {
     journeyTitle: "Not merely events. A path for growth.",
     journeyBody: "One journey connecting learning, venture building, networking, access, and growth inside a campus entrepreneurship ecosystem.",
     programsKicker: "Featured Programs",
-    programsTitle: "Programs to learn, build businesses, and expand networks.",
+    programsTitle: "One flagship program. Three areas of development.",
     leadershipKicker: "Leadership",
     leadershipTitle: "The team moving the organization forward.",
     impactKicker: "Organization Profile",
@@ -174,7 +161,7 @@ export function V2ImmersiveHome({ locale, joinWhatsApp }: { locale: SiteLocale; 
         <div className="shell v2-signal-bar" aria-label={locale === "id" ? "Ringkasan organisasi" : "Organization summary"}>
           <div><span>01</span><strong>2026/2027</strong><small>{locale === "id" ? "Periode" : "Term"}</small></div>
           <div><span>02</span><strong>6</strong><small>{locale === "id" ? "Bidang" : "Divisions"}</small></div>
-          <div><span>03</span><strong>10</strong><small>{locale === "id" ? "Program unggulan" : "Flagship programs"}</small></div>
+          <div><span>03</span><strong>01</strong><small>{locale === "id" ? "Program unggulan" : "Flagship program"}</small></div>
           <div><span>04</span><strong>Linggau Raya</strong><small>{locale === "id" ? "Jejaring" : "Network"}</small></div>
         </div>
       </section>
@@ -198,12 +185,28 @@ export function V2ImmersiveHome({ locale, joinWhatsApp }: { locale: SiteLocale; 
           <h2>{text.programsTitle}</h2>
         </div>
         <div className="shell v2-program-universe" data-v2-reveal>
-          <div className="v2-program-universe__core" aria-hidden="true"><span>10</span><small>PROGRAMS</small></div>
-          {programs[locale].map((program, index) => (
-            <Link href={`/programs?lang=${locale}`} className={`v2-program-node v2-program-node--${index + 1}`} key={program}>
-              <span>{String(index + 1).padStart(2, "0")}</span><strong>{program}</strong><b aria-hidden="true">↗</b>
+          <article className="v2-program-feature">
+            <div className="v2-program-feature__top">
+              <span className="v2-program-feature__number">01 / PROGRAM UNGGULAN</span>
+              <span className="v2-program-feature__status">{locale === "id" ? "Program utama" : "Flagship program"}</span>
+            </div>
+            <h3>DigiFin Academy</h3>
+            <p>{locale === "id"
+              ? "Wadah pembelajaran dan pengembangan kompetensi anggota dalam keuangan, investasi, dan kewirausahaan digital. Kegiatan seperti kelas, klinik bisnis, pitching, dan networking menjadi bagian dari perjalanan program, bukan program unggulan yang berdiri sendiri."
+              : "A learning and capability-building hub for finance, investment, and digital entrepreneurship. Classes, business clinics, pitching, and networking are delivered as activities within this program, not as separate flagship programs."}</p>
+            <div className="v2-program-focus-grid">
+              {programFocus[locale].map((focus, index) => (
+                <div className="v2-program-focus" key={focus.title}>
+                  <span>0{index + 1}</span>
+                  <h4>{focus.title}</h4>
+                  <p>{focus.detail}</p>
+                </div>
+              ))}
+            </div>
+            <Link className="v2-program-feature__link" href={`/programs?lang=${locale}`}>
+              {locale === "id" ? "Jelajahi program" : "Explore the program"} <b aria-hidden="true">↗</b>
             </Link>
-          ))}
+          </article>
         </div>
       </section>
 
@@ -233,7 +236,7 @@ export function V2ImmersiveHome({ locale, joinWhatsApp }: { locale: SiteLocale; 
           <div className="v2-impact__signals" data-v2-reveal>
             <div><span>TERM</span><strong>2026/2027</strong></div>
             <div><span>DIVISIONS</span><strong>06</strong></div>
-            <div><span>FLAGSHIP PROGRAMS</span><strong>10</strong></div>
+            <div><span>FLAGSHIP PROGRAM</span><strong>01</strong></div>
             <Link href={`/impact?lang=${locale}`}><span>{locale === "id" ? "Buka halaman dampak" : "Open impact page"}</span><b>↗</b></Link>
           </div>
         </div>
