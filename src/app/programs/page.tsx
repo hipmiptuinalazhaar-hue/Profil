@@ -7,7 +7,7 @@ import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Program Unggulan",
-  description: "DigiFin Academy, program unggulan HIPMI PT UIN Al Azhaar Lubuklinggau untuk literasi keuangan, investasi, pengembangan bisnis, dan jejaring.",
+  description: "DIGIFIN ACADEMY, program unggulan HIPMI PT UIN Al Azhaar Lubuklinggau untuk literasi keuangan, investasi, pengembangan bisnis, dan jejaring.",
   path: "/programs",
 });
 
@@ -28,7 +28,7 @@ export default async function ProgramsPage({ searchParams }: ProgramsProps) {
             <div className="inner-hero__copy">
               <p>{isId ? "Program architecture · 2026/2027" : "Program architecture · 2026/2027"}</p>
               <h1>{isId ? "Satu program unggulan untuk belajar, membangun, dan bertumbuh." : "One flagship program to learn, build, and grow."}</h1>
-              <span>{isId ? "DigiFin Academy menghubungkan literasi keuangan, investasi, kewirausahaan digital, dan jejaring dalam satu jalur pengembangan anggota." : "DigiFin Academy connects financial literacy, investing, digital entrepreneurship, and networking in one member-development pathway."}</span>
+              <span>{isId ? "DIGIFIN ACADEMY menghubungkan literasi keuangan, investasi, kewirausahaan digital, dan jejaring dalam satu jalur pengembangan anggota." : "DIGIFIN ACADEMY connects financial literacy, investing, digital entrepreneurship, and networking in one member-development pathway."}</span>
             </div>
           </div>
         </section>
@@ -36,7 +36,7 @@ export default async function ProgramsPage({ searchParams }: ProgramsProps) {
         <section className="programs-catalog">
           <div className="shell programs-catalog__intro">
             <p>{isId ? "Portofolio program" : "Program portfolio"}</p>
-            <h2>{isId ? "DigiFin Academy" : "DigiFin Academy"}</h2>
+            <h2>{isId ? "DIGIFIN ACADEMY" : "DIGIFIN ACADEMY"}</h2>
           </div>
           <div className="shell programs-catalog__list">
             <article className="program-card program-card--featured">
@@ -44,7 +44,7 @@ export default async function ProgramsPage({ searchParams }: ProgramsProps) {
                 <span>01</span>
                 <p>{isId ? "PROGRAM UNGGULAN" : "FLAGSHIP PROGRAM"}</p>
               </div>
-              <h3>DigiFin Academy</h3>
+              <h3>DIGIFIN ACADEMY</h3>
               <p>{isId
                 ? "Wadah pembelajaran dan pengembangan kompetensi anggota dalam keuangan, investasi, dan kewirausahaan digital. Kelas, klinik bisnis, pitching, serta networking menjadi bentuk kegiatan di dalam program ini, bukan program unggulan yang terpisah."
                 : "A learning and capability-building hub for finance, investment, and digital entrepreneurship. Classes, business clinics, pitching, and networking are activities within this program, not separate flagship programs."}</p>
@@ -66,8 +66,8 @@ export default async function ProgramsPage({ searchParams }: ProgramsProps) {
                 </div>
               </div>
               <div className="program-card__footer">
-                <span>{isId ? "Lihat detail DigiFin Academy" : "Explore DigiFin Academy"}</span>
-                <Link href={"/programs/digifin-academy?lang=" + locale} aria-label={isId ? "Lihat detail DigiFin Academy" : "Explore DigiFin Academy"}>↗</Link>
+                <span>{isId ? "Lihat detail DIGIFIN ACADEMY" : "Explore DIGIFIN ACADEMY"}</span>
+                <Link href={"/programs/digifin-academy?lang=" + locale} aria-label={isId ? "Lihat detail DIGIFIN ACADEMY" : "Explore DIGIFIN ACADEMY"}>↗</Link>
               </div>
             </article>
           </div>
